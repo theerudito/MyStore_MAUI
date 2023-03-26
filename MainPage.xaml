@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+
+        <ListView ItemsSource="{Binding Personajes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="{Binding Name}" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Clan}" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Text="{Binding Age}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button
+            Margin="100,20,100,20"
+            BackgroundColor="Orange"
+            Command="{Binding btnSaveClient}"
+            Text="ADD"
+            TextColor="Black" />
+    </StackLayout>
+</ContentPage>
