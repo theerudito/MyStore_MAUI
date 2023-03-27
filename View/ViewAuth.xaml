@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.ViewAuth"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ViewAuth">
+
+    <ScrollView VerticalOptions="Center">
+
+        <StackLayout>
+            <StackLayout x:Name="showRegister">
+                <Image Margin="10" Source="login.png" />
+                <Label
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="Login" />
+                <Frame
+                    Margin="20"
+                    BackgroundColor="AliceBlue"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <Entry
+                        HeightRequest="70"
+                        Placeholder="Email"
+                        Text="{Binding Email}" />
+                </Frame>
+                <Frame
+                    Margin="20,5"
+                    BackgroundColor="AliceBlue"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <Entry
+                        HeightRequest="70"
+                        IsPassword="True"
+                        Keyboard="Chat"
+                        Placeholder="Password"
+                        Text="{Binding Password}" />
+                </Frame>
+                <Button
+                    Margin="20"
+                    Padding="0"
+                    Command="{Binding btnLoginCommand}"
+                    CornerRadius="10"
+                    Text="Login" />
+                <Button
+                    Margin="20"
+                    Padding="0"
+                    BackgroundColor="Orange"
+                    Command="{Binding btnShowRegisterCommand}"
+                    CornerRadius="10"
+                    Text="Go Register" />
+                <!--<Label Text="No Tienes Cuenta"  >
+                <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding btnShowRegisterCommand}"/>
+                </Label.GestureRecognizers>
+                </Label>-->
+            </StackLayout>
+
+
+            <StackLayout x:Name="showLogin">
+                <Image
+                    Margin="10"
+                    Source="login"
+                    WidthRequest="200" />
+                <Label
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="Register" />
+                <Frame
+                    Margin="20"
+                    BackgroundColor="AliceBlue"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <Entry
+                        HeightRequest="70"
+                        Placeholder="Name"
+                        Text="{Binding User}" />
+                </Frame>
+                <Frame
+                    Margin="20"
+                    BackgroundColor="AliceBlue"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <Entry
+                        HeightRequest="70"
+                        Placeholder="Email"
+                        Text="{Binding Email}" />
+                </Frame>
+                <Frame
+                    Margin="20"
+                    BackgroundColor="AliceBlue"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <Entry
+                        HeightRequest="70"
+                        IsPassword="True"
+                        Keyboard="Chat"
+                        Placeholder="Password"
+                        Text="{Binding Password}" />
+                </Frame>
+                <Button
+                    Margin="20"
+                    Padding="0"
+                    Command="{Binding btnRegisterCommand}"
+                    CornerRadius="10"
+                    Text="Register" />
+                <Button
+                    Margin="20"
+                    Padding="0"
+                    BackgroundColor="Orange"
+                    Command="{Binding btnShowLoginCommand}"
+                    CornerRadius="10"
+                    Text="Go Login" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

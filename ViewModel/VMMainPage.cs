@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using MyStore_MAUI.View;
 
 namespace MyStore_MAUI.ViewModel
 {

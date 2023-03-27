@@ -5,7 +5,7 @@ namespace MyStore_MAUI.Context
 {
     public class Application_Context : DbContext
     {
-        private const string DatabaseName = "p.db3";
+        private const string DatabaseName = "pr.db3";
 
         public Application_Context()
         {
@@ -35,5 +35,13 @@ namespace MyStore_MAUI.Context
         }
 
         public DbSet<Naruto> Personajes => Set<Naruto>();
+        public DbSet<MClient> Client { get; set; }
+        public DbSet<MProduct> Product { get; set; }
+        public DbSet<MAuth> Auth { get; set; }
+        public DbSet<MCart> Cart { get; set; }
+        public DbSet<MCodeApp> CodeApp { get; set; }
+        public DbSet<MCompany> Company { get; set; }
+        public DbSet<MDetailsCart> DetailsCart { get; set; }
+        public DbSet<MReport> Reports { get; set; }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-
-namespace MyStore_MAUI.ViewModel
+namespace MyStore_MAUI.Base
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Add_Product"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Add_Product">
+
+    <ScrollView>
+        <StackLayout>
+            <ImageButton
+                Margin="10"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Command="{Binding btnOpenGalery}"
+                HeightRequest="110"
+                Source="{Binding ImageProduct}"
+                WidthRequest="50" />
+            <Button Command="{Binding btnOpenGalery}" Text="Open" />
+            <Label HorizontalOptions="Center" Text="ADD NEW PRODUCT" />
+            <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                <Entry
+                    HeightRequest="70"
+                    Placeholder="Name"
+                    Text="{Binding TextName}" />
+            </Frame>
+            <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                <Entry
+                    HeightRequest="70"
+                    Keyboard="Numeric"
+                    Placeholder="Code"
+                    Text="{Binding TextCode}" />
+            </Frame>
+            <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                <Entry
+                    HeightRequest="70"
+                    Placeholder="Brand"
+                    Text="{Binding TextBrand}" />
+            </Frame>
+            <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                <Entry
+                    HeightRequest="70"
+                    Placeholder="Description"
+                    Text="{Binding TextDescription}" />
+            </Frame>
+            <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                <Entry
+                    HeightRequest="70"
+                    Keyboard="Numeric"
+                    Placeholder="Price"
+                    Text="{Binding TextPrice}" />
+            </Frame>
+            <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                <Entry
+                    HeightRequest="70"
+                    Keyboard="Numeric"
+                    Placeholder="Quantity"
+                    Text="{Binding TextQuantity}" />
+            </Frame>
+            <Button
+                Margin="50"
+                Command="{Binding btnCreateProduct}"
+                CornerRadius="10"
+                Text="{Binding Save}" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
