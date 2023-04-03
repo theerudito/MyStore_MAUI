@@ -49,7 +49,6 @@ namespace CRUD_SQLITE.ViewModels
         }
         #endregion
 
-
         #region METHODS
         public async Task Get_Company()
         {

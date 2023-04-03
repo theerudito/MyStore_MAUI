@@ -48,11 +48,19 @@ namespace MyStore_MAUI.ViewModel
         }
         public async Task go_Update_Client(MClient client)
         {
-            await Navigation.PushAsync(new Add_Client(client, _goEditing));
+            #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Add_Client(client, _goEditing));
+            #else
+                await Navigation.PushAsync(new Desktop_Add_Client(client, _goEditing));
+            #endif
         }
         public async Task go_New_Client(MClient client)
         {
-            await Navigation.PushAsync(new Add_Client(client, _goEditing));
+            #if ANDROID || IOS
+                        await Navigation.PushAsync(new Mobile_Add_Client(client, _goEditing));
+            #else
+                        await Navigation.PushAsync(new Desktop_Add_Client(client, _goEditing));
+            #endif
         }
         public async Task deleteClientAsync(MClient client)
         {

@@ -223,15 +223,15 @@ namespace MyStore_MAUI.ViewModel
         public async void Logout()
         {
             App app = new App();
-            app.MainPage = new NavigationPage(new ViewAuth());
+           
             if (await DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No"))
 
             {
-               //Xamarin.Essentials.SecureStorage.Remove(LocalStorageUser);
-               SecureStorage.Remove(LocalStorageToken);
-                app.ShowAppShell();
-
-                app.MainPage = new NavigationPage(new ViewAuth());
+                #if ANDROID || IOS
+                    app.MainPage = new NavigationPage(new Mobile_ViewAuth());
+                #else
+                    app.MainPage = new NavigationPage(new Desktop_ViewAuth());
+                #endif
             }
         }
         #endregion

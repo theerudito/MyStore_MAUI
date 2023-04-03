@@ -61,7 +61,11 @@ namespace MyStore_MAUI.ViewModel
 
         public async Task seeReport(MDetailsCart report)
         {
-            await Navigation.PushAsync(new DetailsCart());
+            #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_DetailsCart());
+            #else
+                await Navigation.PushAsync(new Desktop_DetailsCart());
+            #endif
         }
         #endregion
 

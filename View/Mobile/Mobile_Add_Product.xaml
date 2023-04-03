@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Mobile_Add_Product"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Add_Product">
+
+    <ScrollView>
+        <StackLayout>
+            <StackLayout>
+              <ImageButton
+                Margin="10"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Command="{Binding btnOpenGalery}"
+                HeightRequest="110"
+                Source="{Binding ImageProduct}"
+                WidthRequest="50" />
+            <Button 
+                CornerRadius="0"
+                BackgroundColor="#0099ff"
+                Command="{Binding btnOpenGalery}" 
+                Text="Click Open Galery" />
+              
+            </StackLayout>
+
+            <StackLayout Margin="0,20,0,0">
+                <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="60"
+                IsClippedToBounds="True">
+                    <Entry
+                    TextColor="Black"
+                    HeightRequest="90"
+                    Margin="-20,5,0,0"
+                    Placeholder="Name"
+                    Text="{Binding TextName}" />
+                </Frame>
+                <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="60"
+                IsClippedToBounds="True">
+                    <Entry
+                    HeightRequest="90"
+                    Margin="-20,5,0,0"
+                    TextColor="Black"
+                    Keyboard="Numeric"
+                    Placeholder="Code"
+                    Text="{Binding TextCode}" />
+                </Frame>
+                <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="60"
+                IsClippedToBounds="True">
+                    <Entry
+                    HeightRequest="90"
+                    Margin="-20,5,0,0"
+                    TextColor="Black"
+                    Placeholder="Brand"
+                    Text="{Binding TextBrand}" />
+                </Frame>
+                <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="60"
+                IsClippedToBounds="True">
+                    <Entry
+                    TextColor="Black"
+                    HeightRequest="90"
+                    Margin="-20,5,0,0"
+                    Placeholder="Description"
+                    Text="{Binding TextDescription}" />
+                </Frame>
+                <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="60"
+                IsClippedToBounds="True">
+                    <Entry
+                    HeightRequest="90"
+                    Margin="-20,5,0,0"
+                    Keyboard="Numeric"
+                    TextColor="Black"
+                    Placeholder="Price"
+                    Text="{Binding TextPrice}" />
+                </Frame>
+                <Frame
+                Margin="10,5"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="60"
+                IsClippedToBounds="True">
+                    <Entry
+                    HeightRequest="90"
+                    Margin="-20,5,0,0"
+                    TextColor="Black"
+                    Keyboard="Numeric"
+                    Placeholder="Quantity"
+                    Text="{Binding TextQuantity}" />
+                </Frame>
+                <Button
+                BackgroundColor="#0099ff"
+                Margin="50"
+                Command="{Binding btnCreateProduct}"
+                CornerRadius="10"
+                Text="{Binding Save}" />
+            </StackLayout>
+            
+            
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

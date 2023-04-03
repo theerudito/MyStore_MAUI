@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using MyStore_MAUI.View;
@@ -13,11 +13,11 @@ public partial class App : Application
     {
         if (string.IsNullOrEmpty(SecureStorage.GetAsync(_localStorageToken).Result))
         {
-            MainPage = new NavigationPage(new ViewAuth());
+            MainPage = new NavigationPage(new Desktop_ViewAuth());
         }
         else
         {
-            MainPage = new AppShell();
+            MainPage = new AppShell_Desktop();
         }
     }
 
@@ -104,14 +104,22 @@ public partial class App : Application
     public App()
 	{
         InitializeComponent();
-        MainPage = new AppShell();
+        
+
+        #if ANDROID || IOS
+                MainPage = new AppShell_Mobile();
+        #else
+                MainPage = new AppShell_Desktop();
+        #endif
+
+
         //MainPage = new ViewAuth();
         NavigationPage.SetHasNavigationBar(this, false);
-        //var _dbCcontext = new Application_Context();
+        var _dbCcontext = new Application_Context();
 
         //_dbCcontext.Database.Migrate();
 
-        //CreateData(_dbCcontext);
+        CreateData(_dbCcontext);
         //ShowAppShell();
     }
 }

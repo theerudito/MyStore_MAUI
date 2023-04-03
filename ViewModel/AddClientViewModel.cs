@@ -148,7 +148,14 @@ namespace MyStore_MAUI.ViewModel
                 _dbContext.Client.Add(client);
                 await _dbContext.SaveChangesAsync();
                 ResetField();
-                await Navigation.PushAsync(new Client());
+                
+
+                #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Client());
+#else
+                await Navigation.PushAsync(new Desktop_Client());
+#endif
+
                 return client;
 
             }
@@ -181,7 +188,13 @@ namespace MyStore_MAUI.ViewModel
             _dbContext.Client.Update(_client);
             await _dbContext.SaveChangesAsync();
             ResetField();
-            await Navigation.PushAsync(new Client());
+
+            #if ANDROID || IOS
+               await Navigation.PushAsync(new Mobile_Client());
+#else
+               await Navigation.PushAsync(new Desktop_Client());
+#endif
+
             return _client;
         }
         public async Task<MClient> createOrEditClientAsync()
@@ -205,7 +218,7 @@ namespace MyStore_MAUI.ViewModel
             TextEmail = "";
             TextCity = "";
         }
-        #endregion
+#endregion
 
         #region COMMANDS
         public ICommand btnSaveClient => new Command<MClient>(async (cli) => await createOrEditClientAsync());

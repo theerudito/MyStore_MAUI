@@ -213,7 +213,6 @@ namespace MyStore_MAUI.ViewModel
 
         #endregion
 
-
         #region METODOS ASYNC
         public void Get_Data_Product(MProduct product)
         {

@@ -28,6 +28,24 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<Authors>Jorge Loor</Authors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -64,42 +82,162 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\Add_Client.xaml">
+	  <MauiXaml Update="AppShell_Desktop.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Add_Product.xaml">
+	  <MauiXaml Update="View\Mobile\Mobile_Add_Client.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Cart.xaml">
+	  <MauiXaml Update="View\Mobile\Mobile_Add_Product.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Client.xaml">
+	  <MauiXaml Update="View\Mobile\Mobile_Cart.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Config.xaml">
+	  <MauiXaml Update="View\Mobile\Mobile_Client.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\DetailsCart.xaml">
+	  <MauiXaml Update="View\Mobile\Mobile_Config.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Home.xaml">
+	  <MauiXaml Update="View\Desktop\Desktop_Add_Client.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Product.xaml">
+	  <MauiXaml Update="View\Desktop\Desktop_Add_Product.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Reports.xaml">
+	  <MauiXaml Update="View\Desktop\Desktop_Cart.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Shopping.xaml">
+	  <MauiXaml Update="View\Desktop\Desktop_Client.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Users.xaml">
+	  <MauiXaml Update="View\Desktop\Desktop_Config.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ViewAuth.xaml">
+	  <MauiXaml Update="View\Desktop\Desktop_DetailsCart.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Desktop\Desktop_Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Desktop\Desktop_Product.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Desktop\Desktop_Reports.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Desktop\Desktop_Shopping.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Desktop\Desktop_Users.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Desktop\Desktop_ViewAuth.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_DetailsCart.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_Product.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_Reports.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_Shopping.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_Users.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Mobile\Mobile_ViewAuth.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="AppShell_Desktop.xaml.cs">
+	    <DependentUpon>AppShell_Desktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="AppShell_Mobile.xaml.cs">
+	    <DependentUpon>AppShell_Mobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Add_Client.xaml.cs">
+	    <DependentUpon>Desktop_Add_Client.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Add_Product.xaml.cs">
+	    <DependentUpon>Desktop_Add_Product.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Cart.xaml.cs">
+	    <DependentUpon>Desktop_Cart.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Client.xaml.cs">
+	    <DependentUpon>Desktop_Client.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Config.xaml.cs">
+	    <DependentUpon>Desktop_Config.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_DetailsCart.xaml.cs">
+	    <DependentUpon>Desktop_DetailsCart.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Home.xaml.cs">
+	    <DependentUpon>Desktop_Home.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Product.xaml.cs">
+	    <DependentUpon>Desktop_Product.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Reports.xaml.cs">
+	    <DependentUpon>Desktop_Reports.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Shopping.xaml.cs">
+	    <DependentUpon>Desktop_Shopping.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_Users.xaml.cs">
+	    <DependentUpon>Desktop_Users.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Desktop\Desktop_ViewAuth.xaml.cs">
+	    <DependentUpon>Desktop_ViewAuth.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Home.xaml.cs">
+	    <DependentUpon>Mobile_Home.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_DetailsCart.xaml.cs">
+	    <DependentUpon>Mobile_DetailsCart.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Config.xaml.cs">
+	    <DependentUpon>Mobile_Config.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Client.xaml.cs">
+	    <DependentUpon>Mobile_Client.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Cart.xaml.cs">
+	    <DependentUpon>Mobile_Cart.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Add_Product.xaml.cs">
+	    <DependentUpon>Mobile_Add_Product.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Add_Client.xaml.cs">
+	    <DependentUpon>Mobile_Add_Client.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Product.xaml.cs">
+	    <DependentUpon>Mobile_Product.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Reports.xaml.cs">
+	    <DependentUpon>Mobile_Reports.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Shopping.xaml.cs">
+	    <DependentUpon>Mobile_Shopping.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_Users.xaml.cs">
+	    <DependentUpon>Mobile_Users.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Mobile\Mobile_ViewAuth.xaml.cs">
+	    <DependentUpon>Mobile_ViewAuth.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

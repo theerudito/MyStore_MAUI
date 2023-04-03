@@ -159,7 +159,13 @@ namespace MyStore_MAUI.ViewModel
                 await _dbContext.Product.AddAsync(product);
                 await _dbContext.SaveChangesAsync();
                 ResetField();
-                await Navigation.PushAsync(new Product());
+
+                #if ANDROID || IOS
+                    await Navigation.PushAsync(new Mobile_Product());
+#else
+                    await Navigation.PushAsync(new Desktop_Product());
+#endif
+
                 return product;
             }
             else
@@ -189,7 +195,14 @@ namespace MyStore_MAUI.ViewModel
             _dbContext.Product.Update(_product);
             await _dbContext.SaveChangesAsync();
             ResetField();
-            await Navigation.PushAsync(new Product());
+
+
+            #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Product());
+            #else
+                await Navigation.PushAsync(new Desktop_Product());
+            #endif
+
             return _product;
         }
         public async Task<MProduct> createOrEditProductAsync()
@@ -214,7 +227,7 @@ namespace MyStore_MAUI.ViewModel
             TextQuantity = "";
             //Image_Product = "";
         }
-        #endregion
+#endregion
 
         #region COMMAND
         public ICommand btnCreateProduct => new Command<MProduct>(async (prod) => await createOrEditProductAsync());

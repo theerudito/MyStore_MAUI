@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Mobile_Shopping"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Shopping">
+
+
+        <Grid
+            Margin="0,5,0,0"
+            RowDefinitions="40,5,*,5,40"
+            >
+            <Grid 
+                Grid.Row="0"
+                Margin="10"
+                RowDefinitions="*"
+                ColumnDefinitions="*,5,40,40"
+                >
+                <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="40"
+                BackgroundColor="AliceBlue"
+                CornerRadius="10"
+                HasShadow="True"
+                IsClippedToBounds="True">
+                    <SearchBar
+                        HeightRequest="70"
+                        Margin="-10,-5,0,0"
+                        PlaceholderColor="Silver"
+                        TextColor="Black"
+                        Placeholder="Search Product"
+                        Text="{Binding NameProduct}"
+                    />
+                </Frame>
+                <ImageButton
+                Grid.Row="0"
+                Grid.Column="2"
+                x:Name="padre"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Command="{Binding goCart}"
+                HeightRequest="50"
+                Margin="-10,0,0,0"    
+                HorizontalOptions="Center"
+                Source="cart.png"
+                VerticalOptions="CenterAndExpand" />
+
+                <Frame
+                Grid.Row="0"
+                Grid.Column="3"
+                BackgroundColor="Red"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50">
+                    <Label
+                    x:Name="textCounter"
+                    Text="{Binding QuantityProduct}"
+                    Margin="0,-5,0,0"
+                    TextColor="White"/>
+                </Frame>
+            </Grid>
+
+
+            <CollectionView 
+                Grid.Row="2" 
+                x:Name="viewPodroduct" 
+                ItemsSource="{Binding List_Product}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid 
+                            ColumnDefinitions="*" 
+                            RowDefinitions="*">
+                            <Frame
+                            Margin="10"
+                            HeightRequest="260"
+                            BackgroundColor="black"
+                            CornerRadius="10">
+                                <StackLayout>
+                                <Image
+                                    HeightRequest="100"
+                                    Source="{Binding Image_Product}"
+                                    WidthRequest="100" />
+                                <Grid ColumnDefinitions="*,*"
+                                    RowDefinitions="*,*,*,*">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="Name:"
+                                        MaxLines="1"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        MaxLines="1"
+                                        Text="{Binding NameProduct}"
+                                        TextColor="White" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="Brand:"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        MaxLines="1"
+                                        Text="{Binding Brand}"
+                                        TextColor="White" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="Description:"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        MaxLines="1"
+                                        Text="{Binding Description}"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Text="Price:"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        MaxLines="1"
+                                        Text="{Binding P_Unitary}"
+                                        TextColor="White" />
+                                </Grid>
+
+                                    <Button
+                                    BackgroundColor="#0099ff"
+                                    Command="{Binding Source={x:Reference viewPodroduct}, 
+                                        Path=BindingContext.btnAddToCart}"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="5"
+                                    Text="ADD TO CART" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+
+
+            <Grid  
+                Grid.Row="3"
+                ColumnDefinitions="*,*"
+                RowDefinitions="*">
+                <ImageButton
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HeightRequest="30"
+                    BackgroundColor="Transparent"
+                    Command="{Binding btnPrewPorduct}"
+                    Source="left" />
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HeightRequest="30"
+                    BackgroundColor="Transparent"
+                    Command="{Binding nextProduct}"
+                    Source="right" />
+            </Grid>
+
+        </Grid>
+        
+</ContentPage>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Desktop_Home"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home">
+
+    <ScrollView>
+        <StackLayout>
+            <Image
+                    Margin="0,10,0,0"
+                    Aspect="AspectFit"
+                    Source="avatar.png"
+                    WidthRequest="100" />
+                <Label
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding Name}"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding Owner}"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand" />
+           
+            <StackLayout>
+                <Image
+                    Margin="10"
+                    Aspect="AspectFit"
+                    HeightRequest="200"
+                    Source="store.png" />
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Text="By Jorge Loor 2023"
+                    TextColor="Black" />
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding Version}"
+                    TextColor="Black" />
+            </StackLayout>
+
+            <Grid Margin="20"
+                    ColumnDefinitions="*,*,*,*,*" 
+                    RowDefinitions="*">
+                <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Aspect="AspectFit"
+                        WidthRequest="100"
+                        HeightRequest="-100"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnGitHub}"  
+                        Source="github.png"/>
+                <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnInstagram}"
+                        WidthRequest="10"
+                        HeightRequest="10"
+                        Source="instagram.png" />
+                <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Aspect="AspectFit"
+                        WidthRequest="10"
+                        HeightRequest="10"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnTwitter}"
+                        Source="twitter.png" />
+                <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Aspect="AspectFit"
+                        WidthRequest="10"
+                        HeightRequest="10"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnWeb}"
+                        Source="web.png"/>
+                <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Aspect="AspectFit"
+                        WidthRequest="10"
+                        HeightRequest="10"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnLinkedin}"
+                        Source="linkedin.png"
+                        />
+             </Grid>
+
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

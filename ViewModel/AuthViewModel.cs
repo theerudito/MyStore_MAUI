@@ -50,7 +50,6 @@ namespace MyStore_MAUI.ViewModel
         }
         #endregion
 
-
         #region CONSTRUCTOR
         public AuthViewModel(INavigation navigation, StackLayout showRegister, StackLayout showLogin)
         {
@@ -143,11 +142,11 @@ namespace MyStore_MAUI.ViewModel
             showRegister.IsVisible = true;
             showLogin.IsVisible = false;
         }
-        public bool  ValitationsLogin()
+        public  bool   ValitationsLogin()
         {
             if (string.IsNullOrEmpty(Email))
             {
-                DisplayAlert("Error", "Email is required", "Ok");
+               DisplayAlert("Error", "Email is required", "Ok");
                 return false;
             }
             else if (string.IsNullOrEmpty(Password))
@@ -183,6 +182,7 @@ namespace MyStore_MAUI.ViewModel
             }
         }
         #endregion
+
         #region COMMANDS
         public ICommand btnLoginCommand => new Command(async () => await Login());
         public ICommand btnShowRegisterCommand => new Command(show_Login);

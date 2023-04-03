@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Mobile_Reports"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Reports">
+
+        <Grid 
+            ColumnDefinitions="*" 
+            RowDefinitions="40,70,20,*,80,30">
+            <StackLayout 
+                Grid.Row="0" 
+                Grid.Column="0">
+                <Grid ColumnDefinitions="*">
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="20,5,20,0"
+                        Padding="0,0,0,-2"
+                        BackgroundColor="AliceBlue"
+                        CornerRadius="10"
+                        HasShadow="True"
+                        IsClippedToBounds="True">
+                        <SearchBar
+                            HeightRequest="50"
+                            Placeholder="Search # Document"
+                            SearchCommand="{Binding numDocument}" />
+                    </Frame>
+
+
+                </Grid>
+            </StackLayout>
+
+            <StackLayout
+                Margin="0,20,0,0"
+                Grid.Row="1" 
+                Grid.Column="0">
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="2,60,*,60,*,50"
+                    RowDefinitions="40">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="Desde:"
+                        Margin="10,0,0,0"
+                        VerticalTextAlignment="Center" />
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="2"                      
+                        HeightRequest="40"
+                        BackgroundColor="AliceBlue"
+                        CornerRadius="10"
+                        HasShadow="True"
+                        HorizontalOptions="Center"
+                        IsClippedToBounds="True">
+                        <DatePicker 
+                            HeightRequest="90"
+                            FontSize="14" 
+                            TextColor="Gray" />
+                    </Frame>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Text="Hasta:"
+                        Margin="10,0,0,0"
+                        VerticalTextAlignment="Center" />
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        HeightRequest="40"
+                        BackgroundColor="AliceBlue"
+                        CornerRadius="10"
+                        HasShadow="True"
+                        HorizontalOptions="Center"
+                        IsClippedToBounds="True">
+                        <DatePicker 
+                            HeightRequest="90"
+                            FontSize="17" 
+                            TextColor="Gray" />
+                    </Frame>
+
+                    <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnSearchDocumentCommand}"
+                        HorizontalOptions="Center"
+                        Source="lupa"
+                        VerticalOptions="Center" />
+
+                </Grid>
+            </StackLayout>
+
+            <StackLayout   
+                Grid.Row="2"
+                Grid.Column="0"
+                Background="#0099ff">
+                <Grid
+                    RowDefinitions="*"
+                    ColumnDefinitions="*,*,*,*,*"
+                    Margin="0,-5,0,0"
+                    HeightRequest="30">
+                    <Label
+                        Grid.Column="0"
+                        Margin="5,0,0,0"
+                        MaxLines="1"
+                        Text="CLIENT"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="1"
+                        MaxLines="1"
+                        Text="#DOCUM"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="2"
+                        MaxLines="1"
+                        Text="DATE"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="3"
+                        MaxLines="1"
+                        Text="TOTAL"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="4"
+                        MaxLines="1"
+                        Text="ACTION"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+            </StackLayout>
+
+            <StackLayout 
+                Margin="0,1,0,0"
+                Grid.Row="3" 
+                Grid.Column="0">
+                <ListView
+                    x:Name="list_report"
+                    Margin="0,-5,0,0"
+                    ItemsSource="{Binding List_Report}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
+                                    ColumnDefinitions="*,*,*,*,*" 
+                                    RowDefinitions="20">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        MaxLines="1"
+                                        Text="{Binding List_Report.IdCart.FirstName}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        MaxLines="1"
+                                        Text="{Binding company.NumDocument}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        MaxLines="1"
+                                        Text="{Binding Date_Now}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        MaxLines="1"
+                                        Text="{Binding Total}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                    <ImageButton
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        Aspect="AspectFit"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={x:Reference list_report}, 
+                                        Path=BindingContext.btnShowReportCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HorizontalOptions="Center"
+                                        Source="eye_dark"
+                                        VerticalOptions="Center" />
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            
+                    <Frame
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Margin="0,0,0,10"
+                        BackgroundColor="#0099ff"
+                        CornerRadius="0"
+                        >
+                    <Grid 
+                        ColumnDefinitions="*,*,*,*"
+                        RowDefinitions="*">
+                        <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Margin="0,-12,0,0"
+                                FontSize="20"
+                                Text="TOTAL:"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                
+                                FontSize="20"
+                                Text="20000"
+                                TextColor="white"
+                                WidthRequest="100" />
+                    </Grid>
+                </Frame>
+
+
+            <StackLayout 
+                Grid.Row="5" 
+                Grid.Column="0">
+                <Grid 
+                   
+                    RowDefinitions="30" 
+                    ColumnDefinitions="*,*">
+                    <ImageButton
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnLeftReportCommand}"
+                        Source="left" />
+                    <ImageButton
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BackgroundColor="Transparent"
+                        Command="{Binding btnRightReportCommand}"
+                        Source="right" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+
+</ContentPage>

@@ -83,8 +83,12 @@ namespace MyStore_MAUI.ViewModel
             return result;
         }
         public async Task goPageCart()
-        {            
-            await Navigation.PushAsync(new Cart());
+        {
+            #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Cart());
+            #else
+               await Navigation.PushAsync(new Desktop_Cart());
+            #endif
         }
 
         public async Task add_To_Cart(MProduct product)
@@ -102,7 +106,7 @@ namespace MyStore_MAUI.ViewModel
         {
             await DisplayAlert("infor", "Siguientes Lista 10 Products", "Ok");
         }
-        #endregion
+#endregion
 
         #region COMANDOS
         public ICommand goCart => new Command(async () => await goPageCart());

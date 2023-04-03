@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Desktop_Config"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Config">
+
+    <ScrollView>
+        <StackLayout>
+            <StackLayout>
+                <Label
+                    TextColor="Black"
+                    Margin="20"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="CONFIG COMPANY" />
+                <Grid 
+                    RowDefinitions="*,*,*" 
+                    ColumnDefinitions="*,*">
+                    <Frame
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="20"
+                    HeightRequest="60"
+                    BackgroundColor="Silver"
+                    HasShadow="True"
+                    BorderColor="Transparent">
+                        <Entry
+                        TextColor="Black"
+                        PlaceholderColor="Black"
+                        Margin="-20,-12,0,0"
+                        Placeholder="Name Company"
+                        Text="{Binding Name}" />
+                    </Frame>
+                    <Frame
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Margin="20"
+                    HeightRequest="60"
+                    BackgroundColor="Silver"
+                    HasShadow="True"
+                    BorderColor="Transparent">
+                        <Entry
+                        TextColor="Black"
+                        PlaceholderColor="Black"
+                        Margin="-20,-12,0,0"
+                        Placeholder="Propietary"
+                        Text="{Binding Owner}" />
+                    </Frame>
+                    <Frame
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Margin="20"
+                    HeightRequest="60"
+                    BackgroundColor="Silver"
+                    HasShadow="True"
+                    BorderColor="Transparent">
+                        <Entry
+                        TextColor="Black"
+                        PlaceholderColor="Black"
+                        Margin="-20,-12,0,0"
+                        Placeholder="Direction"
+                        Text="{Binding Direction}" />
+                    </Frame>
+                    <Frame
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="20"
+                    HeightRequest="60"
+                    BackgroundColor="Silver"
+                    HasShadow="True"
+                    BorderColor="Transparent">
+                        <Entry
+                        TextColor="Black"
+                        PlaceholderColor="Black"
+                        Margin="-20,-12,0,0"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        Text="{Binding Email}" />
+                    </Frame>
+                    <Frame
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Margin="20"
+                        HeightRequest="60"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent">
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="RUC"
+                            Text="{Binding RUC}" />
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Margin="20"
+                        HeightRequest="60"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10"
+                        >
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="Phone"
+                            Text="{Binding Phone}" />
+                    </Frame>
+                </Grid>
+                
+                
+
+                <Grid 
+                    ColumnDefinitions="*,*,*" 
+                    >
+                    <Frame
+                        Grid.Column="0"
+                        Margin="10,20,0,20"
+                        HeightRequest="60"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10"
+                        IsClippedToBounds="True">
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="#Document"
+                            Text="{Binding NumDocument}" />
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Margin="10,20,0,20"
+                        HeightRequest="60"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10"
+                        >
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="Serie1"
+                            Text="{Binding Serie1}" />
+                    </Frame>
+                    <Frame
+                        Grid.Column="2"
+                        HeightRequest="60"
+                        Margin="10,20,10,20"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10"
+                        >
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="Serie2"
+                            Text="{Binding Serie2}" />
+                    </Frame>
+                </Grid>
+                <Grid 
+                    ColumnDefinitions="*,*" 
+                    RowDefinitions="*"
+                    >
+                    <Frame
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Margin="20"
+                        HeightRequest="60"
+                        
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10">
+                        <Picker
+                            TitleColor="Black"
+                            Title="Select Data Base"
+                            ItemsSource="{Binding DB}"
+                            Margin="0,-10,0,0"
+                            SelectedItem="{Binding SelectDB}">
+                            <Picker.Items>
+                                <x:String>Firebase</x:String>
+                                <x:String>SQLite</x:String>
+                                <x:String>Web</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                    </Frame>
+                    <Frame
+                        Margin="20"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        HeightRequest="60"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10">
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            Keyboard="Text"
+                            Placeholder="Document"
+                            Text="{Binding Document}" />
+                    </Frame>
+
+                   
+                </Grid>
+
+                <Grid 
+                    RowDefinitions="*" 
+                    ColumnDefinitions="*,*">
+                    <Frame
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10">
+                        <Picker
+                            Title="Select Valor Iva"
+                            TextColor="Black"
+                            ItemsSource="{Binding Iva}"
+                            SelectedItem="{Binding SelectIva}">
+                            <Picker.Items>
+                                <x:String>0.10</x:String>
+                                <x:String>0.11</x:String>
+                                <x:String>0.12</x:String>
+                                <x:String>0.13</x:String>
+                                <x:String>0.14</x:String>
+                                <x:String>0.15</x:String>
+                                <x:String>0.16</x:String>
+                                <x:String>0.17</x:String>
+                                <x:String>0.18</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10">
+                        <Picker
+                            Title="Select Coin"
+                            TextColor="Black"
+                            Margin="-20,-12,0,0"
+                            ItemsSource="{Binding Coin}"
+                            SelectedItem="{Binding SelectCoin}">
+                            <Picker.Items>
+                                <x:String>USD</x:String>
+                                <x:String>PESO</x:String>
+                                <x:String>EURO</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+                </Grid>
+                
+                <Grid 
+                    ColumnDefinitions="*,100,*" 
+                    RowDefinitions="*"
+                    HorizontalOptions="Center">
+                    <Button
+                        x:Name="buttonUpdate"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        TextColor="White"
+                        Margin="10"
+                        FontSize="12"
+                        BackgroundColor="Blue"
+                        Command="{Binding btnUpdateCompany}"
+                        CornerRadius="10"
+                        IsEnabled="{Binding showBtnSave}"
+                        Text="Save Company" />
+                    <Button
+                         Grid.Column="2"
+                        Grid.Row="0"
+                        Margin="10"
+                        TextColor="White"
+                        BackgroundColor="orange"
+                        Command="{Binding btnAdmin}"
+                        CornerRadius="10"
+                        Text="ADMIN" />
+                    <Frame
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        x:Name="FrameCode"
+                        HeightRequest="60"
+                        BackgroundColor="Silver"
+                        HasShadow="True"
+                        BorderColor="Transparent"
+                        CornerRadius="10">
+                        <Entry
+                            TextColor="Black"
+                            PlaceholderColor="Black"
+                            Margin="-20,-12,0,0"
+                            IsPassword="True"
+                            Keyboard="Numeric"
+                            Placeholder="CODE"
+                            Text="{Binding CODE}" />
+                    </Frame>
+                </Grid>
+                <Button
+                    Margin="10"
+                    TextColor="White"
+                    BackgroundColor="Red"
+                    Command="{Binding btnLogOut}"
+                    CornerRadius="10"
+                    WidthRequest="300"
+                    MinimumHeightRequest="2"
+                    Text="LOGOUT" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyStore_MAUI.View.Mobile_DetailsCart"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="DetailsCart">
+
+        <Grid 
+            ColumnDefinitions="*" 
+            RowDefinitions="20,80,20,20,*,20,20,*,*">
+
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,2,0,0"
+                BackgroundColor="#0099ff">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="DETAIL CLIENT"
+                    TextColor="white" />
+            </StackLayout>
+
+            <StackLayout 
+                Grid.Row="1" 
+                Grid.Column="0">
+                <Grid 
+                    ColumnDefinitions="80,100,*,150" 
+                    RowDefinitions="*,*,*">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        MaxLines="1"
+                        Text="Client:" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="Jorge"
+                        WidthRequest="100" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Text="RUC:" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Text="1721457495001" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="5,0,0,0"
+                        MaxLines="1"
+                        Text="Direction:" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        MaxLines="1"
+                        Text="Santo Domingo" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Text="Email:" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Text="erudito.tv@gmail.com" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="5,0,0,0"
+                        MaxLines="1"
+                        Text="Phone:" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="0960806054" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Text="Fecha:" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Text="20/01/2023" />
+
+
+                </Grid>
+                <Grid 
+                    ColumnDefinitions="*,100,*,*,*,*" 
+                    RowDefinitions="20">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="5,0,0,0"
+                        MaxLines="1"
+                        Text="#Docum:" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="1234567890" />
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Text="Serie1:" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Text="001" />
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Text="Serie2:" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        Text="002" />
+                </Grid>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0,-5,0,0"
+                BackgroundColor="#0099ff">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="DETAIL PRODUCT"
+                    TextColor="white" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0,2,0,0"
+                BackgroundColor="#0099ff">
+                <Grid 
+                    ColumnDefinitions="*,*,*,*,*"
+                    RowDefinitions="*">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="5,0,0,0"
+                        Text="CANT"
+                        TextColor="White" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="DETAILS"
+                        TextColor="White" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Text="DESCUENTO"
+                        TextColor="White" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Text="P_UNITARY"
+                        TextColor="White" />
+                    <Label
+                        Grid.Column="4"
+                        Text="P_TOTAL"
+                        TextColor="White" />
+                </Grid>
+            </StackLayout>
+
+           
+            <ListView 
+                Grid.Row="5"
+                Grid.Column="0"
+                Margin="0,-4,0,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
+                                    ColumnDefinitions="*,*,*,*" 
+                                    RowDefinitions="*">
+                                    <Label Text="cant" />
+                                    <Label Text="details" />
+                                    <Label Text="Desc" />
+                                    <Label Text="P_Unitary" />
+                                    <Label Text="P_Total" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            <StackLayout
+                Grid.Row="6"
+                Grid.Column="0"
+                Margin="0,2,0,0"
+                BackgroundColor="#0099ff">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="DETAIL TOTALS"
+                    TextColor="white" />
+            </StackLayout>
+
+            <StackLayout 
+                Grid.Row="7" 
+                Grid.Column="0">
+                <Frame
+                    Margin="0,2,0,0"
+                    BackgroundColor="#0099ff"
+                    CornerRadius="0"
+                    >
+                    <Grid 
+                        RowDefinitions="*,*,*"
+                        ColumnDefinitions="*,*,*,*">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            MaxLines="1"
+                            Text="Subtotal:"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            MaxLines="1"
+                            Text="1000.50"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            MaxLines="1"
+                            Text="Desc"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            MaxLines="1"
+                            Text="0.50"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            MaxLines="1"
+                            Text="SubTotal12%:"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            MaxLines="1"
+                            Text="1000.50"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            MaxLines="1"
+                            Text="SubTotal0%:"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            MaxLines="1"
+                            Text="1000.50"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            MaxLines="1"
+                            Text="Iva:"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            MaxLines="1"
+                            Text="21.12"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            MaxLines="1"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Text="TOTAL:"
+                            TextColor="White" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="3"
+                            MaxLines="1"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Text="1111.12"
+                            TextColor="White" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="8"
+                Grid.Column="0"
+                Margin="0,-20,0,0"
+                >
+                <Grid 
+                    RowDefinitions="*"
+                    ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10"
+                        BackgroundColor="#0099ff"
+                        Command="{Binding btnSharedCommand}"
+                        Text="SHARED" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10"
+                        BackgroundColor="#0099ff"
+                        Command="{Binding btnGeneratePDFCommand}"
+                        Text="PDF" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+
+
+</ContentPage>

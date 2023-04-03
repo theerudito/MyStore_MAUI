@@ -59,11 +59,19 @@ namespace MyStore_MAUI.ViewModel
         }
         public async Task goUpdate_Product(MProduct product)
         {
-            await Navigation.PushAsync(new Add_Product(product, _goEditingProduct));
+            #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Add_Product(product, _goEditingProduct));
+            #else
+                await Navigation.PushAsync(new Desktop_Add_Product(product, _goEditingProduct));
+            #endif
         }
         public async Task goNew_Product(MProduct product)
         {
-            await Navigation.PushAsync(new Add_Product(product, _goEditingProduct));
+            #if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Add_Product(product, _goEditingProduct));
+            #else
+                await Navigation.PushAsync(new Desktop_Add_Product(product, _goEditingProduct));
+            #endif
         }
         #endregion
 
