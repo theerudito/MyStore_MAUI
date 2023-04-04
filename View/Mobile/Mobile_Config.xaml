@@ -248,7 +248,7 @@
                         Grid.Column="0"
                         Margin="10"
                         TextColor="White"
-                        BackgroundColor="#0099ff"
+                        BackgroundColor="#512BD4"
                         Command="{Binding btnUpdateCompany}"
                         CornerRadius="10"
                         IsEnabled="{Binding showBtnSave}"

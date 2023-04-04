@@ -133,7 +133,8 @@
                                 </Grid>
 
                                     <Button
-                                    BackgroundColor="#0099ff"
+                                    Margin="0,0,0,0"
+                                    BackgroundColor="#512BD4"
                                     Command="{Binding Source={x:Reference viewPodroduct}, 
                                         Path=BindingContext.btnAddToCart}"
                                     CommandParameter="{Binding .}"

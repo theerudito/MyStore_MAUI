@@ -4,17 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Cart">
-
-    <ScrollView>
-        <Grid
+    <Grid
             Margin="0,1,0,0"
             ColumnDefinitions="*"
-            RowDefinitions="30,200,140,30,75,150">
+            RowDefinitions="30,*,142,30,75,*,60">
             <StackLayout
                 Grid.Row="0"
                 Grid.Column="0"
-                BackgroundColor="#0099ff">
-                <Grid ColumnDefinitions="50,170,*,*,*">
+                BackgroundColor="#512BD4">
+                <Grid 
+                    ColumnDefinitions="50,170,*,*,*">
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
@@ -126,16 +125,23 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackLayout Grid.Row="2" Grid.Column="0">
-                <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+            <StackLayout 
+                Margin="0,2,0,0"
+                Grid.Row="2" 
+                Grid.Column="0">
+                <Grid 
+                    ColumnDefinitions="*,*" 
+                    RowDefinitions="*">
                     <Frame
                         Grid.Row="0"
                         Grid.Column="1"
                         Margin="0,0,10,0"
                         Padding="10"
-                        BackgroundColor="#0099FF"
+                        BackgroundColor="#512BD4"
                         CornerRadius="10">
-                        <Grid ColumnDefinitions="100,5,*" RowDefinitions="*">
+                        <Grid 
+                            ColumnDefinitions="100,5,*" 
+                            RowDefinitions="20,20,20,20,20,20">
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -210,9 +216,10 @@
             </StackLayout>
 
             <StackLayout
+                Margin="0,2,0,0"
                 Grid.Row="3"
                 Grid.Column="0"
-                BackgroundColor="#0099FF">
+                BackgroundColor="#512BD4">
                 <Label
                     Margin="0,5,0,0"
                     FontAttributes="Bold"
@@ -224,75 +231,78 @@
             <StackLayout
                 Grid.Row="4"
                 Grid.Column="0"
-                Margin="0,0,0,0"
-                BackgroundColor="#0099FF">
-                <Grid ColumnDefinitions="100,*,60,*">
+                Margin="0,2,0,0">
+            <Grid 
+                    BackgroundColor="#512BD4"
+                    ColumnDefinitions="100,*,60,*"
+                    RowDefinitions="*,*,*"
+                    >
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         Margin="10,0,0,0"
                         Text="Date: "
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         Text="{Binding Date_Now}"
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="0"
                         Grid.Column="2"
                         Margin="10,0,0,0"
                         Text="Hour: "
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="0"
                         Grid.Column="3"
                         Text="{Binding Hour_Now}"
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="10,0,0,0"
                         Text="Document: "
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="1"
                         Text="{Binding Document}"
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="0"
                         Margin="10,0,0,0"
                         Text="#Document: "
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="1"
                         Text="{Binding NumDocument}"
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="2"
                         Margin="10,0,0,0"
                         Text="Serie1: "
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="3"
                         Text="{Binding Serie1}"
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="2"
                         Margin="10,0,0,0"
                         Text="Serie2: "
-                        TextColor="white" />
+                        TextColor="White" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="3"
                         Text="{Binding Serie2}"
-                        TextColor="white" />
+                        TextColor="White" />
                 </Grid>
             </StackLayout>
 
@@ -300,17 +310,21 @@
                 Grid.Row="5"
                 Grid.Column="0"
                 Margin="10,0,10,0">
-                <Grid>
+                <Grid
+                    ColumnDefinitions="*,*"
+                    RowDefinitions="*,*,*"
+                    >
                     <Frame
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="0,5"
-                        Padding="0,-10,0,-10"
+                        Margin="1,5,5,1"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <SearchBar
+                            TextColor="Black"
                             FontSize="{Binding FontSize}"
                             HeightRequest="70"
                             Keyboard="Numeric"
@@ -321,13 +335,14 @@
                     <Frame
                         Grid.Row="0"
                         Grid.Column="1"
-                        Margin="0,5"
-                        Padding="0,-10,0,-10"
+                        Margin="1,5,5,1"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            TextColor="Black"
                             HeightRequest="70"
                             Placeholder="Phone"
                             Text="{Binding Phone}" />
@@ -335,13 +350,14 @@
                     <Frame
                         Grid.Row="1"
                         Grid.Column="0"
-                        Margin="0,5"
-                        Padding="0,-10,0,-10"
+                        Margin="1,5,5,1"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            TextColor="Black"
                             HeightRequest="70"
                             Placeholder="FirstName"
                             Text="{Binding FirstName}" />
@@ -349,13 +365,14 @@
                     <Frame
                         Grid.Row="1"
                         Grid.Column="1"
-                        Margin="0,5"
-                        Padding="0,-10,0,-10"
+                        Margin="1,5,5,1"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            TextColor="Black"
                             HeightRequest="70"
                             Placeholder="LastName"
                             Text="{Binding LastName}" />
@@ -363,13 +380,14 @@
                     <Frame
                         Grid.Row="2"
                         Grid.Column="0"
-                        Margin="0,5"
-                        Padding="0,-10,0,-10"
+                        Margin="1,5,5,1"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            TextColor="Black"
                             HeightRequest="70"
                             Placeholder="Email"
                             Text="{Binding Email}" />
@@ -377,13 +395,14 @@
                     <Frame
                         Grid.Row="2"
                         Grid.Column="1"
-                        Margin="0,5"
-                        Padding="0,-10,0,-10"
+                        Margin="1,5,5,1"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            TextColor="Black"
                             HeightRequest="70"
                             Placeholder="Direction"
                             Text="{Binding Direction}" />
@@ -391,13 +410,16 @@
                 </Grid>
             </StackLayout>
 
-            <StackLayout Grid.Row="6" Grid.Column="0">
+            <StackLayout 
+                Grid.Row="6" 
+                Grid.Column="0">
                 <Button
+                    BackgroundColor="#512BD4"
                     Margin="20,10,20,0"
                     Command="{Binding btnSaveCartCommand}"
                     CornerRadius="10"
                     Text="SAVE" />
             </StackLayout>
         </Grid>
-    </ScrollView>
+
 </ContentPage>

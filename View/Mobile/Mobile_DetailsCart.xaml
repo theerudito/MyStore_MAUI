@@ -7,13 +7,13 @@
 
         <Grid 
             ColumnDefinitions="*" 
-            RowDefinitions="20,80,20,20,*,20,20,*,*">
+            RowDefinitions="20,80,20,20,*,20,20,100,100">
 
             <StackLayout
                 Grid.Row="0"
                 Grid.Column="0"
                 Margin="0,2,0,0"
-                BackgroundColor="#0099ff">
+                BackgroundColor="#512BD4">
                 <Label
                     HorizontalOptions="Center"
                     Text="DETAIL CLIENT"
@@ -123,7 +123,7 @@
                 Grid.Row="2"
                 Grid.Column="0"
                 Margin="0,-5,0,0"
-                BackgroundColor="#0099ff">
+                BackgroundColor="#512BD4">
                 <Label
                     HorizontalOptions="Center"
                     Text="DETAIL PRODUCT"
@@ -134,7 +134,7 @@
                 Grid.Row="3"
                 Grid.Column="0"
                 Margin="0,2,0,0"
-                BackgroundColor="#0099ff">
+                BackgroundColor="#512BD4">
                 <Grid 
                     ColumnDefinitions="*,*,*,*,*"
                     RowDefinitions="*">
@@ -193,7 +193,7 @@
                 Grid.Row="6"
                 Grid.Column="0"
                 Margin="0,2,0,0"
-                BackgroundColor="#0099ff">
+                BackgroundColor="#512BD4">
                 <Label
                     HorizontalOptions="Center"
                     Text="DETAIL TOTALS"
@@ -201,13 +201,13 @@
             </StackLayout>
 
             <StackLayout 
+                
                 Grid.Row="7" 
                 Grid.Column="0">
                 <Frame
-                    Margin="0,2,0,0"
-                    BackgroundColor="#0099ff"
-                    CornerRadius="0"
-                    >
+                    Margin="0,1,0,0"
+                    BackgroundColor="#512BD4"
+                    CornerRadius="0">
                     <Grid 
                         RowDefinitions="*,*,*"
                         ColumnDefinitions="*,*,*,*">
@@ -294,7 +294,7 @@
             <StackLayout
                 Grid.Row="8"
                 Grid.Column="0"
-                Margin="0,-20,0,0"
+                Margin="0,20,0,0"
                 >
                 <Grid 
                     RowDefinitions="*"
@@ -303,14 +303,14 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         Margin="10"
-                        BackgroundColor="#0099ff"
+                        BackgroundColor="#512BD4"
                         Command="{Binding btnSharedCommand}"
                         Text="SHARED" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="1"
                         Margin="10"
-                        BackgroundColor="#0099ff"
+                        BackgroundColor="#512BD4"
                         Command="{Binding btnGeneratePDFCommand}"
                         Text="PDF" />
                 </Grid>

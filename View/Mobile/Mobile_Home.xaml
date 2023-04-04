@@ -46,7 +46,7 @@
                 <Grid 
                     Margin="20"
                     ColumnDefinitions="*,*,*,*,*" 
-                    RowDefinitions="20">
+                    RowDefinitions="12">
                     <ImageButton
                         Grid.Row="0"
                         Grid.Column="0"

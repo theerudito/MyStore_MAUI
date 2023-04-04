@@ -118,7 +118,7 @@
                     Text="{Binding TextCity}" />
             </Frame>
             <Button
-                BackgroundColor="#0099ff"
+                BackgroundColor="#512BD4"
                 Margin="20"
                 Command="{Binding btnSaveClient}"
                 CornerRadius="10"

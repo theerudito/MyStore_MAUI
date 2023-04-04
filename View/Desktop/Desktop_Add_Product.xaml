@@ -8,7 +8,6 @@
     <ScrollView>
         <StackLayout>
             <ImageButton
-
                 Margin="10"
                 Aspect="AspectFit"
                 BackgroundColor="#0099FF"
@@ -19,11 +18,11 @@
                  />
             <Button
                 Margin="5"
-                BackgroundColor="#0099FF"
+                BackgroundColor="#512BD4"
                 TextColor="White"
                 WidthRequest="200"
                 Command="{Binding btnOpenGalery}" 
-                Text="Open" />
+                Text="Click open Galery" />
             <Label 
                 Margin="10"
                 FontSize="20"
@@ -133,7 +132,7 @@
 
             <Button
                 Margin="20"
-                BackgroundColor="#0099FF"
+                BackgroundColor="#512BD4"
                 TextColor="White"
                 WidthRequest="200"
                 Command="{Binding btnCreateProduct}"

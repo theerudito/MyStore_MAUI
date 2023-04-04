@@ -39,7 +39,7 @@
          
             <StackLayout 
                 Margin="0,5,0,0" 
-                Background="#0099ff">
+                Background="#512BD4">
                 <Grid 
                     ColumnDefinitions="20,*,*,*,*,*,*" 
                     RowDefinitions="*">
@@ -93,7 +93,7 @@
                 x:Name="list_product"
                 IsRefreshing="True"
                 ItemsSource="{Binding List_Product}"
-                RefreshControlColor="#0099FF">
+                RefreshControlColor="#512BD4">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

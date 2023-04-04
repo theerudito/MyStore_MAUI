@@ -9,53 +9,70 @@
 
         <StackLayout>
             <StackLayout x:Name="showRegister">
-                <Image Margin="10" Source="login.png" />
+                <Image 
+                    Margin="10" 
+                    HeightRequest="200" 
+                    Source="login.png" />
                 <Label
                     FontSize="30"
                     HorizontalOptions="Center"
                     Text="Login" />
                 <Frame
                     Margin="20"
+                    HeightRequest="40"
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
                     IsClippedToBounds="True">
                     <Entry
+                        TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Email"
                         Text="{Binding Email}" />
                 </Frame>
                 <Frame
                     Margin="20,5"
+                    HeightRequest="40"
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
                     IsClippedToBounds="True">
                     <Entry
-                        HeightRequest="70"
+                        TextColor="Black"
                         IsPassword="True"
                         Keyboard="Chat"
+                        HeightRequest="90"
                         Placeholder="Password"
                         Text="{Binding Password}" />
                 </Frame>
                 <Button
                     Margin="20"
                     Padding="0"
+                    BackgroundColor="#512BD4"
                     Command="{Binding btnLoginCommand}"
                     CornerRadius="10"
                     Text="Login" />
-                <Button
+                <!--<Button
                     Margin="20"
                     Padding="0"
                     BackgroundColor="Orange"
                     Command="{Binding btnShowRegisterCommand}"
                     CornerRadius="10"
-                    Text="Go Register" />
-                <!--<Label Text="No Tienes Cuenta"  >
-                <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding btnShowRegisterCommand}"/>
-                </Label.GestureRecognizers>
-                </Label>-->
+                    Text="Go Register" />-->
+               
+                    <Label 
+                        HorizontalOptions="Center"
+                        Text="No tienes una cuenta? click en:"  />
+                    <Label
+                        TextColor="#512BD4"
+                        Text="Register" 
+                        HorizontalOptions="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding btnShowRegisterCommand}"/>
+                    </Label.GestureRecognizers>
+                    </Label>
+           
             </StackLayout>
 
 
@@ -63,7 +80,7 @@
                 <Image
                     Margin="10"
                     Source="login"
-                    WidthRequest="200" />
+                    HeightRequest="200" />
                 <Label
                     FontSize="30"
                     HorizontalOptions="Center"
@@ -73,9 +90,11 @@
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
+                     HeightRequest="40"
                     IsClippedToBounds="True">
                     <Entry
-                        HeightRequest="70"
+                        TextColor="Black"
+                       HeightRequest="90"
                         Placeholder="Name"
                         Text="{Binding User}" />
                 </Frame>
@@ -84,9 +103,11 @@
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
+                    HeightRequest="40"
                     IsClippedToBounds="True">
-                    <Entry
-                        HeightRequest="70"
+                    <Entry 
+                        HeightRequest="90"
+                        TextColor="Black"
                         Placeholder="Email"
                         Text="{Binding Email}" />
                 </Frame>
@@ -95,9 +116,11 @@
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
+                    HeightRequest="40"
                     IsClippedToBounds="True">
                     <Entry
-                        HeightRequest="70"
+                        HeightRequest="90"
+                        TextColor="Black"
                         IsPassword="True"
                         Keyboard="Chat"
                         Placeholder="Password"
@@ -106,16 +129,29 @@
                 <Button
                     Margin="20"
                     Padding="0"
+                    BackgroundColor="#512BD4"
                     Command="{Binding btnRegisterCommand}"
                     CornerRadius="10"
                     Text="Register" />
-                <Button
+
+                <Label 
+                        HorizontalOptions="Center"
+                        Text="Deseas iniciar Sesion? click en:"  />
+                <Label
+                        TextColor="#512BD4"
+                        Text="Login" 
+                        HorizontalOptions="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding btnShowLoginCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <!--<Button
                     Margin="20"
                     Padding="0"
                     BackgroundColor="Orange"
                     Command="{Binding btnShowLoginCommand}"
                     CornerRadius="10"
-                    Text="Go Login" />
+                    Text="Go Login" />-->
             </StackLayout>
         </StackLayout>
     </ScrollView>

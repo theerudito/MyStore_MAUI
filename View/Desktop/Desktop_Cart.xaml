@@ -5,233 +5,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Cart">
 
-    <ScrollView>
+    <StackLayout>
         <Grid
-            Margin="0,1,0,0"
             ColumnDefinitions="*"
-            RowDefinitions="30,200,140,30,75,150">
+            RowDefinitions="65,25,240,25,180,40">
+
             <StackLayout
+                Margin="0,1,0,0"
                 Grid.Row="0"
-                Grid.Column="0"
-                BackgroundColor="#0099ff">
+                Grid.Column="0"  
+                BackgroundColor="#512BD4">
                 <Grid 
-                    ColumnDefinitions="50,170,*,*,*">
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Margin="5,0,0,0"
-                        Padding="5"
-                        Text="Cant"
-                        TextColor="White" />
-                    <Label
-                        Grid.Column="1"
-                        Padding="5"
-                        Text="Details"
-                        TextColor="White" />
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        Padding="5"
-                        Text="P_Unitary"
-                        TextColor="White" />
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="3"
-                        Padding="5"
-                        Text="P_Total"
-                        TextColor="White" />
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="4"
-                        Padding="5"
-                        Text="Action"
-                        TextColor="White" />
-                </Grid>
-            </StackLayout>
-
-
-            <ListView
-                x:Name="list_product"
-                Grid.Row="1"
-                Grid.Column="0"
-                BackgroundColor="white"
-                ItemsSource="{Binding List_Products}"
-                SelectionMode="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid 
-                                ColumnDefinitions="20,30,20,35,1,35,1,35,1,30,1,30,2,*" 
-                                RowDefinitions="*">
-                                <ImageButton
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Margin="5,0,0,0"
-                                    BackgroundColor="Transparent"
-                                    Command="{Binding Source={x:Reference list_product}, 
-                                    Path=BindingContext.btnSumQuantityCommand}"
-                                    Source="res" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="5,10,0,0"
-                                    Text="{Binding Cant}" />
-                                <ImageButton
-                                    Grid.Row="0"
-                                    Grid.Column="2"
-                                    Margin="5,0,0,0"
-                                    BackgroundColor="Transparent"
-                                    Command="{Binding Source={x:Reference list_product}, 
-                                    Path=BindingContext.btnRestQuantityCommand}"
-                                    Source="sum" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="3"
-                                    Margin="0,10,0,0"
-                                    MaxLines="1"
-                                    Text="{Binding NameProduct}" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="5"
-                                    Margin="0,10,0,0"
-                                    MaxLines="1"
-                                    Text="{Binding Brand}" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="7"
-                                    Margin="0,10,0,0"
-                                    MaxLines="1"
-                                    Text="{Binding Description}" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="9"
-                                    Margin="5,10,0,0"
-                                    HorizontalOptions="End"
-                                    Text="{Binding P_Unitary}" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="11"
-                                    Margin="5,10,0,0"
-                                    HorizontalOptions="End"
-                                    Text="{Binding P_Total}" />
-                                <StackLayout Grid.Row="0" Grid.Column="13">
-                                    <ImageButton
-                                        Margin="5,10,0,0"
-                                        BackgroundColor="Transparent"
-                                        Command="{Binding Source={x:Reference list_product}, 
-                                        Path=BindingContext.btnDeleteProductCart}"
-                                        CommandParameter="{Binding .}"
-                                        HeightRequest="20"
-                                        Source="trash" />
-                                </StackLayout>
-
-                            </Grid>
-
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <StackLayout Grid.Row="2" Grid.Column="0">
-                <Grid ColumnDefinitions="*,*" RowDefinitions="*">
-                    <Frame
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="0,0,10,0"     
-                        BackgroundColor="#0099FF"
-                        CornerRadius="10">
-                        <Grid ColumnDefinitions="100,5,*" RowDefinitions="*">
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="SubTotal:"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="2"
-                                HorizontalOptions="End"
-                                Text="{Binding SubTotal}"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="Desc:"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="2"
-                                HorizontalOptions="End"
-                                Text="{Binding Descuent}"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Text="SubTotal 12%:"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="2"
-                                HorizontalOptions="End"
-                                Text="{Binding SubTotal12}"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="3"
-                                Grid.Column="0"
-                                Text="SubTotal 0%:"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="3"
-                                Grid.Column="2"
-                                HorizontalOptions="End"
-                                Text="{Binding SubTotal0}"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="4"
-                                Grid.Column="0"
-                                Text="IVA:"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="4"
-                                Grid.Column="2"
-                                HorizontalOptions="End"
-                                Text="{Binding IvaCart}"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="5"
-                                Grid.Column="0"
-                                FontAttributes="Bold"
-                                Text="TOTAL:"
-                                TextColor="White" />
-                            <Label
-                                Grid.Row="5"
-                                Grid.Column="2"
-                                FontAttributes="Bold"
-                                HorizontalOptions="End"
-                                Text="{Binding Total}"
-                                TextColor="White" />
-                        </Grid>
-                    </Frame>
-                </Grid>
-            </StackLayout>
-
-            <StackLayout
-                Grid.Row="3"
-                Grid.Column="0"
-                BackgroundColor="#0099FF">
-                <Label
-                    Margin="0,5,0,0"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    Text="DETAILS"
-                    TextColor="White" />
-            </StackLayout>
-
-            <StackLayout
-                Grid.Row="4"
-                Grid.Column="0"
-                
-                BackgroundColor="#0099FF">
-                <Grid ColumnDefinitions="100,*,60,*">
+                    RowDefinitions="*,*,*"
+                    ColumnDefinitions="*,*,*,*,800">
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
@@ -302,101 +88,363 @@
             </StackLayout>
 
             <StackLayout
-                Grid.Row="5"
+                Grid.Row="1"
                 Grid.Column="0"
-                Margin="10,0,10,0">
-                <Grid>
-                    <Frame
+                Margin="0,1,0,0"
+                BackgroundColor="#512BD4">
+                <Grid 
+                    Margin="0,-5,0,0"
+                    ColumnDefinitions="*,*,*,*,*">
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="0,5"
-                        BackgroundColor="AliceBlue"
-                        CornerRadius="10"
-                        HasShadow="True"
-                        IsClippedToBounds="True">
-                        <SearchBar
-                            FontSize="{Binding FontSize}"
-                            HeightRequest="70"
-                            Keyboard="Numeric"
-                            Placeholder="DNI"
-                            SearchCommand="{Binding btnSearchDNICommand}"
-                            Text="{Binding DNI}" />
-                    </Frame>
-                    <Frame
+                        Margin="5,0,0,0"
+                        Padding="5"
+                        Text="CANTIDAD"
+                        TextColor="White" />
+                    <Label
+                        Grid.Column="1"
+                        Padding="5"
+                        Text="DETALLE"
+                        TextColor="White" />
+                    <Label
                         Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="0,5"
-                        BackgroundColor="AliceBlue"
-                        CornerRadius="10"
-                        HasShadow="True"
-                        IsClippedToBounds="True">
-                        <Entry
-                            HeightRequest="70"
-                            Placeholder="Phone"
-                            Text="{Binding Phone}" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="0,5"
-                        BackgroundColor="AliceBlue"
-                        CornerRadius="10"
-                        HasShadow="True"
-                        IsClippedToBounds="True">
-                        <Entry
-                            HeightRequest="70"
-                            Placeholder="FirstName"
-                            Text="{Binding FirstName}" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="0,5"
-                        BackgroundColor="AliceBlue"
-                        CornerRadius="10"
-                        HasShadow="True"
-                        IsClippedToBounds="True">
-                        <Entry
-                            HeightRequest="70"
-                            Placeholder="LastName"
-                            Text="{Binding LastName}" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Margin="0,5"
-                        BackgroundColor="AliceBlue"
-                        CornerRadius="10"
-                        HasShadow="True"
-                        IsClippedToBounds="True">
-                        <Entry
-                            HeightRequest="70"
-                            Placeholder="Email"
-                            Text="{Binding Email}" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Margin="0,5"
-                        BackgroundColor="AliceBlue"
-                        CornerRadius="10"
-                        HasShadow="True"
-                        IsClippedToBounds="True">
-                        <Entry
-                            HeightRequest="70"
-                            Placeholder="Direction"
-                            Text="{Binding Direction}" />
-                    </Frame>
+                        Grid.Column="2"
+                        Padding="5"
+                        Text="P_UNITARIO"
+                        TextColor="White" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Padding="5"
+                        Text="P_TOTAL"
+                        TextColor="White" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Padding="5"
+                        Text="ACCION"
+                        TextColor="White" />
                 </Grid>
             </StackLayout>
 
-            <StackLayout Grid.Row="6" Grid.Column="0">
-                <Button
-                    Margin="20,10,20,0"
-                    Command="{Binding btnSaveCartCommand}"
-                    CornerRadius="10"
-                    Text="SAVE" />
+            <ListView
+                x:Name="list_product"
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="white"
+                ItemsSource="{Binding List_Products}"
+                SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid 
+                                ColumnDefinitions="20,30,20,35,1,35,1,35,1,30,1,30,2,*" 
+                                RowDefinitions="*">
+                                <ImageButton
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="5,0,0,0"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={x:Reference list_product}, 
+                                    Path=BindingContext.btnSumQuantityCommand}"
+                                    Source="res" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="5,10,0,0"
+                                    Text="{Binding Cant}" />
+                                <ImageButton
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={x:Reference list_product}, 
+                                    Path=BindingContext.btnRestQuantityCommand}"
+                                    Source="sum" />
+                                <Label
+                                    TextColor="Black"
+                                    MaxLines="1"
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Margin="0,10,0,0"
+                                    Text="{Binding NameProduct}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="5"
+                                    Margin="0,10,0,0"
+                                    TextColor="Black"
+                                    MaxLines="1"
+                                    Text="{Binding Brand}" />
+                                <Label
+                                    TextColor="Black"
+                                    MaxLines="1"
+                                    Grid.Row="0"
+                                    Grid.Column="7"
+                                    Margin="0,10,0,0"
+                                    
+                                    Text="{Binding Description}" />
+                                <Label
+                                    TextColor="Black"
+                                    MaxLines="1"
+                                    Grid.Row="0"
+                                    Grid.Column="9"
+                                    Margin="5,10,0,0"
+                                    HorizontalOptions="End"
+                                    Text="{Binding P_Unitary}" />
+                                <Label
+                                    TextColor="Black"
+                                    MaxLines="1"
+                                    Grid.Row="0"
+                                    Grid.Column="11"
+                                    Margin="5,10,0,0"
+                                    HorizontalOptions="End"
+                                    Text="{Binding P_Total}" />
+                                <StackLayout Grid.Row="0" Grid.Column="13">
+                                    <ImageButton
+                                        Margin="5,10,0,0"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={x:Reference list_product}, 
+                                        Path=BindingContext.btnDeleteProductCart}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="20"
+                                        Source="trash" />
+                                </StackLayout>
+
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout
+                Grid.Column="0"
+                Grid.Row="3"
+                BackgroundColor="#512BD4">
+                <Label  
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    Text="DETAILS"/>
+            </StackLayout>
+
+            <StackLayout 
+                Grid.Row="4" 
+                Grid.Column="0">
+                <Grid 
+                    ColumnDefinitions="*,200,300" 
+                    RowDefinitions="*">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0">
+                        <Grid
+                            RowDefinitions="*,5,*,5,*"
+                            ColumnDefinitions="*,*">
+                            <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    BackgroundColor="Silver"
+                                    HasShadow="True"
+                                    Margin="2"
+                                    HeightRequest="60"
+                                    BorderColor="Transparent"
+                                    CornerRadius="10"
+                                    IsClippedToBounds="True">
+                                <SearchBar
+                                    FontSize="{Binding FontSize}"
+                                    Keyboard="Numeric"
+                                    HeightRequest="40"
+                                    Margin="0,-15,0,0"
+                                    TextColor="Black"
+                                    Placeholder="DNI"
+                                    SearchCommand="{Binding btnSearchDNICommand}"
+                                    Text="{Binding DNI}" />
+                            </Frame>
+                            <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="2"
+                                    HeightRequest="60"
+                                    BackgroundColor="Silver"
+                                    HasShadow="True"
+                                    BorderColor="Transparent"
+                                    CornerRadius="10">
+                                <Entry
+                                    HeightRequest="40"
+                                    Margin="0,-15,0,0"
+                                    TextColor="Black"
+                                    Placeholder="Phone"
+                                    Text="{Binding Phone}" />
+                            </Frame>
+                            <Frame
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Margin="2"
+                                    BackgroundColor="Silver"
+                                    HasShadow="True"
+                                    HeightRequest="60"
+                                    BorderColor="Transparent"
+                                    CornerRadius="10">
+                                <Entry
+                                    HeightRequest="40"
+                                    Margin="0,-15,0,0"
+                                    TextColor="Black"
+                                    Placeholder="FirstName"
+                                    Text="{Binding FirstName}" />
+                            </Frame>
+                            <Frame
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="2"
+                                    BackgroundColor="Silver"
+                                    HasShadow="True"
+                                    HeightRequest="60"
+                                    BorderColor="Transparent"
+                                    CornerRadius="10">
+                                <Entry
+                                    HeightRequest="40"
+                                    Margin="0,-15,0,0"
+                                    TextColor="Black"
+                                    Placeholder="LastName"
+                                    Text="{Binding LastName}" />
+                            </Frame>
+                            <Frame
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Margin="2"
+                                    BackgroundColor="Silver"
+                                    HasShadow="True"
+                                    HeightRequest="60"
+                                    BorderColor="Transparent"
+                                    CornerRadius="10">
+                                <Entry
+                                    HeightRequest="40"
+                                    Margin="0,-15,0,0"
+                                    TextColor="Black"
+                                    Placeholder="Email"
+                                    Text="{Binding Email}" />
+                            </Frame>
+                            <Frame
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Margin="2"
+                                    BackgroundColor="Silver"
+                                    HasShadow="True"
+                                    HeightRequest="60"
+                                    BorderColor="Transparent"
+                                    CornerRadius="10">
+                                <Entry
+                                    HeightRequest="40"
+                                    Margin="0,-15,0,0"
+                                    TextColor="Black"
+                                    Placeholder="Direction"
+                                    Text="{Binding Direction}" />
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+
+                <Frame
+                        BorderColor="Transparent"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,5,10,0"     
+                        BackgroundColor="#512BD4"
+                        CornerRadius="10">
+                        <Grid 
+                            ColumnDefinitions="*,*" 
+                            RowDefinitions="*,*,*,*,*,*">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="SubTotal:"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="{Binding SubTotal}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="Desc:"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="{Binding Descuent}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="SubTotal 12%:"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="{Binding SubTotal12}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Text="SubTotal 0%:"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="{Binding SubTotal0}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Text="IVA:"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="{Binding IvaCart}"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="TOTAL:"
+                                TextColor="White" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                HorizontalOptions="End"
+                                Text="{Binding Total}"
+                                TextColor="White" />
+                        </Grid>
+                    </Frame>
+                    
+                </Grid>
+            </StackLayout>
+   
+            <StackLayout 
+                Margin="0,30,0,0"
+                Grid.Row="5" 
+                Grid.Column="0">
+                <Grid
+                    RowDefinitions="*"
+                    ColumnDefinitions="*,300,*">
+                    <Button
+                        Grid.Row="0" 
+                        Grid.Column="1"
+                        TextColor="White"
+                        BackgroundColor="#512BD4"
+                        Margin="20,10,20,0"
+                        Command="{Binding btnSaveCartCommand}"
+                        CornerRadius="10"
+                        Text="SAVE" />
+                </Grid>
             </StackLayout>
         </Grid>
-    </ScrollView>
+    </StackLayout>
 </ContentPage>

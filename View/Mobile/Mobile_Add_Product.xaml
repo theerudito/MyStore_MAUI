@@ -18,7 +18,7 @@
                 WidthRequest="50" />
             <Button 
                 CornerRadius="0"
-                BackgroundColor="#0099ff"
+                BackgroundColor="#512BD4"
                 Command="{Binding btnOpenGalery}" 
                 Text="Click Open Galery" />
               
@@ -113,7 +113,7 @@
                     Text="{Binding TextQuantity}" />
                 </Frame>
                 <Button
-                BackgroundColor="#0099ff"
+                BackgroundColor="#512BD4"
                 Margin="50"
                 Command="{Binding btnCreateProduct}"
                 CornerRadius="10"

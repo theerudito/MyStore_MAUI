@@ -95,7 +95,7 @@
             <StackLayout   
                 Grid.Row="2"
                 Grid.Column="0"
-                Background="#0099ff">
+                Background="#512BD4">
                 <Grid
                     RowDefinitions="*"
                     ColumnDefinitions="*,*,*,*,*"
@@ -201,7 +201,7 @@
                         Grid.Row="4"
                         Grid.Column="0"
                         Margin="0,0,0,10"
-                        BackgroundColor="#0099ff"
+                        BackgroundColor="#512BD4"
                         CornerRadius="0"
                         >
                     <Grid 
