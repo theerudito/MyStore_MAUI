@@ -160,6 +160,7 @@
                         HeightRequest="40"
                         IsClippedToBounds="True">
                         <Picker
+                            TextColor="Black"
                             Title="Select Data Base"
                             Margin="20,0,0,0"
                             HeightRequest="70"
@@ -227,6 +228,7 @@
                         HeightRequest="40"
                         IsClippedToBounds="True">
                         <Picker
+                            TextColor="Black"
                             Title="Select Coin"
                             Margin="20,0,0,0"
                             HeightRequest="70"
@@ -256,7 +258,7 @@
                     <Button
                         Grid.Column="2"
                         Margin="10"
-                        BackgroundColor="orange"
+                        Background="orange"
                         Command="{Binding btnAdmin}"
                         CornerRadius="10"
                         Text="ADMIN" />
@@ -282,7 +284,7 @@
                 <Button
                     Margin="10,40,10,0"
                     TextColor="White"
-                    BackgroundColor="Red"
+                    Background="RED"
                     Command="{Binding btnLogOut}"
                     CornerRadius="10"
                     MinimumHeightRequest="2"

@@ -154,18 +154,16 @@
             <Grid  
                 Grid.Row="3"
                 ColumnDefinitions="*,*"
-                RowDefinitions="*">
+                RowDefinitions="20">
                 <ImageButton
                     Grid.Column="0"
                     Grid.Row="0"
-                    HeightRequest="30"
                     BackgroundColor="Transparent"
                     Command="{Binding btnPrewPorduct}"
                     Source="left" />
                 <ImageButton
                     Grid.Column="1"
                     Grid.Row="0"
-                    HeightRequest="30"
                     BackgroundColor="Transparent"
                     Command="{Binding nextProduct}"
                     Source="right" />

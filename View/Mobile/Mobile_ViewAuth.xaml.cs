@@ -9,5 +9,6 @@ public partial class Mobile_ViewAuth : ContentPage
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         BindingContext = new AuthViewModel(Navigation, showRegister, showLogin);
+        
     }
 }

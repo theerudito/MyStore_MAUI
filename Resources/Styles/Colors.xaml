@@ -11,10 +11,10 @@
     <Color x:Key="Gray200">#C8C8C8</Color>
     <Color x:Key="Gray300">#ACACAC</Color>
     <Color x:Key="Gray400">#919191</Color>
-    <Color x:Key="Gray500">#512BD4</Color>
-    <Color x:Key="Gray600">#512BD4</Color>
-    <Color x:Key="Gray900">#512BD4</Color>
-    <Color x:Key="Gray950">#512BD4</Color>
+    <Color x:Key="Gray500">SILVER</Color>
+    <Color x:Key="Gray600">ORANGE</Color>
+    <Color x:Key="Gray900">GRAY</Color>
+    <Color x:Key="Gray950">Violet</Color>
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}" />
