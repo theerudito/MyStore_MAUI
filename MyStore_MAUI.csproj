@@ -34,10 +34,14 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -46,6 +50,36 @@
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>YOUR STORE CLI</ApplicationTitle>
+	  <ApplicationId>com.byErudito.mystore_cli</ApplicationId>
 	</PropertyGroup>
 
 	<ItemGroup>
