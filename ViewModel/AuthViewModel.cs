@@ -5,6 +5,7 @@ using MyStore_MAUI.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
+
 namespace MyStore_MAUI.ViewModel
 {
     class AuthViewModel : BaseViewModel
@@ -77,8 +78,12 @@ namespace MyStore_MAUI.ViewModel
                     if (BCrypt.Net.BCrypt.Verify(Password, query.Password))
                     {
                         await DisplayAlert("Login", "Welcome " + query.User, "Ok");
-                        //await Xamarin.Essentials.SecureStorage.SetAsync(LocalStorageToken, Password);
-                        //await Xamarin.Essentials.SecureStorage.SetAsync(LocalStorageUser, query.User);
+
+                        Preferences.Set(LocalStorageToken, Password);
+
+                        Preferences.Set(LocalStorageUser, query.User);
+
+                        
                         app.ShowAppShell();                        
                         
                         User = "";
@@ -116,9 +121,13 @@ namespace MyStore_MAUI.ViewModel
                      
                     _dbContext.Auth.Add(user);
                     await _dbContext.SaveChangesAsync();
+
+
                     await DisplayAlert("Register", "Register Success", "Ok");
-                    //await Xamarin.Essentials.SecureStorage.SetAsync(LocalStorageToken, User);
-                    //await Xamarin.Essentials.SecureStorage.SetAsync(LocalStorageUser, User);
+
+                    Preferences.Set(LocalStorageToken, Password);
+
+                    Preferences.Set(LocalStorageUser, User);
 
                     app.ShowAppShell();
                     
@@ -142,7 +151,7 @@ namespace MyStore_MAUI.ViewModel
             showRegister.IsVisible = true;
             showLogin.IsVisible = false;
         }
-        public  bool   ValitationsLogin()
+        public bool  ValitationsLogin()
         {
             if (string.IsNullOrEmpty(Email))
             {

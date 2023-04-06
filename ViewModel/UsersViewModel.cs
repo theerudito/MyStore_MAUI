@@ -53,6 +53,7 @@ namespace MyStore_MAUI.ViewModel
                     await _dbContext.SaveChangesAsync();
                     SecureStorage.Remove(LocalStorageUser);
                     await GetAllUsersAsync();
+                    Preferences.Clear();
                 }
             }
         }

@@ -2,22 +2,33 @@
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using MyStore_MAUI.View;
+using Microsoft.Maui.Storage;
 
 namespace MyStore_MAUI;
 
 public partial class App : Application
 {
     private readonly string _localStorageToken = "token";
-
     public void ShowAppShell()
     {
-        if (string.IsNullOrEmpty(SecureStorage.GetAsync(_localStorageToken).Result))
+
+        if (Preferences.ContainsKey(_localStorageToken) == false)
         {
-            MainPage = new NavigationPage(new Desktop_ViewAuth());
+            #if ANDROID || IOS
+                        MainPage = new NavigationPage(new Mobile_ViewAuth());
+            #else
+                        MainPage = new NavigationPage(new Desktop_ViewAuth());
+            #endif
         }
         else
         {
-            MainPage = new AppShell_Desktop();
+            //MainPage = new AppShell_Desktop();
+            
+            #if ANDROID || IOS
+                        MainPage = new AppShell_Mobile();
+            #else
+                        MainPage = new AppShell_Desktop();
+            #endif
         }
     }
 
@@ -101,25 +112,19 @@ public partial class App : Application
             _dbCcontext.SaveChanges();
         }
     }
+
     public App()
 	{
-        InitializeComponent();
-        
-
-        #if ANDROID || IOS
-                MainPage = new AppShell_Mobile();
-        #else
-                MainPage = new AppShell_Desktop();
-        #endif
-
-
-        //MainPage = new ViewAuth();
         NavigationPage.SetHasNavigationBar(this, false);
+        InitializeComponent();
+
+
         var _dbCcontext = new Application_Context();
 
         //_dbCcontext.Database.Migrate();
 
         CreateData(_dbCcontext);
-        //ShowAppShell();
+
+        ShowAppShell();
     }
 }

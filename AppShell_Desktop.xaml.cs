@@ -4,9 +4,9 @@ namespace MyStore_MAUI;
 
 public partial class AppShell_Desktop : Shell
 {
-	public AppShell_Desktop()
-	{
-		InitializeComponent();
+    public AppShell_Desktop()
+    {
+        InitializeComponent();
 
         Routing.RegisterRoute(nameof(Desktop_ViewAuth), typeof(Desktop_ViewAuth));
         Routing.RegisterRoute(nameof(Desktop_Client), typeof(Desktop_Client));
@@ -75,12 +75,6 @@ public partial class AppShell_Desktop : Shell
             Title = "Config",
             Icon = "config.png",
             Content = new Desktop_Config()
-        });
-        this.Items.Add(new ShellContent
-        {
-            Title = "Auth",
-            Icon = "config.png",
-            Content = new Desktop_ViewAuth()
         });
     }
 }

@@ -10,27 +10,29 @@ namespace CRUD_SQLITE.ViewModels
     {
         Application_Context _dbCcontext = new Application_Context();
 
-        #region CONSTRUCTOR
-        public HomeViewModel(INavigation navigation)
+        private readonly string _localStorageUser;
+
+    #region CONSTRUCTOR
+    public HomeViewModel(INavigation navigation)
         {
             Navigation = navigation;
             Get_Company();
         }
-        #endregion
+    #endregion
 
-        #region VARIABLES
-        private string _Version = "v1.2.0";
-        private string _NameStore;
-        private string _NameOwner;
-        private readonly string GitHub = "https://github.com/theerudito";
-        private readonly string Instagram = "https://www.instagram.com/theerudito";
-        private readonly string Twitter = "https://twitter.com/theerudito";
-        private readonly string Web = "https://byerudito.web.app/";
-        private readonly string Linkedin = "https://www.linkedin.com/in/theerudito";
-        private readonly string LocalStorageUser = "user";
-        #endregion
+    #region VARIABLES
+    private string _Version = "v1.1.0";
+    private string _NameStore;
+    private string _NameOwner;
+    private readonly string GitHub = "https://github.com/theerudito";
+    private readonly string Instagram = "https://www.instagram.com/theerudito";
+    private readonly string Twitter = "https://twitter.com/theerudito";
+    private readonly string Web = "https://byerudito.web.app/";
+    private readonly string Linkedin = "https://www.linkedin.com/in/theerudito";
+    private readonly string LocalStorageUser = "user";
+    #endregion
 
-        #region OBJECTS
+    #region OBJECTS
         public string Name
         {
             get { return _NameStore; }
@@ -49,19 +51,23 @@ namespace CRUD_SQLITE.ViewModels
         }
         #endregion
 
-        #region METHODS
+    #region METHODS
         public async Task Get_Company()
-        {
-            var auth = await SecureStorage.GetAsync(LocalStorageUser);
+        { 
             var id = 1;
-            var user = await _dbCcontext.Company.FirstOrDefaultAsync(com => com.IdCompany == id);
-            if (user != null)
-            {
-                Name = $"Name Store: {user.NameCompany}";
-                Owner = auth == null ? $"Welcome: {user.NameOwner}" : $"Welcome: {auth}";
-            }
-        }
+            var company = await _dbCcontext.Company.FirstOrDefaultAsync(com => com.IdCompany == id);
 
+            if (company != null) Name = $"Name Store: {company.NameCompany}";
+
+            var auth = Preferences.ContainsKey(_localStorageUser);
+
+            var user = await _dbCcontext.Auth.FirstOrDefaultAsync(u => u.User == "Jorge");
+
+            if (user != null) Owner  = user == null ? $"Welcome: {company.NameOwner}" : $"Welcome: {user.User}";
+
+
+            //Owner = auth == false ? $"Welcome: {user.NameOwner}" : $"Welcome: {user.NameOwner}";
+        }
         public async Task Go_GitHub()
         {
             await Launcher.OpenAsync(GitHub);
@@ -84,7 +90,7 @@ namespace CRUD_SQLITE.ViewModels
         }
         #endregion
 
-        #region COMMANDS
+    #region COMMANDS
         public ICommand btnGitHub => new Command(async () => await Go_GitHub());
         public ICommand btnInstagram => new Command(async () => await Go_Instagram());
         public ICommand btnTwitter => new Command(async () => await Go_Twitter());
@@ -92,7 +98,5 @@ namespace CRUD_SQLITE.ViewModels
         public ICommand btnLinkedin => new Command(async () => await Go_Linkedin());
         #endregion
     }
-
-
 }
 

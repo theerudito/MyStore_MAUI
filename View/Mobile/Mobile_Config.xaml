@@ -253,7 +253,7 @@
                         BackgroundColor="#512BD4"
                         Command="{Binding btnUpdateCompany}"
                         CornerRadius="10"
-                        IsEnabled="{Binding showBtnSave}"
+                        IsVisible="{Binding showBtnSave}"
                         Text="Save Company" />
                     <Button
                         Grid.Column="2"
@@ -287,7 +287,6 @@
                     Background="RED"
                     Command="{Binding btnLogOut}"
                     CornerRadius="10"
-                    MinimumHeightRequest="2"
                     Text="LOGOUT" />
             </StackLayout>
   

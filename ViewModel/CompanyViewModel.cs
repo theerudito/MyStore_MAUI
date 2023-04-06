@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
-using MyStore_MAUI.View;
 
 namespace MyStore_MAUI.ViewModel
 {
@@ -38,9 +37,6 @@ namespace MyStore_MAUI.ViewModel
         private string _TextDB;
         private string _TextIVA;
         private string _TextCoin;
-        private readonly string LocalStorageUser = "user";
-        private readonly string LocalStorageToken = "token";
-
         #endregion
 
 
@@ -202,44 +198,52 @@ namespace MyStore_MAUI.ViewModel
             }
             CODE = "";
             showBtnSave = false;
-            Console.WriteLine("Hola");
+            await DisplayAlert("infor", "Actualizado con Exito", "ok");
             return company;
         }
         public async Task Activate()
         {
-            var company = await _dbContext.CodeApp.FirstOrDefaultAsync();
 
-            if (BCrypt.Net.BCrypt.Verify(CODE, company.CodeAdmin))
+            if (ValitationsCode() == true )
             {
-                await DisplayAlert("infor", "the code is correct", "ok");
-                showBtnSave = true;
-            }
-            else
-            {
-                await DisplayAlert("infor", "the code is incorrect", "ok");
-            }
+                var company = await _dbContext.CodeApp.FirstOrDefaultAsync();
+
+                if (BCrypt.Net.BCrypt.Verify(CODE, company.CodeAdmin))
+                {
+                    await DisplayAlert("infor", "the code is correct", "ok");
+                    showBtnSave = true;
+                }
+                else
+                {
+                    await DisplayAlert("infor", "the code is incorrect", "ok");
+                }
+            } 
         }
-
-        public async void Logout()
+        public async Task Logout()
         {
-            App app = new App();
-           
             if (await DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No"))
 
             {
-                #if ANDROID || IOS
-                    app.MainPage = new NavigationPage(new Mobile_ViewAuth());
-                #else
-                    app.MainPage = new NavigationPage(new Desktop_ViewAuth());
-                #endif
+                Preferences.Clear();
             }
+        }
+        public bool ValitationsCode()
+        {
+            if (string.IsNullOrEmpty(CODE))
+                {
+                    DisplayAlert("Error", "Code is required", "Ok");
+                    return false;
+                } else
+                {
+                    return true;
+                }
         }
         #endregion
 
 
         #region COMMANDS
         public ICommand btnUpdateCompany => new Command(async () => await updateCompanyAsync());
-        public ICommand btnLogOut => new Command(Logout);
+        public ICommand btnLogOut => new Command(async () => await Logout());
         public ICommand btnAdmin => new Command(async () => await Activate());
         #endregion
     }

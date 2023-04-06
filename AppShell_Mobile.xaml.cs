@@ -75,12 +75,6 @@ public partial class AppShell_Mobile : Shell
             Title = "Config",
             Icon = "config.png",
             Content = new Mobile_Config()
-        });
-        this.Items.Add(new ShellContent
-        {
-            Title = "Config",
-            Icon = "config.png",
-            Content = new Mobile_ViewAuth()
-        });
+        });  
     }
 }

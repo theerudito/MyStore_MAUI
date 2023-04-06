@@ -8,19 +8,13 @@
     <ScrollView>
         <StackLayout>
             <StackLayout>
-                <Label
-                    TextColor="Black"
-                    Margin="20"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    Text="CONFIG COMPANY" />
                 <Grid 
                     RowDefinitions="*,*,*" 
                     ColumnDefinitions="*,*">
                     <Frame
                     Grid.Column="0"
                     Grid.Row="0"
-                    Margin="20"
+                    Margin="10"
                     HeightRequest="60"
                     BackgroundColor="Silver"
                     HasShadow="True"
@@ -35,7 +29,7 @@
                     <Frame
                     Grid.Column="2"
                     Grid.Row="0"
-                    Margin="20"
+                    Margin="10"
                     HeightRequest="60"
                     BackgroundColor="Silver"
                     HasShadow="True"
@@ -50,7 +44,7 @@
                     <Frame
                     Grid.Column="0"
                     Grid.Row="1"
-                    Margin="20"
+                    Margin="10"
                     HeightRequest="60"
                     BackgroundColor="Silver"
                     HasShadow="True"
@@ -65,7 +59,7 @@
                     <Frame
                     Grid.Column="1"
                     Grid.Row="1"
-                    Margin="20"
+                    Margin="10"
                     HeightRequest="60"
                     BackgroundColor="Silver"
                     HasShadow="True"
@@ -81,7 +75,7 @@
                     <Frame
                         Grid.Column="0"
                         Grid.Row="2"
-                        Margin="20"
+                        Margin="10"
                         HeightRequest="60"
                         BackgroundColor="Silver"
                         HasShadow="True"
@@ -97,7 +91,7 @@
                     <Frame
                         Grid.Column="1"
                         Grid.Row="2"
-                        Margin="20"
+                        Margin="10"
                         HeightRequest="60"
                         BackgroundColor="Silver"
                         HasShadow="True"
@@ -117,11 +111,10 @@
                 
 
                 <Grid 
-                    ColumnDefinitions="*,*,*" 
-                    >
+                    ColumnDefinitions="*,*,*">
                     <Frame
                         Grid.Column="0"
-                        Margin="10,20,0,20"
+                        Margin="10,10,0,20"
                         HeightRequest="60"
                         BackgroundColor="Silver"
                         HasShadow="True"
@@ -138,7 +131,7 @@
                     </Frame>
                     <Frame
                         Grid.Column="1"
-                        Margin="10,20,0,20"
+                        Margin="10,10,0,20"
                         HeightRequest="60"
                         BackgroundColor="Silver"
                         HasShadow="True"
@@ -156,7 +149,7 @@
                     <Frame
                         Grid.Column="2"
                         HeightRequest="60"
-                        Margin="10,20,10,20"
+                        Margin="10,10,0,20"
                         BackgroundColor="Silver"
                         HasShadow="True"
                         BorderColor="Transparent"
@@ -173,23 +166,21 @@
                 </Grid>
                 <Grid 
                     ColumnDefinitions="*,*" 
-                    RowDefinitions="*"
-                    >
+                    RowDefinitions="*">
                     <Frame
                         Grid.Column="0"
                         Grid.Row="0"
-                        Margin="20"
-                        HeightRequest="60"
-                        
+                        Margin="10"
+                        HeightRequest="80"
                         BackgroundColor="Silver"
                         HasShadow="True"
                         BorderColor="Transparent"
                         CornerRadius="10">
                         <Picker
-                            TitleColor="Black"
-                            Title="Select Data Base"
+                            TextColor="Black"
                             ItemsSource="{Binding DB}"
-                            Margin="0,-10,0,0"
+                            Margin="0,-20,0,0"
+                            HorizontalTextAlignment="Center"
                             SelectedItem="{Binding SelectDB}">
                             <Picker.Items>
                                 <x:String>Firebase</x:String>
@@ -197,10 +188,12 @@
                                 <x:String>Web</x:String>
                             </Picker.Items>
                         </Picker>
+                      
 
                     </Frame>
+
                     <Frame
-                        Margin="20"
+                        Margin="10"
                         Grid.Column="1"
                         Grid.Row="0"
                         HeightRequest="60"
@@ -224,6 +217,7 @@
                     RowDefinitions="*" 
                     ColumnDefinitions="*,*">
                     <Frame
+                        Margin="10"
                         Grid.Column="0"
                         Grid.Row="0"
                         BackgroundColor="Silver"
@@ -250,6 +244,7 @@
 
                     </Frame>
                     <Frame
+                        Margin="10"
                         Grid.Column="1"
                         Grid.Row="0"
                         BackgroundColor="Silver"
@@ -285,7 +280,7 @@
                         BackgroundColor="Blue"
                         Command="{Binding btnUpdateCompany}"
                         CornerRadius="10"
-                        IsEnabled="{Binding showBtnSave}"
+                        IsVisible="{Binding showBtnSave}"
                         Text="Save Company" />
                     <Button
                          Grid.Column="2"
@@ -322,7 +317,6 @@
                     Command="{Binding btnLogOut}"
                     CornerRadius="10"
                     WidthRequest="300"
-                    MinimumHeightRequest="2"
                     Text="LOGOUT" />
             </StackLayout>
         </StackLayout>
