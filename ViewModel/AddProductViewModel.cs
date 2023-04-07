@@ -12,6 +12,7 @@ namespace MyStore_MAUI.ViewModel
     public class AddProductViewModel : BaseViewModel
     {
         Application_Context _dbContext = new Application_Context();
+       
         #region VARIABLES
         public MProduct _product { get; set; }
         public bool _Editing;

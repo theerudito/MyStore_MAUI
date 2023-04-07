@@ -19,19 +19,21 @@
                     RowDefinitions="40">
                     <ImageButton
                         Grid.Row="0"
+                        Margin="0,2,0,0"
                         Grid.Column="0"
                         Aspect="AspectFit"
                         BackgroundColor="Transparent"
                         Command="{Binding btnGoNewProduct}"
-                        HeightRequest="50"
-                        WidthRequest="50"
+                        HeightRequest="40"
+                        WidthRequest="40"
                         HorizontalOptions="Center"
                         Source="add_product.png"
                         VerticalOptions="CenterAndExpand"/>
                     <Frame
                         Grid.Row="0"
                         Grid.Column="1"
-                        Margin="20,5"
+                        Margin="0,8,5,0"
+                        HeightRequest="40"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
@@ -46,7 +48,7 @@
             <StackLayout 
                 Grid.Row="1"
                 Grid.Column="0"
-                Margin="0,5,0,0" 
+                Margin="0,8,0,0" 
                 Background="#512BD4">
                 <Grid 
                     ColumnDefinitions="20,*,*,*,*,*,*" 
@@ -162,23 +164,23 @@
                                     Grid.Column="5"
                                     HorizontalOptions="Center">
                                     <ImageButton
-                                        Margin="0,2,5,0"
+                                        Margin="0,5,5,0"
                                         Aspect="AspectFit"
                                         BackgroundColor="Transparent"
                                         Command="{Binding Source={x:Reference list_product}, Path=BindingContext.btnGoUpdateProduct}"
                                         CommandParameter="{Binding .}"
-                                        HeightRequest="30"
+                                        HeightRequest="20"
                                         Source="edit.png"
                                         WidthRequest="30" />
                                     <ImageButton
-                                        Margin="0,2,5,0"
+                                        Margin="0,5,5,0"
                                         Aspect="AspectFit"
                                         BackgroundColor="Transparent"
                                         Command="{Binding Source={x:Reference list_product}, Path=BindingContext.btnDeleteProduct}"
                                         CommandParameter="{Binding .}"
-                                        HeightRequest="30"
+                                        HeightRequest="20"
                                         Source="trash.png"
-                                        WidthRequest="30" />
+                                        WidthRequest="20" />
                                 </FlexLayout>
                             </Grid>
                         </ViewCell>

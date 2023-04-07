@@ -20,6 +20,7 @@
                     HeightRequest="40"
                     IsClippedToBounds="True">
                     <Entry
+                        Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Name Company"
@@ -33,6 +34,7 @@
                     HeightRequest="40"
                     IsClippedToBounds="True">
                     <Entry
+                        Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Propietary"
@@ -46,6 +48,7 @@
                     HeightRequest="40"
                     IsClippedToBounds="True">
                     <Entry
+                        Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Direction"
@@ -59,6 +62,7 @@
                     HeightRequest="40"
                     IsClippedToBounds="True">
                     <Entry
+                        Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Keyboard="Email"
@@ -67,7 +71,7 @@
                         Text="{Binding Email}" />
                 </Frame>
                 <Grid 
-                    ColumnDefinitions="180,180" 
+                    ColumnDefinitions="*,*" 
                     HorizontalOptions="Center">
                     <Frame
                         Grid.Column="0"
@@ -78,6 +82,7 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
@@ -93,6 +98,7 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
@@ -112,6 +118,7 @@
                         HeightRequest="40"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
@@ -127,6 +134,7 @@
                         HeightRequest="40"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
@@ -142,6 +150,7 @@
                         HeightRequest="40"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-20,0,0,0"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             TextColor="Black"
@@ -162,7 +171,7 @@
                         <Picker
                             TextColor="Black"
                             Title="Select Data Base"
-                            Margin="20,0,0,0"
+                            Margin="-20,0,0,0"
                             HeightRequest="70"
                             ItemsSource="{Binding DB}"
                             SelectedItem="{Binding SelectDB}">
@@ -183,6 +192,7 @@
                         HeightRequest="40"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Text"
@@ -201,7 +211,7 @@
                         <Picker
                             TextColor="Black"
                             Title="Select Valor Iva"
-                            Margin="20,0,0,0"
+                            Margin="-20,0,0,0"
                             HeightRequest="70"
                             ItemsSource="{Binding Iva}"
                             SelectedItem="{Binding SelectIva}">
@@ -230,7 +240,7 @@
                         <Picker
                             TextColor="Black"
                             Title="Select Coin"
-                            Margin="20,0,0,0"
+                            Margin="-20,0,0,0"
                             HeightRequest="70"
                             ItemsSource="{Binding Coin}"
                             SelectedItem="{Binding SelectCoin}">
@@ -282,7 +292,7 @@
                     </Frame>
                 </Grid>
                 <Button
-                    Margin="10,40,10,0"
+                    Margin="20,40,20,0"
                     TextColor="White"
                     Background="RED"
                     Command="{Binding btnLogOut}"

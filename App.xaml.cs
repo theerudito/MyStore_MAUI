@@ -31,7 +31,6 @@ public partial class App : Application
             #endif
         }
     }
-
     public void CreateData(Application_Context _dbCcontext)
     {
         int id = 1;
@@ -112,7 +111,6 @@ public partial class App : Application
             _dbCcontext.SaveChanges();
         }
     }
-
     public App()
 	{
         NavigationPage.SetHasNavigationBar(this, false);

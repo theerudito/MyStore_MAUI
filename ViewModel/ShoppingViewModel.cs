@@ -25,6 +25,7 @@ namespace MyStore_MAUI.ViewModel
         #region CONSTRUCTOR
         public ShoppingViewModel(INavigation navigation)
         {
+            QuantityProduct = 0;
             Navigation = navigation;
             Task.Run(async () => await getAllProducts());
         }
@@ -95,8 +96,8 @@ namespace MyStore_MAUI.ViewModel
         {
             CartViewModel _cart = new CartViewModel(Navigation);
            _cart.Get_Data_Product(product);
-           var cuantity =  _cart.QuantityOnCart();
-            _quantityProduct = cuantity;
+           var quantityOnCart =  _cart.QuantityOnCart();
+           QuantityProduct = quantityOnCart;
         }
         public async Task prew_Product()
         {
@@ -106,7 +107,7 @@ namespace MyStore_MAUI.ViewModel
         {
             await DisplayAlert("infor", "Siguientes Lista 10 Products", "Ok");
         }
-#endregion
+    #endregion
 
         #region COMANDOS
         public ICommand goCart => new Command(async () => await goPageCart());

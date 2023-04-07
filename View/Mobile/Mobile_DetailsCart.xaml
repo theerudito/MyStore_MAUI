@@ -12,7 +12,7 @@
             <StackLayout
                 Grid.Row="0"
                 Grid.Column="0"
-                Margin="0,2,0,0"
+                Margin="0,1,0,0"
                 BackgroundColor="#512BD4">
                 <Label
                     HorizontalOptions="Center"
@@ -134,7 +134,7 @@
             <StackLayout
                 Grid.Row="3"
                 Grid.Column="0"
-                Margin="0,2,0,0"
+                Margin="0,1,0,0"
                 BackgroundColor="#512BD4">
                 <Grid 
                     ColumnDefinitions="*,*,*,*,*"
@@ -167,7 +167,6 @@
                 </Grid>
             </StackLayout>
 
-           
             <ListView 
                 Grid.Row="5"
                 Grid.Column="0"
@@ -189,7 +188,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-
             <StackLayout
                 Grid.Row="6"
                 Grid.Column="0"
@@ -201,8 +199,7 @@
                     TextColor="white" />
             </StackLayout>
 
-      
-                <StackLayout
+            <StackLayout
                     Grid.Row="7" 
                     Grid.Column="0"
                     Margin="0,1,0,0"

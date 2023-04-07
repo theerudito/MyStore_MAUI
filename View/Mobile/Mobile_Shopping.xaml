@@ -8,14 +8,12 @@
 
         <Grid
             Margin="0,5,0,0"
-            RowDefinitions="40,5,*,5,40"
-            >
+            RowDefinitions="40,5,*,5,40">
             <Grid 
                 Grid.Row="0"
                 Margin="10"
                 RowDefinitions="*"
-                ColumnDefinitions="*,5,40,40"
-                >
+                ColumnDefinitions="*,10,40,40">
                 <Frame
                 Grid.Row="0"
                 Grid.Column="0"
@@ -40,7 +38,7 @@
                 Aspect="AspectFit"
                 BackgroundColor="Transparent"
                 Command="{Binding goCart}"
-                HeightRequest="50"
+                HeightRequest="40"
                 Margin="-10,0,0,0"    
                 HorizontalOptions="Center"
                 Source="cart.png"
@@ -51,13 +49,16 @@
                 Grid.Column="3"
                 BackgroundColor="Red"
                 CornerRadius="50"
-                HeightRequest="50"
-                WidthRequest="50">
+                HeightRequest="40"
+                WidthRequest="40">
                     <Label
-                    x:Name="textCounter"
-                    Text="{Binding QuantityProduct}"
-                    Margin="0,-5,0,0"
-                    TextColor="White"/>
+                        
+                        HeightRequest="30"
+                        WidthRequest="30"
+                        Margin="20,10,0,0"
+                        x:Name="textCounter"
+                        Text="{Binding QuantityProduct}"
+                        TextColor="White"/>
                 </Frame>
             </Grid>
 

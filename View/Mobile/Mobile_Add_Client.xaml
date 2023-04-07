@@ -119,7 +119,7 @@
             </Frame>
             <Button
                 BackgroundColor="#512BD4"
-                Margin="20"
+                Margin="20,40,20,20"
                 Command="{Binding btnSaveClient}"
                 CornerRadius="10"
                 HeightRequest="50"

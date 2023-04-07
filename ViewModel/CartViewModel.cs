@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
-using MyStore_MAUI.View;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -14,24 +14,28 @@ namespace MyStore_MAUI.ViewModel
     public class CartViewModel : BaseViewModel
     {
         Application_Context _dbContext = new Application_Context();
-        public INavigation Navigation { get; set; }
-        
-        List<MProduct> _myCart = new List<MProduct>();
-        MProduct p = new MProduct();
 
-       
+        Calculates calculos = new Calculates();
+
+        public INavigation Navigation { get; set; }
+
+        public MProduct _product { get; set; }
+
+        List<MProduct> _myCart = new List<MProduct>();
+        
 
 
         #region CONSTRUCTORS
         public CartViewModel(INavigation navigation)
         {
+            
             Navigation = navigation;
             Get_Data_Company();
+            Obtener();
             Total_Cart();
             Task.Run(async () => await getClientFinal());
             FontSize = "18";
 
-            List_Products = new ObservableCollection<MProduct>(_myCart);
         }
         #endregion
 
@@ -63,9 +67,12 @@ namespace MyStore_MAUI.ViewModel
         private string _Direction;
 
         private int _cant;
+        private float _p_total;
         private int _IdClient;
         private int _IdProduct;
         private int cliFinal = 1;
+
+        private int _quantityIncrement = 1;
 
         ObservableCollection<MProduct> _list_Product;
         #endregion
@@ -81,13 +88,15 @@ namespace MyStore_MAUI.ViewModel
                 OnpropertyChanged();
             }
         }
+        
+        
         public string FontSize
         {
             get { return _FontSize; }
             set { SetValue(ref _FontSize, value); }
         }
 
-        
+       
 
 
         // DATA CART VALUES
@@ -202,13 +211,26 @@ namespace MyStore_MAUI.ViewModel
         public int IdProduct
         {
             get { return _IdProduct; }
-            set { SetValue(ref _IdProduct, value); }
+            set { SetValue(ref _IdProduct, value);
+                OnpropertyChanged();
+            }
         }
         public int Cant
         {
             get { return _cant; }
-            set { SetValue(ref _cant, value); }
+            set { SetValue(ref _cant, value);
+                OnpropertyChanged();
+            }
+            
         }
+        public float P_TOTAL
+        {
+            get { return _p_total; }
+            set { SetValue(ref _p_total, value);
+                OnpropertyChanged();
+            }
+        }
+       
 
 
         #endregion
@@ -216,12 +238,47 @@ namespace MyStore_MAUI.ViewModel
         #region METODOS ASYNC
         public void Get_Data_Product(MProduct product)
         {
-            var cart = new MProduct();
-            cart.NameProduct = product.NameProduct;
+            
+
+           
         }
 
-      
-        
+        public void Obtener ()
+        {
+            _myCart.Add(new MProduct
+            {
+                IdProduct = 1,
+                NameProduct = "Coca Cola",
+                CodeProduct = "0001",
+                Brand = "Coca Cola",
+                Description = "Bebida Gaseosa",
+                P_Unitary = 1.55f,
+                Quantity = Cant,
+                P_Total = Quantity() * Price_Total(),
+                Image_Product = "https://raw.githubusercontent.com/theerudito/Strore-APP-Xamarin-SQLite/master/product.png"
+            }
+                       );
+            _myCart.Add(new MProduct
+            {
+                IdProduct = 2,
+                NameProduct = "Dorito",
+                CodeProduct = "0001",
+                Brand = "Confiteca",
+                Description = "250 GR",
+                P_Unitary = 0.25f,
+                Quantity = Cant,
+                P_Total = Price_Total() * Price_Total(),
+                Image_Product = "https://raw.githubusercontent.com/theerudito/Strore-APP-Xamarin-SQLite/master/product.png"
+            });
+
+            List_Products = new ObservableCollection<MProduct>(_myCart);
+        }
+
+        public int QuantityOnCart()
+        {
+            return _myCart.Count;
+        }
+
         public async Task getClientFinal()
         {
             
@@ -266,17 +323,56 @@ namespace MyStore_MAUI.ViewModel
                 _myCart.Remove(product);
             }
         }
+        
 
-        public void Res_Quantity()
+        public void Res_Quantity(MProduct pro)
         {
-            Cant = Cant - 1;
+            foreach (MProduct product in _myCart)
+            {
+                if (product.IdProduct == pro.IdProduct)
+                {
+                    product.Quantity = _quantityIncrement--;
+                }
+            }
         }
-        public void Sum_Quantity()
+       
+        public void Sum_Quantity(MProduct pro)
         {
-            Cant = Cant + 1;
+           
+            foreach (MProduct product in _myCart)
+            {
+                if (product.IdProduct == pro.IdProduct)
+                {
+                    product.Quantity = _quantityIncrement++;
+                }
+            }
         }
+
+        public float Price_Total()
+        {
+            
+            foreach (MProduct product in _myCart)
+            {
+                P_TOTAL = calculos.Result_Cant_P_Unitary(Quantity(), product.P_Unitary);
+            }
+            return P_TOTAL;
+        }
+
+        public int Quantity() => _quantityIncrement;
+        
+
         public void Total_Cart()
         {
+            float des = 2.25f;
+            foreach (MProduct product in _myCart)
+            {
+                SubTotal = calculos.Result_Subtotal(product.P_Total);
+            }
+            SubTotal12 = calculos.Result_Subtotal12(SubTotal);
+            SubTotal0 = calculos.Result_Subtotal0(SubTotal0);
+            Descuent = calculos.Result_Descuent(des);
+            IvaCart = calculos.Result_Iva(SubTotal);
+            Total = calculos.Result_Total_Final(SubTotal);
         }
 
         public async Task getClient()
@@ -298,19 +394,14 @@ namespace MyStore_MAUI.ViewModel
                 await getClientFinal();
             }
         }
-
-        public int QuantityOnCart()
-        {
-            return _myCart.Count + 1;
-        }
         #endregion
 
         #region COMANDOS
         public ICommand btnSaveCartCommand => new Command(async () => await Save_Buy());
         public ICommand btnSearchDNICommand => new Command(async () => await getClient());
         public ICommand btnDeleteProductCart => new Command<MProduct>(async (pro) => await Delete_ProductCart(pro));
-        public ICommand btnSumQuantityCommand => new Command(Sum_Quantity);
-        public ICommand btnRestQuantityCommand => new Command(Res_Quantity);
+        public ICommand btnSumQuantityCommand => new Command<MProduct>((pro) => Sum_Quantity(pro));
+        public ICommand btnRestQuantityCommand => new Command<MProduct>((pro) => Res_Quantity(pro));
         #endregion
     }
 }

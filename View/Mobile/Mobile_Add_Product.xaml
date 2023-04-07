@@ -7,6 +7,7 @@
 
     <ScrollView>
         <StackLayout>
+            
             <StackLayout>
               <ImageButton
                 Margin="10"
@@ -24,7 +25,8 @@
               
             </StackLayout>
 
-            <StackLayout Margin="0,20,0,0">
+            <StackLayout 
+                Margin="0,20,0,0">
                 <Frame
                 Margin="10,5"
                 BackgroundColor="AliceBlue"
@@ -114,7 +116,7 @@
                 </Frame>
                 <Button
                 BackgroundColor="#512BD4"
-                Margin="50"
+                Margin="20,40,20,20"
                 Command="{Binding btnCreateProduct}"
                 CornerRadius="10"
                 Text="{Binding Save}" />

@@ -85,7 +85,7 @@
                                     CommandParameter="{Binding .}"
                                     HeightRequest="40"
                                     Source="edit"
-                                    WidthRequest="30" />
+                                    WidthRequest="20" />
                                 <ImageButton
                                     Grid.Column="1"
                                     Grid.Row="0"
@@ -96,7 +96,7 @@
                                     CommandParameter="{Binding .}"
                                     HeightRequest="40"
                                     Source="trash"
-                                    WidthRequest="30" />
+                                    WidthRequest="20" />
 
                             </Grid>
                            

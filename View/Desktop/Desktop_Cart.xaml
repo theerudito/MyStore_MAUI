@@ -146,21 +146,21 @@
                                     Grid.Column="0"
                                     Margin="5,0,0,0"
                                     BackgroundColor="Transparent"
-                                    Command="{Binding Source={x:Reference list_product}, 
-                                    Path=BindingContext.btnSumQuantityCommand}"
+                                    Command="{Binding Source={x:Reference list_product}, Path=BindingContext.btnRestQuantityCommand}"
+                                    CommandParameter="{Binding .}"
                                     Source="res" />
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="5,10,0,0"
-                                    Text="{Binding Cant}" />
+                                    Text="{Binding Quantity}" />
                                 <ImageButton
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Margin="5,0,0,0"
                                     BackgroundColor="Transparent"
-                                    Command="{Binding Source={x:Reference list_product}, 
-                                    Path=BindingContext.btnRestQuantityCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding Source={x:Reference list_product}, Path=BindingContext.btnSumQuantityCommand}"
                                     Source="sum" />
                                 <Label
                                     TextColor="Black"
