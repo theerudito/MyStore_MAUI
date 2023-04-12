@@ -23,8 +23,10 @@ namespace MyStore_MAUI.ViewModel
         private string _textDescription;
         private float _textPrice;
         private string _textQuantity;
-        private string _refImage = "https://raw.githubusercontent.com/theerudito/Strore-APP-Xamarin-SQLite/master/product.png";
-        private string _imageOnMobile = "";
+        private string _refImage;
+        private string _urlImage = "https://raw.githubusercontent.com/theerudito/Strore-APP-Xamarin-SQLite/master/product.png";
+        private ImageSource _image;
+        private string _imageByte;
         #endregion
 
         #region CONSTRUCTOR
@@ -43,6 +45,7 @@ namespace MyStore_MAUI.ViewModel
                 _product = new MProduct();
                 _Editing = false;
                 Save = "SAVE PRODUCT";
+                ImageProduct = ImageSource.FromFile("image.png");
             }
             getData();
         }
@@ -106,14 +109,32 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textQuantity, value);
             }
         }
-        public string ImageProduct
+        public ImageSource ImageProduct
         {
-            get { return _imageOnMobile; }
+            get { return _image; }
             set
             {
-                SetValue(ref _imageOnMobile, value);
+                SetValue(ref _image, value);
             }
         }
+        public string RefImagen
+        {
+            get { return _refImage; }
+            set
+            {
+                SetValue(ref _refImage, value);
+            }
+        }
+        public string ImagenByte
+        {
+            get { return _imageByte; }
+            set
+            {
+                SetValue(ref _imageByte, value);
+            }
+        }
+
+       
 
         #endregion
 
@@ -126,20 +147,23 @@ namespace MyStore_MAUI.ViewModel
             TextDescription = _product.Description;
             TextPrice = _product.P_Unitary;
             TextQuantity = Convert.ToString(_product.Quantity);
-            ImageProduct = _product.Image_Product;
+            ImageProduct = _product.Image_Product == null ? _product.Image_Product : ImageProduct;
         }
+
         public async Task openGalery()
         {
             var result = await FilePicker.PickAsync();
             if (result != null)
             {
+                ImageProduct = result.FullPath;
                 var stream = await result.OpenReadAsync();
                 var bytes = new byte[stream.Length];
                 await stream.ReadAsync(bytes, 0, (int)stream.Length);
                 string base64 = Convert.ToBase64String(bytes);
-                ImageProduct = base64;
+                ImagenByte = base64;
             }
         }
+
         public async Task<MProduct> Insert_Product()
         {
             var newProducto = await _dbContext.Product.FirstOrDefaultAsync(pro => pro.CodeProduct == TextCode);
@@ -154,8 +178,8 @@ namespace MyStore_MAUI.ViewModel
                     Description = TextDescription,
                     P_Unitary = TextPrice,
                     Quantity = Convert.ToInt32(TextQuantity),
-                    Image_Product = _refImage,
-                    RefImagen = _refImage,
+                    Image_Product = _urlImage == null ? _urlImage : ImagenByte,
+                    RefImagen = RefImagen + TextCode,
                 };
                 await _dbContext.Product.AddAsync(product);
                 await _dbContext.SaveChangesAsync();
@@ -163,9 +187,9 @@ namespace MyStore_MAUI.ViewModel
 
                 #if ANDROID || IOS
                     await Navigation.PushAsync(new Mobile_Product());
-#else
+                #else
                     await Navigation.PushAsync(new Desktop_Product());
-#endif
+                #endif
 
                 return product;
             }
@@ -184,6 +208,7 @@ namespace MyStore_MAUI.ViewModel
             }
             return null;
         }
+
         public async Task<MProduct> Update_Product()
         {
             _product.NameProduct = TextName;
@@ -192,7 +217,8 @@ namespace MyStore_MAUI.ViewModel
             _product.Description = TextDescription;
             _product.P_Unitary = TextPrice;
             _product.Quantity = Convert.ToInt32(TextQuantity);
-            _product.Image_Product = _imageOnMobile;
+            _product.Image_Product = _urlImage == null ? _urlImage : ImagenByte;
+            _product.RefImagen = RefImagen;
             _dbContext.Product.Update(_product);
             await _dbContext.SaveChangesAsync();
             ResetField();
@@ -206,6 +232,7 @@ namespace MyStore_MAUI.ViewModel
 
             return _product;
         }
+
         public async Task<MProduct> createOrEditProductAsync()
         {
             if (_Editing)
@@ -226,9 +253,12 @@ namespace MyStore_MAUI.ViewModel
             TextDescription = "";
             TextPrice = 0;
             TextQuantity = "";
-            //Image_Product = "";
+            ImageProduct = ImageSource.FromFile("image.png");
+            RefImagen = "";
+            ImagenByte = "";
+
         }
-#endregion
+        #endregion
 
         #region COMMAND
         public ICommand btnCreateProduct => new Command<MProduct>(async (prod) => await createOrEditProductAsync());

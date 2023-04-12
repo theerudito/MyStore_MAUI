@@ -9,14 +9,13 @@
         <StackLayout>
             
             <StackLayout>
-              <ImageButton
+              <Image
                 Margin="10"
                 Aspect="AspectFit"
                 BackgroundColor="Transparent"
-                Command="{Binding btnOpenGalery}"
-                HeightRequest="110"
-                Source="{Binding ImageProduct}"
-                WidthRequest="50" />
+                HeightRequest="100"
+                WidthRequest="100" 
+                Source="{Binding ImageProduct}"/>
             <Button 
                 CornerRadius="0"
                 BackgroundColor="#512BD4"
@@ -121,8 +120,7 @@
                 CornerRadius="10"
                 Text="{Binding Save}" />
             </StackLayout>
-            
-            
+
         </StackLayout>
     </ScrollView>
 

@@ -11,7 +11,7 @@
                 Margin="0"
                 Source="avatar.png"
                 WidthRequest="100" />
-            <Label HorizontalOptions="Center" Text="ADD NEW CLIENT" />
+
             <Frame
                 Margin="10,5"
                 BackgroundColor="AliceBlue"

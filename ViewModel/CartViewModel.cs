@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
@@ -34,17 +33,14 @@ namespace MyStore_MAUI.ViewModel
             Obtener();
             Total_Cart();
             Task.Run(async () => await getClientFinal());
-            FontSize = "18";
 
         }
         #endregion
 
         #region VARIABLES
-        private string _Date = DateTime.Now.ToString("HH:mm:ss");
+        private string _Date = DateTime.Now.ToString("HH:mm");
         private string _Hour = DateTime.Now.ToString("dd/MM/yyyy");
 
-
-        private string _FontSize;
 
         private float _subtotal;
         private float _subtotal0;
@@ -65,6 +61,7 @@ namespace MyStore_MAUI.ViewModel
         private string _LastName;
         private string _Email;
         private string _Direction;
+        public string _City;
 
         private int _cant;
         private float _p_total;
@@ -78,26 +75,16 @@ namespace MyStore_MAUI.ViewModel
         #endregion
 
         #region OBJETOS
-       
         public ObservableCollection<MProduct> List_Products
         {
             get { return _list_Product; }
             set
             {
                 SetValue(ref _list_Product, value);
-                OnpropertyChanged();
+                OnPropertyChanged();
             }
         }
         
-        
-        public string FontSize
-        {
-            get { return _FontSize; }
-            set { SetValue(ref _FontSize, value); }
-        }
-
-       
-
 
         // DATA CART VALUES
         public float SubTotal
@@ -206,8 +193,13 @@ namespace MyStore_MAUI.ViewModel
             get { return _Direction; }
             set { SetValue(ref _Direction, value); }
         }
+        public string City
+        {
+            get { return _City; }
+            set { SetValue(ref _City, value); }
+        }
 
-       
+
         public int IdProduct
         {
             get { return _IdProduct; }
@@ -293,12 +285,14 @@ namespace MyStore_MAUI.ViewModel
                 Phone = seachClientFinal.Phone;
                 Email = seachClientFinal.Email;
                 Direction = seachClientFinal.Direction;
+                City = seachClientFinal.City;
             }
             else
             {
                 await DisplayAlert("Error", "El cliente no existe", "OK");
             }
         }
+
         public async Task Get_Data_Company()
         {
             var id = 1;
@@ -312,19 +306,22 @@ namespace MyStore_MAUI.ViewModel
                 IvaCompany = Convert.ToSingle(getCompany.Iva);
             }
         }
+
         public async Task Save_Buy()
         {
             await DisplayAlert("Compra", "Compra realizada con exito", "OK");
         }
+
         public async Task Delete_ProductCart(MProduct product)
         {
-            if (await DisplayAlert("Delete User", "Are you sure you want to delete this product?", "Yes", "No"))
+            if (await DisplayAlert("info", "Are you sure you want to delete this product?", "Yes", "No"))
             {
-                _myCart.Remove(product);
+              var query = _myCart.Where(p => p.IdProduct == product.IdProduct);
+              _myCart.Remove(product);
+
             }
         }
         
-
         public void Res_Quantity(MProduct pro)
         {
             foreach (MProduct product in _myCart)
@@ -360,7 +357,6 @@ namespace MyStore_MAUI.ViewModel
 
         public int Quantity() => _quantityIncrement;
         
-
         public void Total_Cart()
         {
             float des = 2.25f;

@@ -7,13 +7,11 @@
 
     <ScrollView>
         <StackLayout>
-            <ImageButton
-                Margin="10"
+            <Image
+                
                 Aspect="AspectFit"
-                BackgroundColor="#0099FF"
-                Command="{Binding btnOpenGalery}"
-                HeightRequest="100"
-                WidthRequest="100"
+                HeightRequest="200"
+                WidthRequest="200"
                 Source="{Binding ImageProduct}"
                  />
             <Button
@@ -23,13 +21,7 @@
                 WidthRequest="200"
                 Command="{Binding btnOpenGalery}" 
                 Text="Click open Galery" />
-            <Label 
-                Margin="10"
-                FontSize="20"
-                TextColor="Black"
-                HorizontalOptions="Center" 
-                Text="ADD NEW PRODUCT" />
-
+            
             <Grid 
                 RowDefinitions="*,*,*,*" 
                 ColumnDefinitions="5,*,10,*,5">

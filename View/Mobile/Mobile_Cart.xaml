@@ -317,8 +317,8 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                     <SearchBar
+                            Margin="-15,0,0,0"
                             TextColor="Black"
-                            FontSize="{Binding FontSize}"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             Placeholder="DNI"
@@ -341,6 +341,7 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-15,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Placeholder="FirstName"
@@ -356,6 +357,7 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-15,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Placeholder="LastName"
@@ -371,6 +373,7 @@
                             HasShadow="True"
                             IsClippedToBounds="True">
                         <Entry
+                                Margin="-15,0,0,0"
                                 TextColor="Black"
                                 HeightRequest="70"
                                 Placeholder="Phone"
@@ -386,6 +389,7 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-15,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Placeholder="Email"
@@ -401,6 +405,7 @@
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Entry
+                            Margin="-15,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Placeholder="Direction"
@@ -416,6 +421,7 @@
                             HasShadow="True"
                             IsClippedToBounds="True">
                         <Entry
+                                Margin="-15,0,0,0"
                                 TextColor="Black"
                                 HeightRequest="70"
                                 Placeholder="City"
