@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
@@ -11,6 +13,7 @@ namespace MyStore_MAUI.ViewModel
     public class ProductViewModel : BaseViewModel
     {
         Application_Context _dbContext = new Application_Context(); 
+        public Command LoadData { get; }
 
         #region VARIABLES
         ObservableCollection<MProduct> _List_product;
@@ -24,7 +27,7 @@ namespace MyStore_MAUI.ViewModel
             set
             {
                 _List_product = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(List_Product));
             }
         }
         #endregion
@@ -34,6 +37,8 @@ namespace MyStore_MAUI.ViewModel
         {
             Navigation = navigation;
             GET_ALL_Products();
+
+            LoadData = new Command(async () => await GET_ALL_Products());
         }
         #endregion
 
@@ -51,11 +56,24 @@ namespace MyStore_MAUI.ViewModel
                 }
             }
         }
-        public async Task<List<MProduct>> GET_ALL_Products()
+        public async Task GET_ALL_Products()
         {
-            var result = await _dbContext.Product.ToListAsync();
-            List_Product = new ObservableCollection<MProduct>(result);
-            return result;
+            IsBusy = true;
+
+            try
+            {
+                var result = await _dbContext.Product.ToListAsync();
+                List_Product = new ObservableCollection<MProduct>(result);
+            }
+            catch (Exception ex)
+            {
+                 Debug.WriteLine(ex);
+            }
+
+            finally
+            {
+                IsBusy = !IsBusy;
+            }
         }
         public async Task goUpdate_Product(MProduct product)
         {

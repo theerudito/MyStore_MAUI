@@ -4,6 +4,7 @@ using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using MyStore_MAUI.View;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 
 
@@ -12,6 +13,7 @@ namespace MyStore_MAUI.ViewModel
     public class ClientViewModel : BaseViewModel
     {
         Application_Context _dbContext = new Application_Context();
+        public Command LoadData { get; }
 
 
         #region VARIABLES
@@ -19,13 +21,17 @@ namespace MyStore_MAUI.ViewModel
         public bool _goEditing = true;
         #endregion
 
+
         #region CONSTRUCTOR
         public ClientViewModel(INavigation navigation)
         {
             Navigation = navigation;
             GetAllClientAsync();
+
+            LoadData = new Command(async() => await GetAllClientAsync());
         }
         #endregion
+
 
         #region OBJECTS
         public ObservableCollection<MClient> List_Clients
@@ -34,17 +40,29 @@ namespace MyStore_MAUI.ViewModel
             set
             {
                 _List_client = value;
-                OnPropertyChanged();
+                OnpropertyChanged(nameof(List_Clients));
             }
         }
         #endregion
 
         #region METHODS
-        public async Task<List<MClient>> GetAllClientAsync()
+        public async Task  GetAllClientAsync()
         {
-            var result = await _dbContext.Client.ToListAsync();
-            List_Clients = new ObservableCollection<MClient>(result);
-            return result;
+            IsBusy = true;
+
+            try
+            {
+                var result = await _dbContext.Client.ToListAsync();
+                List_Clients = new ObservableCollection<MClient>(result);
+            }
+            catch (Exception ex) 
+            { 
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
         public async Task go_Update_Client(MClient client)
         {

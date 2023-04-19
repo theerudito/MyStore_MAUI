@@ -82,72 +82,79 @@
             </Grid>
         </StackLayout>
 
-            <ListView
-                Grid.Row="2"
-                Grid.Column="0"
-                x:Name="List"
-                IsRefreshing="true"
-                ItemsSource="{Binding List_Clients}"
-                RefreshControlColor="#512BD4">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid
-                                BackgroundColor="white"
-                                ColumnDefinitions="*,*,*,*,*" 
-                                RowDefinitions="*">
-                            <Label
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Margin="0,10,0,0"
-                                    MaxLines="1"
-                                    Text="{Binding FirstName}"/>
-                            <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="0,10,0,0"
-                                    MaxLines="1"
-                                    Text="{Binding Direction}"/>
-                            <Label
-                                    Grid.Row="0"
-                                    Grid.Column="2"
-                                    Margin="0,10,0,0"
-                                    MaxLines="1"
-                                    Text="{Binding Phone}"/>
-                            <Label
-                                    Margin="0,10,0,0"
-                                    Grid.Row="0"
-                                    Grid.Column="3"
-                                    MaxLines="1"
-                                    Text="{Binding Email}"/>
-                            <FlexLayout
-                                    Grid.Row="0"
-                                    Grid.Column="4"
-                                    HorizontalOptions="Center">
-                                <ImageButton
-                                        Margin="0,5,5,0"
-                                        Aspect="AspectFit"
-                                        BackgroundColor="Transparent"
-                                        Command="{Binding Source={x:Reference List}, Path=BindingContext.btnGoUpdateClient}"
-                                        CommandParameter="{Binding}"
-                                        HeightRequest="20"
-                                        Source="edit.png"
-                                        WidthRequest="20" />
-                                <ImageButton
-                                        Margin="0,5,-5,0"
-                                        Aspect="AspectFit"
-                                        BackgroundColor="Transparent"
-                                        Command="{Binding Source={x:Reference List}, Path=BindingContext.btnDeleteClient}"
-                                        CommandParameter="{Binding}"
-                                        HeightRequest="20"
-                                        Source="trash.png"
-                                        WidthRequest="20" />
-                            </FlexLayout>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <StackLayout
+                 Grid.Row="2"
+                 Grid.Column="0">
+                <RefreshView
+                    RefreshColor="#512BD4"
+                    Command="{Binding LoadData}"
+                    IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <ListView
+                        x:Name="List"
+                        ItemsSource="{Binding List_Clients}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid
+                                    BackgroundColor="white"
+                                    ColumnDefinitions="*,*,*,*,*" 
+                                    RowDefinitions="*">
+                                        <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="0,10,0,0"
+                                        MaxLines="1"
+                                        Text="{Binding FirstName}"/>
+                                        <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="0,10,0,0"
+                                        MaxLines="1"
+                                        Text="{Binding Direction}"/>
+                                        <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Margin="0,10,0,0"
+                                        MaxLines="1"
+                                        Text="{Binding Phone}"/>
+                                        <Label
+                                        Margin="0,10,0,0"
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        MaxLines="1"
+                                        Text="{Binding Email}"/>
+                                        <FlexLayout
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        HorizontalOptions="Center">
+                                            <ImageButton
+                                            Margin="0,5,5,0"
+                                            Aspect="AspectFit"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding Source={x:Reference List}, Path=BindingContext.btnGoUpdateClient}"
+                                            CommandParameter="{Binding}"
+                                            HeightRequest="20"
+                                            Source="edit.png"
+                                            WidthRequest="20" />
+                                            <ImageButton
+                                            Margin="0,5,-5,0"
+                                            Aspect="AspectFit"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding Source={x:Reference List}, Path=BindingContext.btnDeleteClient}"
+                                            CommandParameter="{Binding}"
+                                            HeightRequest="20"
+                                            Source="trash.png"
+                                            WidthRequest="20" />
+                                        </FlexLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RefreshView>
+            </StackLayout>
+
+            
         
             <StackLayout 
                      Grid.Row="3"

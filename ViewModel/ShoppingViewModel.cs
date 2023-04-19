@@ -5,14 +5,14 @@ using MyStore_MAUI.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using MyStore_MAUI.View;
-
+using System.Diagnostics;
 
 namespace MyStore_MAUI.ViewModel
 {
     class ShoppingViewModel : BaseViewModel
     {
         Application_Context _dbContext = new Application_Context();
-
+        public Command LoadData { get; }
         #region VARIABLES
         int _prewProduct = 10;
         int _nextProduct = -10;
@@ -28,9 +28,10 @@ namespace MyStore_MAUI.ViewModel
             QuantityProduct = 0;
             Navigation = navigation;
             Task.Run(async () => await getAllProducts());
+
+            LoadData = new Command(async () => await getAllProducts());
         }
         #endregion
-
 
         #region OBJETOS
         public ObservableCollection<MProduct> List_Product
@@ -73,15 +74,27 @@ namespace MyStore_MAUI.ViewModel
 
 
         #region METODOS ASYNC
-        public async Task<List<MProduct>> getAllProducts()
+        public async Task getAllProducts()
         {
-            var result = await _dbContext.Product.ToListAsync();
+            IsBusy = true;
 
-            if (result.Count > 0)
+            try
             {
-                List_Product = new ObservableCollection<MProduct>(result);
+                var result = await _dbContext.Product.ToListAsync();
+
+                if (result.Count > 0)
+                {
+                    List_Product = new ObservableCollection<MProduct>(result);
+                }
+            } catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
             }
-            return result;
+            finally
+            {
+                IsBusy = false;
+            }
+           
         }
         public async Task goPageCart()
         {
@@ -91,7 +104,6 @@ namespace MyStore_MAUI.ViewModel
                await Navigation.PushAsync(new Desktop_Cart());
             #endif
         }
-
         public async Task add_To_Cart(MProduct product)
         {
             CartViewModel _cart = new CartViewModel(Navigation);

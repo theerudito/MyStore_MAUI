@@ -64,96 +64,103 @@
                 </Grid>
             </StackLayout>
 
-            <CollectionView 
-                Grid.Column="0"
-                Grid.Row="1" 
-                x:Name="viewPodroduct" 
-                ItemsSource="{Binding List_Product}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid 
-                            ColumnDefinitions="*" 
-                            RowDefinitions="*">
-                            <Frame
-                            Margin="10"
-                            HeightRequest="260"
-                            BackgroundColor="black"
-                            CornerRadius="10">
-                                <StackLayout>
-                                    <Image
-                                    HeightRequest="100"
-                                    Source="{Binding Image_Product}"
-                                    WidthRequest="100" />
-                                    <Grid ColumnDefinitions="*,*"
-                                    RowDefinitions="*,*,*,*">
-                                        <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Text="Name:"
-                                        MaxLines="1"
-                                        TextColor="White" />
-                                        <Label
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        MaxLines="1"
-                                        Text="{Binding NameProduct}"
-                                        TextColor="White" />
+            <StackLayout
+            Grid.Column="0"
+            Grid.Row="1">
+                <RefreshView
+                RefreshColor="#512BD4"
+                Command="{Binding LoadData}"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView 
+                        x:Name="viewPodroduct" 
+                        ItemsSource="{Binding List_Product}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                ColumnDefinitions="*" 
+                                RowDefinitions="*">
+                                    <Frame
+                                Margin="10"
+                                HeightRequest="260"
+                                BackgroundColor="black"
+                                CornerRadius="10">
+                                        <StackLayout>
+                                            <Image
+                                        HeightRequest="100"
+                                        Source="{Binding Image_Product}"
+                                        WidthRequest="100" />
+                                            <Grid ColumnDefinitions="*,*"
+                                        RowDefinitions="*,*,*,*">
+                                                <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="Name:"
+                                            MaxLines="1"
+                                            TextColor="White" />
+                                                <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            MaxLines="1"
+                                            Text="{Binding NameProduct}"
+                                            TextColor="White" />
 
-                                        <Label
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Text="Brand:"
-                                        TextColor="White" />
-                                        <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        MaxLines="1"
-                                        Text="{Binding Brand}"
-                                        TextColor="White" />
+                                                <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="Brand:"
+                                            TextColor="White" />
+                                                <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            MaxLines="1"
+                                            Text="{Binding Brand}"
+                                            TextColor="White" />
 
-                                        <Label
-                                        Grid.Row="2"
-                                        Grid.Column="0"
-                                        Text="Description:"
-                                        TextColor="White" />
-                                        <Label
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        MaxLines="1"
-                                        Text="{Binding Description}"
-                                        TextColor="White" />
-                                        <Label
-                                        Grid.Row="3"
-                                        Grid.Column="0"
-                                        Text="Price:"
-                                        TextColor="White" />
-                                        <Label
-                                        Grid.Row="3"
-                                        Grid.Column="1"
-                                        MaxLines="1"
-                                        Text="{Binding P_Unitary}"
-                                        TextColor="White" />
-                                    </Grid>
+                                                <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="Description:"
+                                            TextColor="White" />
+                                                <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            MaxLines="1"
+                                            Text="{Binding Description}"
+                                            TextColor="White" />
+                                                <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Text="Price:"
+                                            TextColor="White" />
+                                                <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            MaxLines="1"
+                                            Text="{Binding P_Unitary}"
+                                            TextColor="White" />
+                                            </Grid>
 
-                                    <Button
-                                        TextColor="White"
-                                        Margin="0,0,0,0"
-                                        FontSize="14"
-                                        BackgroundColor="#512BD4"
-                                        Command="{Binding Source={x:Reference viewPodroduct}, 
-                                            Path=BindingContext.btnAddToCart}"
-                                        CommandParameter="{Binding .}"
-                                        CornerRadius="5"
-                                        Text="ADD TO CART" />
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="7" />
-                </CollectionView.ItemsLayout>
-            </CollectionView>
+                                            <Button
+                                            TextColor="White"
+                                            Margin="0,0,0,0"
+                                            FontSize="14"
+                                            BackgroundColor="#512BD4"
+                                            Command="{Binding Source={x:Reference viewPodroduct}, 
+                                                Path=BindingContext.btnAddToCart}"
+                                            CommandParameter="{Binding .}"
+                                            CornerRadius="5"
+                                            Text="ADD TO CART" />
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="7" />
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+                </RefreshView>
+            </StackLayout>
 
             <StackLayout
              Grid.Column="0"

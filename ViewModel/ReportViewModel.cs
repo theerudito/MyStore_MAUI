@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using MyStore_MAUI.View;
 using MyStore_MAUI.Models;
+using System.Diagnostics;
 
 namespace MyStore_MAUI.ViewModel
 {
@@ -12,6 +13,7 @@ namespace MyStore_MAUI.ViewModel
     {
 
         Application_Context _dbContext = new Application_Context();
+        public Command LoadData { get; }
 
 
         #region CONSTRUCTOR
@@ -19,6 +21,8 @@ namespace MyStore_MAUI.ViewModel
         {
             Navigation = navigation;
             Get_All_Report();
+
+            LoadData = new Command(async () => await Get_All_Report());
         }
         #endregion
 
@@ -27,19 +31,38 @@ namespace MyStore_MAUI.ViewModel
         ObservableCollection<MDetailsCart> _list_report;
         #endregion
 
+
         #region OBJECTS
         public ObservableCollection<MDetailsCart> List_Report
         {
             get { return _list_report; }
-            set { SetValue(ref _list_report, value); }
+            set { SetValue(ref _list_report, value);
+                OnPropertyChanged();            
+            }
+            
         }
         #endregion
 
         #region METHODS
         public async Task Get_All_Report()
         {
-            var result = await _dbContext.DetailsCart.ToListAsync();
-            List_Report = new ObservableCollection<MDetailsCart>(result);
+            IsBusy = true;
+
+            try
+            {
+                var result = await _dbContext.DetailsCart.ToListAsync();
+                List_Report = new ObservableCollection<MDetailsCart>(result);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = !IsBusy;
+            }
+
+            
 
         }
         public async Task pickerDocumentReport()

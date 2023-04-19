@@ -90,15 +90,19 @@
                         WidthRequest="100" />
                 </Grid>
             </StackLayout>
-
-            <ListView
                 
+                
+
+            <StackLayout
                 Grid.Row="2" 
-                Grid.Column="0"
-                x:Name="List"
-                IsRefreshing="true"
-                ItemsSource="{Binding List_Clients}"
-                RefreshControlColor="#512BD4">
+                Grid.Column="0" >
+                <RefreshView
+                        RefreshColor="#512BD4"
+                        Command="{Binding LoadData}"
+                        IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <ListView
+                        x:Name="List"
+                        ItemsSource="{Binding List_Clients}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -162,7 +166,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-                
+                </RefreshView>
+            </StackLayout>    
+    
             <StackLayout 
                 Grid.Row="3" 
                 Grid.Column="0"

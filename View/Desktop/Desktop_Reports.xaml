@@ -8,6 +8,7 @@
     <Grid 
        ColumnDefinitions="*" 
        RowDefinitions="60,70,20,*,140,40">
+        
         <StackLayout
                     Margin="0,10,0,0"
                     Grid.Row="0" 
@@ -153,59 +154,63 @@
                     Margin="0,2,0,0"
                     Grid.Row="3" 
                     Grid.Column="0">
-            <ListView
-                   
-                    x:Name="list_report"
-                    ItemsSource="{Binding List_Report}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid 
-                                    ColumnDefinitions="*,*,*,*,*" 
-                                    RowDefinitions="20">
-                                <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        MaxLines="1"
-                                        Text="{Binding List_Report.IdCart.FirstName}"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center" />
-                                <Label
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        MaxLines="1"
-                                        Text="{Binding company.NumDocument}"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center" />
-                                <Label
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        MaxLines="1"
-                                        Text="{Binding Date_Now}"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center" />
-                                <Label
-                                        Grid.Row="0"
-                                        Grid.Column="3"
-                                        MaxLines="1"
-                                        Text="{Binding Total}"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center" />
-                                <ImageButton
-                                        Grid.Row="0"
-                                        Grid.Column="4"
-                                        Aspect="AspectFit"
-                                        BackgroundColor="Transparent"
-                                        Command="{Binding Source={x:Reference list_report}, Path=BindingContext.btnShowReportCommand}"
-                                        CommandParameter="{Binding .}"
-                                        HorizontalOptions="Center"
-                                        Source="eye_dark"
-                                        VerticalOptions="Center" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <RefreshView
+                RefreshColor="#512BD4"
+                Command="{Binding LoadData}"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <ListView
+                        x:Name="list_report"
+                        ItemsSource="{Binding List_Report}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
+                                        ColumnDefinitions="*,*,*,*,*" 
+                                        RowDefinitions="20">
+                                    <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            MaxLines="1"
+                                            Text="{Binding List_Report.IdCart.FirstName}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            MaxLines="1"
+                                            Text="{Binding company.NumDocument}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            MaxLines="1"
+                                            Text="{Binding Date_Now}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    <Label
+                                            Grid.Row="0"
+                                            Grid.Column="3"
+                                            MaxLines="1"
+                                            Text="{Binding Total}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    <ImageButton
+                                            Grid.Row="0"
+                                            Grid.Column="4"
+                                            Aspect="AspectFit"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding Source={x:Reference list_report}, Path=BindingContext.btnShowReportCommand}"
+                                            CommandParameter="{Binding .}"
+                                            HorizontalOptions="Center"
+                                            Source="eye_dark"
+                                            VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
         </StackLayout>
 
         <StackLayout  
@@ -269,5 +274,6 @@
                         Source="right.png" />
             </Grid>
         </StackLayout>
+        
     </Grid>
 </ContentPage>
