@@ -19,7 +19,7 @@ namespace MyStore_MAUI.ViewModel
         #endregion
 
 
-        #region OBJETOS
+        #region OBJETO
         public string Text
         {
             get { return _Text; }
