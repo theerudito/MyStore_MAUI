@@ -5,75 +5,74 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Config">
 
-
-            <StackLayout VerticalOptions="Center">
-                <Label
+    <StackLayout VerticalOptions="Center">
+        <Label
                     Margin="20"
                     FontSize="30"
                     HorizontalOptions="Center"
                     Text="CONFIG COMPANY" />
-                <Frame
+        <Frame
                     Margin="10,5"
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
                     HeightRequest="40"
                     IsClippedToBounds="True">
-                    <Entry
+            <Entry
                         Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Name Company"
                         Text="{Binding Name}" />
-                </Frame>
-                <Frame
+        </Frame>
+        <Frame
                     Margin="10,5"
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
                     HeightRequest="40"
                     IsClippedToBounds="True">
-                    <Entry
+            <Entry
                         Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Propietary"
                         Text="{Binding Owner}" />
-                </Frame>
-                <Frame
+        </Frame>
+        <Frame
                     Margin="10,5"
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
                     HeightRequest="40"
                     IsClippedToBounds="True">
-                    <Entry
+            <Entry
                         Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Placeholder="Direction"
                         Text="{Binding Direction}" />
-                </Frame>
-                <Frame
+        </Frame>
+        <Frame
                     Margin="10,5"
                     BackgroundColor="AliceBlue"
                     CornerRadius="10"
                     HasShadow="True"
                     HeightRequest="40"
                     IsClippedToBounds="True">
-                    <Entry
+            <Entry
                         Margin="-20,0,0,0"
                         TextColor="Black"
                         HeightRequest="70"
                         Keyboard="Email"
                         Placeholder="Email"
-                        
+
                         Text="{Binding Email}" />
-                </Frame>
-                <Grid 
-                    ColumnDefinitions="*,*" 
+        </Frame>
+        <Grid
+                    ColumnDefinitions="*,*"
                     HorizontalOptions="Center">
-                    <Frame
+            <Frame
                         Grid.Column="0"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -81,15 +80,15 @@
                         HeightRequest="40"
                         HasShadow="True"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             Placeholder="RUC"
                             Text="{Binding RUC}" />
-                    </Frame>
-                    <Frame
+            </Frame>
+            <Frame
                         Grid.Column="1"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -97,19 +96,19 @@
                         HeightRequest="40"
                         HasShadow="True"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             Placeholder="Phone"
                             Text="{Binding Phone}" />
-                    </Frame>
-                </Grid>
+            </Frame>
+        </Grid>
 
-                <Grid 
+        <Grid
                     ColumnDefinitions="150,*,*">
-                    <Frame
+            <Frame
                         Grid.Column="0"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -117,15 +116,15 @@
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             Placeholder="#Document"
                             Text="{Binding NumDocument}" />
-                    </Frame>
-                    <Frame
+            </Frame>
+            <Frame
                         Grid.Column="1"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -133,15 +132,15 @@
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             Placeholder="Serie1"
                             Text="{Binding Serie1}" />
-                    </Frame>
-                    <Frame
+            </Frame>
+            <Frame
                         Grid.Column="2"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -149,41 +148,40 @@
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             Margin="-20,0,0,0"
                             HeightRequest="70"
                             Keyboard="Numeric"
                             TextColor="Black"
                             Placeholder="Serie2"
                             Text="{Binding Serie2}" />
-                    </Frame>
-                </Grid>
-                <Grid 
-                    ColumnDefinitions="180,180" 
+            </Frame>
+        </Grid>
+        <Grid
+                    ColumnDefinitions="180,180"
                     HorizontalOptions="Center">
-                    <Frame
+            <Frame
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Picker
+                <Picker
                             TextColor="Black"
                             Title="Select Data Base"
                             Margin="-20,0,0,0"
                             HeightRequest="70"
                             ItemsSource="{Binding DB}"
                             SelectedItem="{Binding SelectDB}">
-                            <Picker.Items>
-                                <x:String>Firebase</x:String>
-                                <x:String>SQLite</x:String>
-                                <x:String>Web</x:String>
-                            </Picker.Items>
-                        </Picker>
-
-                    </Frame>
-                    <Frame
+                    <Picker.Items>
+                        <x:String>Firebase</x:String>
+                        <x:String>SQLite</x:String>
+                        <x:String>Web</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+            <Frame
                         Grid.Column="1"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -191,45 +189,44 @@
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             Margin="-20,0,0,0"
                             TextColor="Black"
                             HeightRequest="70"
                             Keyboard="Text"
                             Placeholder="Document"
                             Text="{Binding Document}" />
-                    </Frame>
-                </Grid>
-                <Grid ColumnDefinitions="180,180" HorizontalOptions="Center">
-                    <Frame
+            </Frame>
+        </Grid>
+        <Grid ColumnDefinitions="180,180" HorizontalOptions="Center">
+            <Frame
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
                         CornerRadius="10"
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Picker
+                <Picker
                             TextColor="Black"
                             Title="Select Valor Iva"
                             Margin="-20,0,0,0"
                             HeightRequest="70"
                             ItemsSource="{Binding Iva}"
                             SelectedItem="{Binding SelectIva}">
-                            <Picker.Items>
-                                <x:String>0.10</x:String>
-                                <x:String>0.11</x:String>
-                                <x:String>0.12</x:String>
-                                <x:String>0.13</x:String>
-                                <x:String>0.14</x:String>
-                                <x:String>0.15</x:String>
-                                <x:String>0.16</x:String>
-                                <x:String>0.17</x:String>
-                                <x:String>0.18</x:String>
-                            </Picker.Items>
-                        </Picker>
-
-                    </Frame>
-                    <Frame
+                    <Picker.Items>
+                        <x:String>0.10</x:String>
+                        <x:String>0.11</x:String>
+                        <x:String>0.12</x:String>
+                        <x:String>0.13</x:String>
+                        <x:String>0.14</x:String>
+                        <x:String>0.15</x:String>
+                        <x:String>0.16</x:String>
+                        <x:String>0.17</x:String>
+                        <x:String>0.18</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+            <Frame
                         Grid.Column="1"
                         Margin="10,5"
                         BackgroundColor="AliceBlue"
@@ -237,25 +234,25 @@
                         HasShadow="True"
                         HeightRequest="40"
                         IsClippedToBounds="True">
-                        <Picker
+                <Picker
                             TextColor="Black"
                             Title="Select Coin"
                             Margin="-20,0,0,0"
                             HeightRequest="70"
                             ItemsSource="{Binding Coin}"
                             SelectedItem="{Binding SelectCoin}">
-                            <Picker.Items>
-                                <x:String>USD</x:String>
-                                <x:String>PESO</x:String>
-                                <x:String>EURO</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </Frame>
-                </Grid>
-                <Grid 
-                    ColumnDefinitions="*,100,100" 
+                    <Picker.Items>
+                        <x:String>USD</x:String>
+                        <x:String>PESO</x:String>
+                        <x:String>EURO</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+        </Grid>
+        <Grid
+                    ColumnDefinitions="*,100,100"
                     HorizontalOptions="Center">
-                    <Button
+            <Button
                         x:Name="buttonUpdate"
                         Grid.Column="0"
                         Margin="10"
@@ -265,14 +262,14 @@
                         CornerRadius="10"
                         IsVisible="{Binding showBtnSave}"
                         Text="Save Company" />
-                    <Button
+            <Button
                         Grid.Column="2"
                         Margin="10"
                         Background="orange"
                         Command="{Binding btnAdmin}"
                         CornerRadius="10"
                         Text="ADMIN" />
-                    <Frame
+            <Frame
                         x:Name="FrameCode"
                         Grid.Column="1"
                         Margin="10"
@@ -281,7 +278,7 @@
                         HeightRequest="40"
                         HasShadow="True"
                         IsClippedToBounds="True">
-                        <Entry
+                <Entry
                             HeightRequest="90"
                             Margin="-20,5,0,0"
                             TextColor="Black"
@@ -289,17 +286,14 @@
                             Keyboard="Numeric"
                             Placeholder="CODE"
                             Text="{Binding CODE}" />
-                    </Frame>
-                </Grid>
-                <Button
+            </Frame>
+        </Grid>
+        <Button
                     Margin="20,40,20,0"
                     TextColor="White"
                     Background="RED"
                     Command="{Binding btnLogOut}"
                     CornerRadius="10"
                     Text="LOGOUT" />
-            </StackLayout>
-  
-
-
+    </StackLayout>
 </ContentPage>

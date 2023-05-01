@@ -6,14 +6,14 @@
     Title="Client">
 
     <Grid>
-        <Grid 
-                ColumnDefinitions="*" 
+        <Grid
+                ColumnDefinitions="*"
                 RowDefinitions="40,30,*,20">
             <StackLayout
                     Grid.Row="0"
                     Grid.Column="0">
-                <Grid 
-                    ColumnDefinitions="*,330" 
+                <Grid
+                    ColumnDefinitions="*,330"
                     RowDefinitions="40">
                     <ImageButton
                         Grid.Row="0"
@@ -24,7 +24,7 @@
                         Command="{Binding btnGoNewClient}"
                         HorizontalOptions="Center"
                         Source="add_client.png"
-                        VerticalOptions="CenterAndExpand"/>
+                        VerticalOptions="CenterAndExpand" />
                     <Frame
                         Grid.Row="0"
                         Margin="0,8,5,0"
@@ -34,53 +34,53 @@
                         CornerRadius="10"
                         HasShadow="True"
                         IsClippedToBounds="True">
-                            <SearchBar 
-                                HeightRequest="80" 
+                        <SearchBar
+                                HeightRequest="80"
                                 Placeholder="Search Client" />
                     </Frame>
                 </Grid>
             </StackLayout>
 
-            <StackLayout 
+            <StackLayout
                 Margin="0,10,0,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Background="#512BD4">
-            <Grid 
-                    ColumnDefinitions="*,*,*,*,*" 
+                <Grid
+                    ColumnDefinitions="*,*,*,*,*"
                     RowDefinitions="*">
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         MaxLines="1"
                         Text="NAME"
-                        TextColor="White"/>
-                <Label
+                        TextColor="White" />
+                    <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         MaxLines="1"
                         Text="DIRECTION"
-                        TextColor="White"/>
-                <Label
+                        TextColor="White" />
+                    <Label
                         Grid.Row="0"
                         Grid.Column="2"
                         MaxLines="1"
                         Text="PHONE"
-                        TextColor="White"/>
-                <Label
+                        TextColor="White" />
+                    <Label
                         Grid.Row="0"
                         Grid.Column="3"
                         MaxLines="1"
                         Text="EMAIL"
-                        TextColor="White"/>
-                <Label
+                        TextColor="White" />
+                    <Label
                         Grid.Row="0"
                         Grid.Column="4"
                         MaxLines="1"
                         Text="ACTION"
-                        TextColor="White"/>
-            </Grid>
-        </StackLayout>
+                        TextColor="White" />
+                </Grid>
+            </StackLayout>
 
             <StackLayout
                  Grid.Row="2"
@@ -97,32 +97,32 @@
                                 <ViewCell>
                                     <Grid
                                     BackgroundColor="white"
-                                    ColumnDefinitions="*,*,*,*,*" 
+                                    ColumnDefinitions="*,*,*,*,*"
                                     RowDefinitions="*">
                                         <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Margin="0,10,0,0"
                                         MaxLines="1"
-                                        Text="{Binding FirstName}"/>
+                                        Text="{Binding FirstName}" />
                                         <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="0,10,0,0"
                                         MaxLines="1"
-                                        Text="{Binding Direction}"/>
+                                        Text="{Binding Direction}" />
                                         <Label
                                         Grid.Row="0"
                                         Grid.Column="2"
                                         Margin="0,10,0,0"
                                         MaxLines="1"
-                                        Text="{Binding Phone}"/>
+                                        Text="{Binding Phone}" />
                                         <Label
                                         Margin="0,10,0,0"
                                         Grid.Row="0"
                                         Grid.Column="3"
                                         MaxLines="1"
-                                        Text="{Binding Email}"/>
+                                        Text="{Binding Email}" />
                                         <FlexLayout
                                         Grid.Row="0"
                                         Grid.Column="4"
@@ -154,27 +154,24 @@
                 </RefreshView>
             </StackLayout>
 
-            
-        
-            <StackLayout 
+            <StackLayout
                      Grid.Row="3"
                     Grid.Column="0">
-                        <Grid 
+                <Grid
                                 ColumnDefinitions="*,*"
                                 RowDefinitions="20">
-                            <ImageButton
+                    <ImageButton
                                         Grid.Column="0"
                                         BackgroundColor="Transparent"
                                         Command="{Binding btnLeftClient}"
                                         Source="left.png" />
-                            <ImageButton
+                    <ImageButton
                                         Grid.Column="1"
                                         BackgroundColor="Transparent"
                                         Command="{Binding btnRightClient}"
                                         Source="right.png" />
-                        </Grid>
+                </Grid>
             </StackLayout>
-        
         </Grid>
     </Grid>
 </ContentPage>

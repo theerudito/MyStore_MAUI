@@ -1,27 +1,28 @@
-﻿using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
+using System.Windows.Input;
 
 namespace MyStore_MAUI.ViewModel
 {
     public class CompanyViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
-       
-  
+        private Application_Context _dbContext = new Application_Context();
+
         #region CONTRUCTOR
+
         public CompanyViewModel(INavigation navigation)
         {
             Navigation = navigation;
             getCompanyAsync();
             showBtnSave = false;
         }
-        #endregion
 
+        #endregion CONTRUCTOR
 
         #region VARIABLES
+
         private string _TextNameCompany;
         private string _TextNameOwner;
         private string _TextDirection;
@@ -37,85 +38,101 @@ namespace MyStore_MAUI.ViewModel
         private string _TextDB;
         private string _TextIVA;
         private string _TextCoin;
-        #endregion
 
+        #endregion VARIABLES
 
         #region OBJETOS
+
         public bool showBtnSave
         {
             get { return _showBtnSave; }
             set { SetValue(ref _showBtnSave, value); }
         }
+
         public string Name
         {
             get { return _TextNameCompany; }
             set { SetValue(ref _TextNameCompany, value); }
         }
+
         public string Owner
         {
             get { return _TextNameOwner; }
             set { SetValue(ref _TextNameOwner, value); }
         }
+
         public string Direction
         {
             get { return _TextDirection; }
             set { SetValue(ref _TextDirection, value); }
         }
+
         public string Email
         {
             get { return _TextEmail; }
             set { SetValue(ref _TextEmail, value); }
         }
+
         public string RUC
         {
             get { return _TextRUC; }
             set { SetValue(ref _TextRUC, value); }
         }
+
         public string Phone
         {
             get { return _TextPhone; }
             set { SetValue(ref _TextPhone, value); }
         }
+
         public string NumDocument
         {
             get { return _TextNumDocument; }
             set { SetValue(ref _TextNumDocument, value); }
         }
+
         public string Serie1
         {
             get { return _TextSerie1; }
             set { SetValue(ref _TextSerie1, value); }
         }
+
         public string Serie2
         {
             get { return _TextSerie2; }
             set { SetValue(ref _TextSerie2, value); }
         }
+
         public string Document
         {
             get { return _TextTypeDocument; }
             set { SetValue(ref _TextTypeDocument, value); }
         }
+
         public string CODE
         {
             get { return _TextCODE; }
             set { SetValue(ref _TextCODE, value); }
         }
+
         public string DB
         {
             get { return _TextDB; }
             set { SetValue(ref _TextDB, value); }
         }
+
         public string Iva
         {
             get { return _TextIVA; }
             set { SetValue(ref _TextIVA, value); }
         }
+
         public string Coin
         {
             get { return _TextCoin; }
             set { SetValue(ref _TextCoin, value); }
         }
+
         public string SelectDB
         {
             get { return _TextDB; }
@@ -123,9 +140,9 @@ namespace MyStore_MAUI.ViewModel
             {
                 SetProperty(ref _TextDB, value);
                 DB = _TextDB;
-
             }
         }
+
         public string SelectIva
         {
             get { return _TextIVA; }
@@ -133,9 +150,9 @@ namespace MyStore_MAUI.ViewModel
             {
                 SetProperty(ref _TextIVA, value);
                 Iva = _TextIVA;
-
             }
         }
+
         public string SelectCoin
         {
             get { return _TextCoin; }
@@ -143,14 +160,13 @@ namespace MyStore_MAUI.ViewModel
             {
                 SetProperty(ref _TextCoin, value);
                 Coin = _TextCoin;
-
             }
         }
 
-        #endregion
-
+        #endregion OBJETOS
 
         #region METHODS
+
         public async Task<MCompany> getCompanyAsync()
         {
             var id = 1;
@@ -174,6 +190,7 @@ namespace MyStore_MAUI.ViewModel
             }
             return company;
         }
+
         public async Task<MCompany> updateCompanyAsync()
         {
             var id = 1;
@@ -201,10 +218,10 @@ namespace MyStore_MAUI.ViewModel
             await DisplayAlert("infor", "Actualizado con Exito", "ok");
             return company;
         }
+
         public async Task Activate()
         {
-
-            if (ValitationsCode() == true )
+            if (ValitationsCode() == true)
             {
                 var company = await _dbContext.CodeApp.FirstOrDefaultAsync();
 
@@ -217,8 +234,9 @@ namespace MyStore_MAUI.ViewModel
                 {
                     await DisplayAlert("infor", "the code is incorrect", "ok");
                 }
-            } 
+            }
         }
+
         public async Task Logout()
         {
             if (await DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No"))
@@ -227,24 +245,28 @@ namespace MyStore_MAUI.ViewModel
                 Preferences.Clear();
             }
         }
+
         public bool ValitationsCode()
         {
             if (string.IsNullOrEmpty(CODE))
-                {
-                    DisplayAlert("Error", "Code is required", "Ok");
-                    return false;
-                } else
-                {
-                    return true;
-                }
+            {
+                DisplayAlert("Error", "Code is required", "Ok");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
-        #endregion
 
+        #endregion METHODS
 
         #region COMMANDS
+
         public ICommand btnUpdateCompany => new Command(async () => await updateCompanyAsync());
         public ICommand btnLogOut => new Command(async () => await Logout());
         public ICommand btnAdmin => new Command(async () => await Activate());
-        #endregion
+
+        #endregion COMMANDS
     }
 }

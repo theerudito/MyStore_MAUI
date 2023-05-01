@@ -22,12 +22,15 @@ namespace MyStore_MAUI.Context
                 case Device.iOS:
                     databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library", DatabaseName);
                     break;
+
                 case Device.Android:
                     databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), DatabaseName);
                     break;
+
                 case Device.UWP:
                     databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabaseName);
                     break;
+
                 default:
                     throw new NotImplementedException("Platform not supported");
             }

@@ -2,27 +2,30 @@
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 using MyStore_MAUI.View;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace MyStore_MAUI.ViewModel
 {
-    class ShoppingViewModel : BaseViewModel
+    internal class ShoppingViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
+        private Application_Context _dbContext = new Application_Context();
         public Command LoadData { get; }
+
         #region VARIABLES
-        int _prewProduct = 10;
-        int _nextProduct = -10;
-        int _quantityProduct = 0;
 
-        ObservableCollection<MProduct> _List_Product;
-        #endregion
+        private int _prewProduct = 10;
+        private int _nextProduct = -10;
+        private int _quantityProduct = 0;
 
+        private ObservableCollection<MProduct> _List_Product;
+
+        #endregion VARIABLES
 
         #region CONSTRUCTOR
+
         public ShoppingViewModel(INavigation navigation)
         {
             QuantityProduct = 0;
@@ -31,9 +34,11 @@ namespace MyStore_MAUI.ViewModel
 
             LoadData = new Command(async () => await getAllProducts());
         }
-        #endregion
+
+        #endregion CONSTRUCTOR
 
         #region OBJETOS
+
         public ObservableCollection<MProduct> List_Product
         {
             get { return _List_Product; }
@@ -43,6 +48,7 @@ namespace MyStore_MAUI.ViewModel
                 OnpropertyChanged();
             }
         }
+
         public int PrewProduct
         {
             get { return _prewProduct; }
@@ -52,6 +58,7 @@ namespace MyStore_MAUI.ViewModel
                 OnpropertyChanged();
             }
         }
+
         public int NextProduct
         {
             get { return _nextProduct; }
@@ -61,6 +68,7 @@ namespace MyStore_MAUI.ViewModel
                 OnpropertyChanged();
             }
         }
+
         public int QuantityProduct
         {
             get { return _quantityProduct; }
@@ -70,10 +78,11 @@ namespace MyStore_MAUI.ViewModel
                 OnpropertyChanged();
             }
         }
-        #endregion
 
+        #endregion OBJETOS
 
         #region METODOS ASYNC
+
         public async Task getAllProducts()
         {
             IsBusy = true;
@@ -86,7 +95,8 @@ namespace MyStore_MAUI.ViewModel
                 {
                     List_Product = new ObservableCollection<MProduct>(result);
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
@@ -94,38 +104,44 @@ namespace MyStore_MAUI.ViewModel
             {
                 IsBusy = false;
             }
-           
         }
+
         public async Task goPageCart()
         {
-            #if ANDROID || IOS
-                await Navigation.PushAsync(new Mobile_Cart());
-            #else
-               await Navigation.PushAsync(new Desktop_Cart());
-            #endif
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Cart());
+#else
+            await Navigation.PushAsync(new Desktop_Cart());
+#endif
         }
+
         public async Task add_To_Cart(MProduct product)
         {
             CartViewModel _cart = new CartViewModel(Navigation);
-           _cart.Get_Data_Product(product);
-           var quantityOnCart =  _cart.QuantityOnCart();
-           QuantityProduct = quantityOnCart;
+            _cart.Get_Data_Product(product);
+            var quantityOnCart = _cart.QuantityOnCart();
+            QuantityProduct = quantityOnCart;
         }
+
         public async Task prew_Product()
         {
             await DisplayAlert("infor", "Anterior Lista -10 Products", "Ok");
         }
+
         public async Task next_Product()
         {
             await DisplayAlert("infor", "Siguientes Lista 10 Products", "Ok");
         }
-    #endregion
+
+        #endregion METODOS ASYNC
 
         #region COMANDOS
+
         public ICommand goCart => new Command(async () => await goPageCart());
         public ICommand btnAddToCart => new Command<MProduct>(async (prod) => await add_To_Cart(prod));
         public ICommand btnPrewPorduct => new Command(async () => await prew_Product());
         public ICommand nextProduct => new Command(async () => await next_Product());
-        #endregion
+
+        #endregion COMANDOS
     }
 }

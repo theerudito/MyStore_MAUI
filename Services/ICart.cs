@@ -10,8 +10,6 @@ namespace MyStore_MAUI.Services
 
         Task<IClient> getOneClientAsync(int id);
 
-
         Task<MCompany> getOneCompanyAsync(int id);
-
     }
 }

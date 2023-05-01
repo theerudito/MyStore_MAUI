@@ -4,15 +4,14 @@ using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using MyStore_MAUI.View;
 
 namespace MyStore_MAUI.ViewModel
 {
     internal class UsersViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
+        private Application_Context _dbContext = new Application_Context();
 
-        ObservableCollection<MAuth> _List_Users;
+        private ObservableCollection<MAuth> _List_Users;
         private readonly string LocalStorageUser = "user";
 
         public UsersViewModel(INavigation navigation)
@@ -31,7 +30,6 @@ namespace MyStore_MAUI.ViewModel
             }
         }
 
-
         public async Task<IEnumerable<MAuth>> GetAllUsersAsync()
         {
             var result = await _dbContext.Auth.ToListAsync();
@@ -40,7 +38,6 @@ namespace MyStore_MAUI.ViewModel
 
             return result;
         }
-
 
         public async Task DeleteUser(MAuth auth)
         {
@@ -71,6 +68,5 @@ namespace MyStore_MAUI.ViewModel
         public ICommand btnGoUpdateCommand => new Command(async () => await goUpdateUser());
         public ICommand btnDeleteCommand => new Command<MAuth>(async (auth) => await DeleteUser(auth));
         public ICommand btnUpdateCommand => new Command(async () => await goUpdateUser());
-
     }
 }

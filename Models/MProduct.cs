@@ -6,6 +6,7 @@ namespace MyStore_MAUI.Models
     {
         [Key]
         public int IdProduct { get; set; }
+
         public string NameProduct { get; set; } = "";
         public string CodeProduct { get; set; } = "";
         public string Brand { get; set; } = "";

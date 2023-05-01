@@ -8,24 +8,24 @@
     <ScrollView>
         <StackLayout>
 
-                <Image
+            <Image
                     Margin="0,20,0,0"
                     Aspect="AspectFit"
                     Source="avatar.png"
                     WidthRequest="100" />
-                <Label
+            <Label
                     FontSize="20"
                     HorizontalOptions="CenterAndExpand"
                     Text="{Binding Name}"
                     TextColor="Black"
                     VerticalOptions="CenterAndExpand" />
-                <Label
+            <Label
                     FontSize="14"
                     HorizontalOptions="CenterAndExpand"
                     Text="{Binding Owner}"
                     TextColor="Black"
                     VerticalOptions="CenterAndExpand" />
-      
+
             <StackLayout>
                 <Image
                     Margin="10"
@@ -43,9 +43,9 @@
                     TextColor="Black" />
             </StackLayout>
             <StackLayout HorizontalOptions="Center">
-                <Grid 
+                <Grid
                     Margin="20"
-                    ColumnDefinitions="*,*,*,*,*" 
+                    ColumnDefinitions="*,*,*,*,*"
                     RowDefinitions="12">
                     <ImageButton
                         Grid.Row="0"
@@ -71,7 +71,7 @@
                         Aspect="AspectFit"
                         BackgroundColor="Transparent"
                         Command="{Binding btnWeb}"
-                        Source="web.png"/>
+                        Source="web.png" />
                     <ImageButton
                         Grid.Row="0"
                         Grid.Column="4"
@@ -81,9 +81,6 @@
                         Source="linkedin.png" />
                 </Grid>
             </StackLayout>
-
         </StackLayout>
-
     </ScrollView>
-
 </ContentPage>

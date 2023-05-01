@@ -5,42 +5,37 @@ using MyStore_MAUI.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-
-
 namespace MyStore_MAUI.ViewModel
 {
-   
     public class CartViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
+        private Application_Context _dbContext = new Application_Context();
 
-        Calculates calculos = new Calculates();
+        private Calculates calculos = new Calculates();
 
         public INavigation Navigation { get; set; }
 
         public MProduct _product { get; set; }
 
-        List<MProduct> _myCart = new List<MProduct>();
-        
-
+        private List<MProduct> _myCart = new List<MProduct>();
 
         #region CONSTRUCTORS
+
         public CartViewModel(INavigation navigation)
         {
-            
             Navigation = navigation;
             Get_Data_Company();
             Obtener();
             Total_Cart();
             Task.Run(async () => await getClientFinal());
-
         }
-        #endregion
+
+        #endregion CONSTRUCTORS
 
         #region VARIABLES
+
         private string _Date = DateTime.Now.ToString("HH:mm");
         private string _Hour = DateTime.Now.ToString("dd/MM/yyyy");
-
 
         private float _subtotal;
         private float _subtotal0;
@@ -71,10 +66,12 @@ namespace MyStore_MAUI.ViewModel
 
         private int _quantityIncrement = 1;
 
-        ObservableCollection<MProduct> _list_Product;
-        #endregion
+        private ObservableCollection<MProduct> _list_Product;
+
+        #endregion VARIABLES
 
         #region OBJETOS
+
         public ObservableCollection<MProduct> List_Products
         {
             get { return _list_Product; }
@@ -84,7 +81,6 @@ namespace MyStore_MAUI.ViewModel
                 OnPropertyChanged();
             }
         }
-        
 
         // DATA CART VALUES
         public float SubTotal
@@ -92,37 +88,42 @@ namespace MyStore_MAUI.ViewModel
             get { return _subtotal; }
             set { SetValue(ref _subtotal, value); }
         }
+
         public float SubTotal12
         {
             get { return _subtotal12; }
             set { SetValue(ref _subtotal12, value); }
         }
+
         public float SubTotal0
         {
             get { return _subtotal0; }
             set { SetValue(ref _subtotal0, value); }
         }
+
         public float IvaCart
         {
             get { return _ivaCart; }
             set { SetValue(ref _ivaCart, value); }
         }
+
         public float IvaCompany
         {
             get { return _ivaCompany; }
             set { SetValue(ref _ivaCompany, value); }
         }
+
         public float Total
         {
             get { return _Total; }
             set { SetValue(ref _Total, value); }
         }
+
         public float Descuent
         {
             get { return _descuent; }
             set { SetValue(ref _descuent, value); }
         }
-
 
         // DATOS DE LA EMPRESA
         public string Date_Now
@@ -130,32 +131,36 @@ namespace MyStore_MAUI.ViewModel
             get { return _Date; }
             set { SetValue(ref _Date, value); }
         }
+
         public string Hour_Now
         {
             get { return _Hour; }
             set { SetValue(ref _Hour, value); }
         }
+
         public string Document
         {
             get { return _Document; }
             set { SetValue(ref _Document, value); }
         }
+
         public int NumDocument
         {
             get { return _numDocument; }
             set { SetValue(ref _numDocument, value); }
         }
+
         public string Serie1
         {
             get { return _Serie1; }
             set { SetValue(ref _Serie1, value); }
         }
+
         public string Serie2
         {
             get { return _Serie2; }
             set { SetValue(ref _Serie2, value); }
         }
-
 
         // DATA CLIENT
         public int IdClient
@@ -163,79 +168,88 @@ namespace MyStore_MAUI.ViewModel
             get { return _IdClient; }
             set { SetValue(ref _IdClient, value); }
         }
+
         public string DNI
         {
             get { return _DNI; }
             set { SetValue(ref _DNI, value); }
         }
+
         public string Phone
         {
             get { return _Phone; }
             set { SetValue(ref _Phone, value); }
         }
+
         public string FirstName
         {
             get { return _FirstName; }
             set { SetValue(ref _FirstName, value); }
         }
+
         public string LastName
         {
             get { return _LastName; }
             set { SetValue(ref _LastName, value); }
         }
+
         public string Email
         {
             get { return _Email; }
             set { SetValue(ref _Email, value); }
         }
+
         public string Direction
         {
             get { return _Direction; }
             set { SetValue(ref _Direction, value); }
         }
+
         public string City
         {
             get { return _City; }
             set { SetValue(ref _City, value); }
         }
 
-
         public int IdProduct
         {
             get { return _IdProduct; }
-            set { SetValue(ref _IdProduct, value);
+            set
+            {
+                SetValue(ref _IdProduct, value);
                 OnpropertyChanged();
             }
         }
+
         public int Cant
         {
             get { return _cant; }
-            set { SetValue(ref _cant, value);
+            set
+            {
+                SetValue(ref _cant, value);
                 OnpropertyChanged();
             }
-            
         }
+
         public float P_TOTAL
         {
             get { return _p_total; }
-            set { SetValue(ref _p_total, value);
+            set
+            {
+                SetValue(ref _p_total, value);
                 OnpropertyChanged();
             }
         }
-       
 
-
-        #endregion
+        #endregion OBJETOS
 
         #region METODOS ASYNC
+
         public void Get_Data_Product(MProduct product)
         {
-            
-
-           
         }
 
-        public void Obtener ()
+        public void Obtener()
         {
             _myCart.Add(new MProduct
             {
@@ -273,7 +287,6 @@ namespace MyStore_MAUI.ViewModel
 
         public async Task getClientFinal()
         {
-            
             var seachClientFinal = await _dbContext.Client.Where(cli => cli.IdClient == cliFinal).FirstOrDefaultAsync();
 
             if (seachClientFinal != null)
@@ -316,12 +329,11 @@ namespace MyStore_MAUI.ViewModel
         {
             if (await DisplayAlert("info", "Are you sure you want to delete this product?", "Yes", "No"))
             {
-              var query = _myCart.Where(p => p.IdProduct == product.IdProduct);
-              _myCart.Remove(product);
-
+                var query = _myCart.Where(p => p.IdProduct == product.IdProduct);
+                _myCart.Remove(product);
             }
         }
-        
+
         public void Res_Quantity(MProduct pro)
         {
             foreach (MProduct product in _myCart)
@@ -332,10 +344,9 @@ namespace MyStore_MAUI.ViewModel
                 }
             }
         }
-       
+
         public void Sum_Quantity(MProduct pro)
         {
-           
             foreach (MProduct product in _myCart)
             {
                 if (product.IdProduct == pro.IdProduct)
@@ -347,7 +358,6 @@ namespace MyStore_MAUI.ViewModel
 
         public float Price_Total()
         {
-            
             foreach (MProduct product in _myCart)
             {
                 P_TOTAL = calculos.Result_Cant_P_Unitary(Quantity(), product.P_Unitary);
@@ -356,7 +366,7 @@ namespace MyStore_MAUI.ViewModel
         }
 
         public int Quantity() => _quantityIncrement;
-        
+
         public void Total_Cart()
         {
             float des = 2.25f;
@@ -390,14 +400,17 @@ namespace MyStore_MAUI.ViewModel
                 await getClientFinal();
             }
         }
-        #endregion
+
+        #endregion METODOS ASYNC
 
         #region COMANDOS
+
         public ICommand btnSaveCartCommand => new Command(async () => await Save_Buy());
         public ICommand btnSearchDNICommand => new Command(async () => await getClient());
         public ICommand btnDeleteProductCart => new Command<MProduct>(async (pro) => await Delete_ProductCart(pro));
         public ICommand btnSumQuantityCommand => new Command<MProduct>((pro) => Sum_Quantity(pro));
         public ICommand btnRestQuantityCommand => new Command<MProduct>((pro) => Res_Quantity(pro));
-        #endregion
+
+        #endregion COMANDOS
     }
 }

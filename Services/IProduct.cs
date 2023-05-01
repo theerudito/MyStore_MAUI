@@ -4,7 +4,6 @@ namespace MyStore_MAUI.Services
 {
     public interface IProduct
     {
-
         Task<IEnumerable<MProduct>> GetAllProduct();
 
         Task<MProduct> GetOneProduct(int id);

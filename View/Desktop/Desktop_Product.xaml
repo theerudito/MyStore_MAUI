@@ -7,15 +7,15 @@
 
     <StackLayout>
         <Grid
-                ColumnDefinitions="*" 
+                ColumnDefinitions="*"
                 Margin="0,5,0,0"
                 RowDefinitions="50,25,500,60">
             <StackLayout
                 Margin="0,-2,0,0"
-                Grid.Row="0" 
+                Grid.Row="0"
                 Grid.Column="0">
                 <Grid
-                        ColumnDefinitions="20,40,20,400" 
+                        ColumnDefinitions="20,40,20,400"
                         RowDefinitions="*">
                     <ImageButton
                         Grid.Row="0"
@@ -25,7 +25,7 @@
                         Command="{Binding btnGoNewProduct}"
                         HorizontalOptions="Center"
                         Source="add_product.png"
-                        VerticalOptions="CenterAndExpand"/>
+                        VerticalOptions="CenterAndExpand" />
                     <Frame
                             Grid.Row="0"
                         Grid.Column="3"
@@ -34,7 +34,7 @@
                         HasShadow="True"
                         BorderColor="Transparent"
                         CornerRadius="10">
-                        <SearchBar 
+                        <SearchBar
                            TextColor="Black"
                            PlaceholderColor="Black"
                            CancelButtonColor="Red"
@@ -43,65 +43,64 @@
                            Placeholder="Search Product" />
                     </Frame>
                 </Grid>
-                
             </StackLayout>
 
-            <StackLayout 
+            <StackLayout
                 Margin="0,1,0,0"
-                Grid.Row="1" 
+                Grid.Row="1"
                 Grid.Column="0"
                 Background="#512BD4">
-            <Grid 
-                ColumnDefinitions="*,*,*,*,*,*" 
+                <Grid
+                ColumnDefinitions="*,*,*,*,*,*"
                 RowDefinitions="*">
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         MaxLines="1"
                         Text="CANT"
                         TextColor="White"
                         WidthRequest="100" />
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         MaxLines="1"
                         Text="NAME"
                         TextColor="White"
                         WidthRequest="100" />
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="2"
                         MaxLines="1"
                         Text="BRAND"
                         TextColor="White"
                         WidthRequest="100" />
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="3"
                         MaxLines="1"
                         Text="DESC"
                         TextColor="White"
                         WidthRequest="100" />
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="4"
                         MaxLines="1"
                         Text="V_UNIT"
                         TextColor="White"
                         WidthRequest="100" />
-                <Label
+                    <Label
                         Grid.Row="0"
                         Grid.Column="5"
                         MaxLines="1"
                         Text="ACTION"
                         TextColor="White"
                         WidthRequest="100" />
-            </Grid>
-        </StackLayout>
+                </Grid>
+            </StackLayout>
 
             <StackLayout
                 Margin="0,-2,0,0"
-                Grid.Row="2" 
+                Grid.Row="2"
                 Grid.Column="0">
                 <RefreshView
                         RefreshColor="#512BD4"
@@ -125,8 +124,7 @@
                                         BackgroundColor="Black"
                                         WidthRequest="30"
                                         HeightRequest="30"
-                                        Source="{Binding Image_Product}"
-                                        />
+                                        Source="{Binding Image_Product}" />
                                         <!--<Label
                                     Text="{Binding Quantity}"
                                     Grid.Row="0"
@@ -139,8 +137,7 @@
                                         Grid.Column="1"
                                         MaxLines="1"
                                         Text="{Binding NameProduct}"
-                                        TextColor="BLack"
-                                        />
+                                        TextColor="BLack" />
                                         <Label
                                         Grid.Row="0"
                                         Grid.Column="2"
@@ -184,8 +181,7 @@
                                             CommandParameter="{Binding .}"
                                             HeightRequest="30"
                                             WidthRequest="30"
-                                            Source="trash.png"
-                                             />
+                                            Source="trash.png" />
                                         </FlexLayout>
                                     </Grid>
                                 </ViewCell>
@@ -195,13 +191,11 @@
                 </RefreshView>
             </StackLayout>
 
-           
-
-            <StackLayout 
-                Grid.Row="3" 
+            <StackLayout
+                Grid.Row="3"
                 Grid.Column="0"
                 HeightRequest="45">
-                <Grid 
+                <Grid
                     ColumnDefinitions="*,*"
                     RowDefinitions="50">
                     <ImageButton
@@ -220,7 +214,6 @@
                         Source="right.png" />
                 </Grid>
             </StackLayout>
-
         </Grid>
     </StackLayout>
 </ContentPage>

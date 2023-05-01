@@ -123,9 +123,7 @@
                 Command="{Binding btnSaveClient}"
                 CornerRadius="10"
                 HeightRequest="50"
-                Text="{Binding Save}"
-                />
+                Text="{Binding Save}" />
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

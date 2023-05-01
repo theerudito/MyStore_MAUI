@@ -6,6 +6,7 @@ namespace MyStore_MAUI.Models
     {
         [Key]
         public int IdReport { get; set; }
+
         public int IdDetailCart { get; set; }
     }
 }

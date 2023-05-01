@@ -6,6 +6,7 @@ namespace MyStore_MAUI.Models
     {
         [Key]
         public int IdDetailCart { get; set; }
+
         public int IdCart { get; set; }
         public string Date_Now { get; set; } = "";
         public string Hour_Now { get; set; } = "";

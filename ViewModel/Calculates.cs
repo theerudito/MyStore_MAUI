@@ -1,8 +1,4 @@
-﻿
-using Microsoft.Extensions.Options;
-using System.Text.RegularExpressions;
-
-namespace MyStore_MAUI.ViewModel
+﻿namespace MyStore_MAUI.ViewModel
 {
     public class Calculates
     {
@@ -20,7 +16,7 @@ namespace MyStore_MAUI.ViewModel
         {
         }
 
-        public float Result_Cant_P_Unitary(int cant , float vUnitary)
+        public float Result_Cant_P_Unitary(int cant, float vUnitary)
         {
             this._cant = cant;
             this._p_unitary = vUnitary;
@@ -28,14 +24,14 @@ namespace MyStore_MAUI.ViewModel
         }
 
         public int Result_Quantity(int cant)
-        {   this._cant = cant;
+        {
+            this._cant = cant;
             return cant;
         }
 
-       
-
         public float Result_Subtotal(float subtotal)
-        {   this._subtotal = subtotal;
+        {
+            this._subtotal = subtotal;
             return _subtotal;
         }
 
@@ -68,6 +64,5 @@ namespace MyStore_MAUI.ViewModel
             this._total = total;
             return _total + _iva;
         }
-
     }
 }

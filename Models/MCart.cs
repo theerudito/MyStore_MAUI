@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using MyStore_MAUI.Models;
 
 namespace MyStore_MAUI.Models
 {
@@ -7,6 +6,7 @@ namespace MyStore_MAUI.Models
     {
         [Key]
         public int IdCart { get; set; }
+
         public int IdClient { get; set; }
         public int IdProduct { get; set; }
         public int Quantity { get; set; }

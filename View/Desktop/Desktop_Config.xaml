@@ -8,8 +8,8 @@
     <ScrollView>
         <StackLayout>
             <StackLayout>
-                <Grid 
-                    RowDefinitions="*,*,*" 
+                <Grid
+                    RowDefinitions="*,*,*"
                     ColumnDefinitions="*,*">
                     <Frame
                     Grid.Column="0"
@@ -96,8 +96,7 @@
                         BackgroundColor="Silver"
                         HasShadow="True"
                         BorderColor="Transparent"
-                        CornerRadius="10"
-                        >
+                        CornerRadius="10">
                         <Entry
                             TextColor="Black"
                             PlaceholderColor="Black"
@@ -107,10 +106,8 @@
                             Text="{Binding Phone}" />
                     </Frame>
                 </Grid>
-                
-                
 
-                <Grid 
+                <Grid
                     ColumnDefinitions="*,*,*">
                     <Frame
                         Grid.Column="0"
@@ -136,8 +133,7 @@
                         BackgroundColor="Silver"
                         HasShadow="True"
                         BorderColor="Transparent"
-                        CornerRadius="10"
-                        >
+                        CornerRadius="10">
                         <Entry
                             TextColor="Black"
                             PlaceholderColor="Black"
@@ -153,8 +149,7 @@
                         BackgroundColor="Silver"
                         HasShadow="True"
                         BorderColor="Transparent"
-                        CornerRadius="10"
-                        >
+                        CornerRadius="10">
                         <Entry
                             TextColor="Black"
                             PlaceholderColor="Black"
@@ -164,8 +159,8 @@
                             Text="{Binding Serie2}" />
                     </Frame>
                 </Grid>
-                <Grid 
-                    ColumnDefinitions="*,*" 
+                <Grid
+                    ColumnDefinitions="*,*"
                     RowDefinitions="*">
                     <Frame
                         Grid.Column="0"
@@ -188,8 +183,6 @@
                                 <x:String>Web</x:String>
                             </Picker.Items>
                         </Picker>
-                      
-
                     </Frame>
 
                     <Frame
@@ -209,12 +202,10 @@
                             Placeholder="Document"
                             Text="{Binding Document}" />
                     </Frame>
-
-                   
                 </Grid>
 
-                <Grid 
-                    RowDefinitions="*" 
+                <Grid
+                    RowDefinitions="*"
                     ColumnDefinitions="*,*">
                     <Frame
                         Margin="10"
@@ -241,7 +232,6 @@
                                 <x:String>0.18</x:String>
                             </Picker.Items>
                         </Picker>
-
                     </Frame>
                     <Frame
                         Margin="10"
@@ -265,9 +255,9 @@
                         </Picker>
                     </Frame>
                 </Grid>
-                
-                <Grid 
-                    ColumnDefinitions="*,100,*" 
+
+                <Grid
+                    ColumnDefinitions="*,100,*"
                     RowDefinitions="*"
                     HorizontalOptions="Center">
                     <Button
@@ -321,5 +311,4 @@
             </StackLayout>
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

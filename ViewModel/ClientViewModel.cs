@@ -7,33 +7,34 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
 
-
 namespace MyStore_MAUI.ViewModel
 {
     public class ClientViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
+        private Application_Context _dbContext = new Application_Context();
         public Command LoadData { get; }
 
-
         #region VARIABLES
-        ObservableCollection<MClient> _List_client;
-        public bool _goEditing = true;
-        #endregion
 
+        private ObservableCollection<MClient> _List_client;
+        public bool _goEditing = true;
+
+        #endregion VARIABLES
 
         #region CONSTRUCTOR
+
         public ClientViewModel(INavigation navigation)
         {
             Navigation = navigation;
             GetAllClientAsync();
 
-            LoadData = new Command(async() => await GetAllClientAsync());
+            LoadData = new Command(async () => await GetAllClientAsync());
         }
-        #endregion
 
+        #endregion CONSTRUCTOR
 
         #region OBJECTS
+
         public ObservableCollection<MClient> List_Clients
         {
             get { return _List_client; }
@@ -43,10 +44,12 @@ namespace MyStore_MAUI.ViewModel
                 OnpropertyChanged(nameof(List_Clients));
             }
         }
-        #endregion
+
+        #endregion OBJECTS
 
         #region METHODS
-        public async Task  GetAllClientAsync()
+
+        public async Task GetAllClientAsync()
         {
             IsBusy = true;
 
@@ -55,8 +58,8 @@ namespace MyStore_MAUI.ViewModel
                 var result = await _dbContext.Client.ToListAsync();
                 List_Clients = new ObservableCollection<MClient>(result);
             }
-            catch (Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 Debug.WriteLine(ex);
             }
             finally
@@ -64,22 +67,25 @@ namespace MyStore_MAUI.ViewModel
                 IsBusy = false;
             }
         }
+
         public async Task go_Update_Client(MClient client)
         {
-            #if ANDROID || IOS
-                await Navigation.PushAsync(new Mobile_Add_Client(client, _goEditing));
-            #else
-                await Navigation.PushAsync(new Desktop_Add_Client(client, _goEditing));
-            #endif
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Add_Client(client, _goEditing));
+#else
+            await Navigation.PushAsync(new Desktop_Add_Client(client, _goEditing));
+#endif
         }
+
         public async Task go_New_Client(MClient client)
         {
-            #if ANDROID || IOS
-                        await Navigation.PushAsync(new Mobile_Add_Client(client, _goEditing));
-            #else
-                        await Navigation.PushAsync(new Desktop_Add_Client(client, _goEditing));
-            #endif
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Add_Client(client, _goEditing));
+#else
+            await Navigation.PushAsync(new Desktop_Add_Client(client, _goEditing));
+#endif
         }
+
         public async Task deleteClientAsync(MClient client)
         {
             var result = await _dbContext.Client.FirstOrDefaultAsync(cli => cli.IdClient == client.IdClient);
@@ -94,16 +100,17 @@ namespace MyStore_MAUI.ViewModel
                 }
             }
         }
-        #endregion
+
+        #endregion METHODS
 
         #region COMMANDS
+
         public ICommand btnDeleteClient => new Command<MClient>(async (cli) => await deleteClientAsync(cli));
         public ICommand btnGoNewClient => new Command<MClient>(async (cli) => await go_New_Client(cli));
         public ICommand btnGoUpdateClient => new Command<MClient>(async (cli) => await go_Update_Client(cli));
         public ICommand btnLeftClient => new Command(async () => await DisplayAlert("info", "prew", "ok"));
         public ICommand btnRightClient => new Command(async () => await DisplayAlert("info", "next", "ok"));
-        #endregion
 
+        #endregion COMMANDS
     }
 }
-

@@ -1,26 +1,28 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using MyStore_MAUI.View;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Windows.Input;
 
 namespace MyStore_MAUI.ViewModel
 {
     public class ProductViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context(); 
+        private Application_Context _dbContext = new Application_Context();
         public Command LoadData { get; }
 
         #region VARIABLES
-        ObservableCollection<MProduct> _List_product;
+
+        private ObservableCollection<MProduct> _List_product;
         public bool _goEditingProduct = true;
-        #endregion
+
+        #endregion VARIABLES
 
         #region OBJECTS
+
         public ObservableCollection<MProduct> List_Product
         {
             get { return _List_product; }
@@ -30,9 +32,11 @@ namespace MyStore_MAUI.ViewModel
                 OnPropertyChanged(nameof(List_Product));
             }
         }
-        #endregion
+
+        #endregion OBJECTS
 
         #region CONSTRUCTOR
+
         public ProductViewModel(INavigation navigation)
         {
             Navigation = navigation;
@@ -40,9 +44,11 @@ namespace MyStore_MAUI.ViewModel
 
             LoadData = new Command(async () => await GET_ALL_Products());
         }
-        #endregion
+
+        #endregion CONSTRUCTOR
 
         #region METHODS
+
         public async Task Delete_Product(MProduct product)
         {
             var result = await _dbContext.Product.FirstOrDefaultAsync(pro => pro.IdProduct == product.IdProduct);
@@ -56,6 +62,7 @@ namespace MyStore_MAUI.ViewModel
                 }
             }
         }
+
         public async Task GET_ALL_Products()
         {
             IsBusy = true;
@@ -67,38 +74,42 @@ namespace MyStore_MAUI.ViewModel
             }
             catch (Exception ex)
             {
-                 Debug.WriteLine(ex);
+                Debug.WriteLine(ex);
             }
-
             finally
             {
                 IsBusy = !IsBusy;
             }
         }
+
         public async Task goUpdate_Product(MProduct product)
         {
-            #if ANDROID || IOS
-                await Navigation.PushAsync(new Mobile_Add_Product(product, _goEditingProduct));
-            #else
-                await Navigation.PushAsync(new Desktop_Add_Product(product, _goEditingProduct));
-            #endif
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Add_Product(product, _goEditingProduct));
+#else
+            await Navigation.PushAsync(new Desktop_Add_Product(product, _goEditingProduct));
+#endif
         }
+
         public async Task goNew_Product(MProduct product)
         {
-            #if ANDROID || IOS
-                await Navigation.PushAsync(new Mobile_Add_Product(product, _goEditingProduct));
-            #else
-                await Navigation.PushAsync(new Desktop_Add_Product(product, _goEditingProduct));
-            #endif
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Add_Product(product, _goEditingProduct));
+#else
+            await Navigation.PushAsync(new Desktop_Add_Product(product, _goEditingProduct));
+#endif
         }
-        #endregion
 
-        #region COMMANDS   
+        #endregion METHODS
+
+        #region COMMANDS
+
         public ICommand btnDeleteProduct => new Command<MProduct>(async (prod) => await Delete_Product(prod));
         public ICommand btnGoNewProduct => new Command<MProduct>(async (prod) => await goNew_Product(prod));
         public ICommand btnGoUpdateProduct => new Command<MProduct>(async (prod) => await goUpdate_Product(prod));
         public ICommand btnLeftProduct => new Command(async () => await DisplayAlert("info", "left", "ok"));
         public ICommand btnRightProduct => new Command(async () => await DisplayAlert("info", "right", "ok"));
-        #endregion
+
+        #endregion COMMANDS
     }
 }

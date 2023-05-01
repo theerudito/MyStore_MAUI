@@ -6,6 +6,7 @@ namespace MyStore_MAUI.Models
     {
         [Key]
         public int IdCode { get; set; }
+
         public string CodeAdmin { get; set; } = "";
     }
 }

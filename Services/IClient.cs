@@ -4,7 +4,6 @@ namespace MyStore_MAUI.Services
 {
     public interface IClient
     {
-
         Task<IEnumerable<MClient>> GetAllClientAsync();
 
         Task<MClient> GetOneClientAsync(int id);

@@ -5,12 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Shopping">
 
-<StackLayout>
+    <StackLayout>
         <Grid
                 Margin="10"
                 ColumnDefinitions="*"
                 RowDefinitions="100,450,20">
-            
+
             <StackLayout
                 Grid.Row="0"
                 Grid.Column="0">
@@ -31,7 +31,7 @@
                             TextColor="Black"
                             PlaceholderColor="Black"
                             Placeholder="Search Product"
-                            Text="{Binding NameProduct}"/>
+                            Text="{Binding NameProduct}" />
                     </Frame>
 
                     <ImageButton
@@ -45,7 +45,7 @@
                         WidthRequest="50"
                         HorizontalOptions="Center"
                         Source="cart.png"
-                        VerticalOptions="CenterAndExpand"/>
+                        VerticalOptions="CenterAndExpand" />
                     <Frame
                         Grid.Row="0"
                         Grid.Column="3"
@@ -59,7 +59,7 @@
                             x:Name="textCounter"
                             Text="{Binding QuantityProduct}"
                             TextColor="White"
-                            VerticalTextAlignment="Center"/>
+                            VerticalTextAlignment="Center" />
                     </Frame>
                 </Grid>
             </StackLayout>
@@ -71,13 +71,13 @@
                 RefreshColor="#512BD4"
                 Command="{Binding LoadData}"
                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-                    <CollectionView 
-                        x:Name="viewPodroduct" 
+                    <CollectionView
+                        x:Name="viewPodroduct"
                         ItemsSource="{Binding List_Product}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid 
-                                ColumnDefinitions="*" 
+                                <Grid
+                                ColumnDefinitions="*"
                                 RowDefinitions="*">
                                     <Frame
                                 Margin="10"
@@ -145,7 +145,7 @@
                                             Margin="0,0,0,0"
                                             FontSize="14"
                                             BackgroundColor="#512BD4"
-                                            Command="{Binding Source={x:Reference viewPodroduct}, 
+                                            Command="{Binding Source={x:Reference viewPodroduct},
                                                 Path=BindingContext.btnAddToCart}"
                                             CommandParameter="{Binding .}"
                                             CornerRadius="5"
@@ -165,22 +165,21 @@
             <StackLayout
              Grid.Column="0"
              Grid.Row="2">
-            <Grid 
+                <Grid
                 ColumnDefinitions="*,*"
                 RowDefinitions="50">
-                <ImageButton
+                    <ImageButton
                     Grid.Column="0"
                     BackgroundColor="Transparent"
                     Command="{Binding btnPrewPorduct}"
                     Source="left.png" />
-                <ImageButton
+                    <ImageButton
                     Grid.Column="1"
                     BackgroundColor="Transparent"
                     Command="{Binding nextProduct}"
                     Source="right.png" />
-            </Grid>
-        </StackLayout>
-            
+                </Grid>
+            </StackLayout>
         </Grid>
     </StackLayout>
 </ContentPage>

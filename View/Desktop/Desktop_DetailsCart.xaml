@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="DetailsCart">
 
-    <Grid 
-            ColumnDefinitions="*" 
+    <Grid
+            ColumnDefinitions="*"
             RowDefinitions="22,100,22,22, *, 22,100,40">
 
         <StackLayout
@@ -21,14 +21,13 @@
         </StackLayout>
 
         <StackLayout Grid.Row="1" Grid.Column="0">
-            <Grid 
-                    ColumnDefinitions="*,*" 
+            <Grid
+                    ColumnDefinitions="*,*"
                     RowDefinitions="*">
 
                 <Grid
-                    ColumnDefinitions="*,*,*,*" 
-                    RowDefinitions="*,*,*"
-                    >
+                    ColumnDefinitions="*,*,*,*"
+                    RowDefinitions="*,*,*">
                     <Label
                         TextColor="Black"
                         Grid.Row="0"
@@ -40,7 +39,7 @@
                         TextColor="Black"
                         Grid.Row="0"
                         Grid.Column="1"
-                        Text="Jorge"/>
+                        Text="Jorge" />
                     <Label
                         TextColor="Black"
                         Grid.Row="0"
@@ -86,7 +85,7 @@
                         Grid.Column="1"
                         Text="0960806054" />
                     <Label
-                        TextColor="Black"   
+                        TextColor="Black"
                         Grid.Row="2"
                         Grid.Column="2"
                         Text="Fecha:" />
@@ -95,16 +94,14 @@
                         Grid.Row="2"
                         Grid.Column="3"
                         Text="20/01/2023" />
-
                 </Grid>
-               
             </Grid>
-            <Grid 
+            <Grid
                     Margin="0,0,0,0"
-                    ColumnDefinitions="*,*" 
+                    ColumnDefinitions="*,*"
                     RowDefinitions="*">
                 <Grid
-                    ColumnDefinitions="*,*,*,*,*,*,*,*,*" 
+                    ColumnDefinitions="*,*,*,*,*,*,*,*,*"
                     RowDefinitions="*">
                     <Label
                         TextColor="Black"
@@ -139,9 +136,7 @@
                         Grid.Row="0"
                         Grid.Column="5"
                         Text="002" />
-
                 </Grid>
-                
             </Grid>
         </StackLayout>
 
@@ -162,7 +157,7 @@
                 Grid.Column="0"
                 Margin="0,2,0,0"
                 BackgroundColor="#512BD4">
-            <Grid 
+            <Grid
                     ColumnDefinitions="*,*,*,*,*"
                     RowDefinitions="20">
                 <Label
@@ -198,18 +193,18 @@
                 Grid.Row="5"
                 Grid.Column="0"
                 Margin="0,5,0,0">
-            <ListView >
+            <ListView>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid 
-                                ColumnDefinitions="*,*,*,*" 
+                            <Grid
+                                ColumnDefinitions="*,*,*,*"
                                 RowDefinitions="*">
-                                    <Label Text="cant" />
-                                    <Label Text="details" />
-                                    <Label Text="Desc" />
-                                    <Label Text="P_Unitary" />
-                                    <Label Text="P_Total" />
+                                <Label Text="cant" />
+                                <Label Text="details" />
+                                <Label Text="Desc" />
+                                <Label Text="P_Unitary" />
+                                <Label Text="P_Total" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -228,14 +223,14 @@
                     TextColor="white" />
         </StackLayout>
 
-        <StackLayout 
-                Grid.Row="6" 
+        <StackLayout
+                Grid.Row="6"
                 Grid.Column="0">
             <StackLayout
                     Margin="0,2,0,0"
                     HeightRequest="65"
                     BackgroundColor="#512BD4">
-                <Grid 
+                <Grid
                         RowDefinitions="*,*,*"
                         ColumnDefinitions="*,*,*,*">
                     <Label

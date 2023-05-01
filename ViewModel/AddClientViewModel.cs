@@ -9,9 +9,10 @@ namespace MyStore_MAUI.ViewModel
 {
     internal class AddClientViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context(); 
+        private Application_Context _dbContext = new Application_Context();
 
         #region VARIABLES
+
         public MClient _client { get; set; }
         public bool _Editing;
         public string _Save;
@@ -22,9 +23,11 @@ namespace MyStore_MAUI.ViewModel
         public string _textPhone;
         public string _textEmail;
         public string _textCity;
-        #endregion
+
+        #endregion VARIABLES
 
         #region CONSTUCTOR
+
         public AddClientViewModel(INavigation navigation, MClient client, bool _goEditing)
         {
             if (client != null)
@@ -43,9 +46,11 @@ namespace MyStore_MAUI.ViewModel
             Navigation = navigation;
             obtenerData();
         }
-        #endregion
+
+        #endregion CONSTUCTOR
 
         #region OBJECTS
+
         public string Save
         {
             get { return _Save; }
@@ -54,6 +59,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _Save, value);
             }
         }
+
         public string TextDNI
         {
             get { return _textDNI; }
@@ -62,6 +68,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textDNI, value);
             }
         }
+
         public string TextFirstName
         {
             get { return _textFirstName; }
@@ -71,6 +78,7 @@ namespace MyStore_MAUI.ViewModel
                 //OnPropertyChanged();
             }
         }
+
         public string TextLastName
         {
             get { return _textLastName; }
@@ -80,6 +88,7 @@ namespace MyStore_MAUI.ViewModel
                 //OnPropertyChanged();
             }
         }
+
         public string TextDirection
         {
             get { return _textDirection; }
@@ -89,6 +98,7 @@ namespace MyStore_MAUI.ViewModel
                 //OnPropertyChanged();
             }
         }
+
         public string TextPhone
         {
             get { return _textPhone; }
@@ -98,6 +108,7 @@ namespace MyStore_MAUI.ViewModel
                 //OnPropertyChanged();
             }
         }
+
         public string TextEmail
         {
             get { return _textEmail; }
@@ -107,6 +118,7 @@ namespace MyStore_MAUI.ViewModel
                 //OnPropertyChanged();
             }
         }
+
         public string TextCity
         {
             get { return _textCity; }
@@ -116,9 +128,11 @@ namespace MyStore_MAUI.ViewModel
                 //OnPropertyChanged();
             }
         }
-        #endregion
+
+        #endregion OBJECTS
 
         #region METHODS
+
         public void obtenerData()
         {
             TextDNI = Convert.ToString(_client.DNI);
@@ -129,6 +143,7 @@ namespace MyStore_MAUI.ViewModel
             TextEmail = _client.Email;
             TextCity = _client.City;
         }
+
         public async Task<MClient> createClientAsync()
         {
             var newClient = await _dbContext.Client.FirstOrDefaultAsync(cli => cli.DNI == TextDNI);
@@ -148,16 +163,14 @@ namespace MyStore_MAUI.ViewModel
                 _dbContext.Client.Add(client);
                 await _dbContext.SaveChangesAsync();
                 ResetField();
-                
 
-                #if ANDROID || IOS
+#if ANDROID || IOS
                 await Navigation.PushAsync(new Mobile_Client());
 #else
                 await Navigation.PushAsync(new Desktop_Client());
 #endif
 
                 return client;
-
             }
             else
             {
@@ -173,8 +186,8 @@ namespace MyStore_MAUI.ViewModel
                 TextCity = newClient.City;
                 return null;
             }
-
         }
+
         public async Task<MClient> editClientAsync()
         {
             _client.DNI = TextDNI;
@@ -189,14 +202,15 @@ namespace MyStore_MAUI.ViewModel
             await _dbContext.SaveChangesAsync();
             ResetField();
 
-            #if ANDROID || IOS
-               await Navigation.PushAsync(new Mobile_Client());
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Client());
 #else
-               await Navigation.PushAsync(new Desktop_Client());
+            await Navigation.PushAsync(new Desktop_Client());
 #endif
 
             return _client;
         }
+
         public async Task<MClient> createOrEditClientAsync()
         {
             if (_Editing)
@@ -208,6 +222,7 @@ namespace MyStore_MAUI.ViewModel
                 return await createClientAsync();
             }
         }
+
         public void ResetField()
         {
             TextDNI = "";
@@ -218,11 +233,13 @@ namespace MyStore_MAUI.ViewModel
             TextEmail = "";
             TextCity = "";
         }
-#endregion
+
+        #endregion METHODS
 
         #region COMMANDS
-        public ICommand btnSaveClient => new Command<MClient>(async (cli) => await createOrEditClientAsync());
-        #endregion
 
+        public ICommand btnSaveClient => new Command<MClient>(async (cli) => await createOrEditClientAsync());
+
+        #endregion COMMANDS
     }
 }

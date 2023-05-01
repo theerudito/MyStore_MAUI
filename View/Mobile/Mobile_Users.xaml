@@ -5,10 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Users">
 
-    <Grid 
-        RowDefinitions="20,*" 
+    <Grid
+        RowDefinitions="20,*"
         ColumnDefinitions="*">
-        <Grid   
+        <Grid
                 Grid.Row="0"
                 Grid.Column="0"
                 Margin="0,6,0,0"
@@ -73,8 +73,7 @@
                                 Grid.Row="0"
                                 RowDefinitions="*"
                                 ColumnDefinitions="40,40"
-                                Margin="20"
-                                >
+                                Margin="20">
                                 <ImageButton
                                     Grid.Column="0"
                                     Grid.Row="0"
@@ -97,14 +96,11 @@
                                     HeightRequest="40"
                                     Source="trash"
                                     WidthRequest="20" />
-
                             </Grid>
-                           
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
 </ContentPage>

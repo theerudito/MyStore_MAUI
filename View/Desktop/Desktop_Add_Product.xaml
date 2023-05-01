@@ -8,32 +8,30 @@
     <ScrollView>
         <StackLayout>
             <Image
-                
+
                 Aspect="AspectFit"
                 HeightRequest="200"
                 WidthRequest="200"
-                Source="{Binding ImageProduct}"
-                 />
+                Source="{Binding ImageProduct}" />
             <Button
                 Margin="5"
                 BackgroundColor="#512BD4"
                 TextColor="White"
                 WidthRequest="200"
-                Command="{Binding btnOpenGalery}" 
+                Command="{Binding btnOpenGalery}"
                 Text="Click open Galery" />
-            
-            <Grid 
-                RowDefinitions="*,*,*,*" 
+
+            <Grid
+                RowDefinitions="*,*,*,*"
                 ColumnDefinitions="5,*,10,*,5">
                 <Frame
                 Grid.Column="1"
-                Grid.Row="0" 
+                Grid.Row="0"
                 Margin="20"
                 HeightRequest="60"
                 BackgroundColor="Silver"
                 HasShadow="True"
-                BorderColor="Transparent"
-                >
+                BorderColor="Transparent">
                     <Entry
                     TextColor="Black"
                     PlaceholderColor="Black"
@@ -43,7 +41,7 @@
                 </Frame>
                 <Frame
                 Grid.Column="3"
-                Grid.Row="0" 
+                Grid.Row="0"
                 Margin="20"
                 HeightRequest="60"
                 BackgroundColor="Silver"
@@ -59,7 +57,7 @@
                 </Frame>
                 <Frame
                 Grid.Column="1"
-                Grid.Row="1" 
+                Grid.Row="1"
                 Margin="20"
                 HeightRequest="60"
                 BackgroundColor="Silver"
@@ -74,7 +72,7 @@
                 </Frame>
                 <Frame
                 Grid.Column="3"
-                Grid.Row="1" 
+                Grid.Row="1"
                 Margin="20"
                 HeightRequest="60"
                 BackgroundColor="Silver"
@@ -89,7 +87,7 @@
                 </Frame>
                 <Frame
                 Grid.Column="1"
-                Grid.Row="2" 
+                Grid.Row="2"
                 Margin="20"
                 HeightRequest="60"
                 BackgroundColor="Silver"
@@ -105,7 +103,7 @@
                 </Frame>
                 <Frame
                 Grid.Column="3"
-                Grid.Row="2" 
+                Grid.Row="2"
                 Margin="20"
                 HeightRequest="60"
                 BackgroundColor="Silver"
@@ -119,7 +117,6 @@
                     Placeholder="Quantity"
                     Text="{Binding TextQuantity}" />
                 </Frame>
-
             </Grid>
 
             <Button
@@ -132,5 +129,4 @@
                 Text="{Binding Save}" />
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

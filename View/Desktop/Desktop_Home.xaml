@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Home">
 
-
     <ScrollView>
         <Grid
             RowDefinitions="100,40,30,350,30,30"
@@ -28,9 +27,9 @@
                     HorizontalOptions="CenterAndExpand"
                     Text="{Binding Name}"
                     TextColor="Black"
-                    VerticalOptions="CenterAndExpand"/>
+                    VerticalOptions="CenterAndExpand" />
             </StackLayout>
-            
+
             <StackLayout
                 Grid.Row="2"
                 Grid.Column="0">
@@ -70,7 +69,7 @@
                 Grid.Row="5"
                 Grid.Column="0">
                 <Grid Margin="20"
-                    ColumnDefinitions="*,*,*,*,*" 
+                    ColumnDefinitions="*,*,*,*,*"
                     RowDefinitions="*">
                     <ImageButton
                         Grid.Row="0"
@@ -79,8 +78,8 @@
                         WidthRequest="20"
                         HeightRequest="40"
                         BackgroundColor="Transparent"
-                        Command="{Binding btnGitHub}"  
-                        Source="github.png"/>
+                        Command="{Binding btnGitHub}"
+                        Source="github.png" />
                     <ImageButton
                         Grid.Row="0"
                         Grid.Column="1"
@@ -107,7 +106,7 @@
                         HeightRequest="10"
                         BackgroundColor="Transparent"
                         Command="{Binding btnWeb}"
-                        Source="web.png"/>
+                        Source="web.png" />
                     <ImageButton
                         Grid.Row="0"
                         Grid.Column="4"
@@ -116,7 +115,7 @@
                         HeightRequest="10"
                         BackgroundColor="Transparent"
                         Command="{Binding btnLinkedin}"
-                        Source="linkedin.png"/>
+                        Source="linkedin.png" />
                 </Grid>
             </StackLayout>
         </Grid>

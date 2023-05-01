@@ -6,6 +6,7 @@ namespace MyStore_MAUI.Models
     {
         [Key]
         public int IdCompany { get; set; }
+
         public string NameCompany { get; set; } = "";
         public string NameOwner { get; set; } = "";
         public string Direction { get; set; } = "";

@@ -1,19 +1,18 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyStore_MAUI.Base;
 using MyStore_MAUI.Context;
 using MyStore_MAUI.Models;
 using MyStore_MAUI.View;
 using System.Windows.Input;
 
-
 namespace MyStore_MAUI.ViewModel
 {
     public class AddProductViewModel : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
-       
+        private Application_Context _dbContext = new Application_Context();
+
         #region VARIABLES
+
         public MProduct _product { get; set; }
         public bool _Editing;
         private string _Save;
@@ -27,9 +26,11 @@ namespace MyStore_MAUI.ViewModel
         private string _urlImage = "https://raw.githubusercontent.com/theerudito/Strore-APP-Xamarin-SQLite/master/product.png";
         private ImageSource _image;
         private string _imageByte;
-        #endregion
+
+        #endregion VARIABLES
 
         #region CONSTRUCTOR
+
         public AddProductViewModel(INavigation navigation, MProduct product, bool _goEditingProduct)
         {
             Navigation = navigation;
@@ -49,10 +50,11 @@ namespace MyStore_MAUI.ViewModel
             }
             getData();
         }
-        #endregion
 
+        #endregion CONSTRUCTOR
 
         #region OBJECTS
+
         public string Save
         {
             get { return _Save; }
@@ -61,6 +63,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _Save, value);
             }
         }
+
         public string TextName
         {
             get { return _textName; }
@@ -69,6 +72,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textName, value);
             }
         }
+
         public string TextCode
         {
             get { return _textCode; }
@@ -77,6 +81,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textCode, value);
             }
         }
+
         public string TextBrand
         {
             get { return _textBrand; }
@@ -85,6 +90,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textBrand, value);
             }
         }
+
         public string TextDescription
         {
             get { return _textDescription; }
@@ -93,6 +99,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textDescription, value);
             }
         }
+
         public float TextPrice
         {
             get { return _textPrice; }
@@ -101,6 +108,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textPrice, value);
             }
         }
+
         public string TextQuantity
         {
             get { return _textQuantity; }
@@ -109,6 +117,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _textQuantity, value);
             }
         }
+
         public ImageSource ImageProduct
         {
             get { return _image; }
@@ -117,6 +126,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _image, value);
             }
         }
+
         public string RefImagen
         {
             get { return _refImage; }
@@ -125,6 +135,7 @@ namespace MyStore_MAUI.ViewModel
                 SetValue(ref _refImage, value);
             }
         }
+
         public string ImagenByte
         {
             get { return _imageByte; }
@@ -134,11 +145,10 @@ namespace MyStore_MAUI.ViewModel
             }
         }
 
-       
-
-        #endregion
+        #endregion OBJECTS
 
         #region METHODS
+
         public void getData()
         {
             TextName = _product.NameProduct;
@@ -185,11 +195,11 @@ namespace MyStore_MAUI.ViewModel
                 await _dbContext.SaveChangesAsync();
                 ResetField();
 
-                #if ANDROID || IOS
-                    await Navigation.PushAsync(new Mobile_Product());
-                #else
-                    await Navigation.PushAsync(new Desktop_Product());
-                #endif
+#if ANDROID || IOS
+                await Navigation.PushAsync(new Mobile_Product());
+#else
+                await Navigation.PushAsync(new Desktop_Product());
+#endif
 
                 return product;
             }
@@ -223,12 +233,11 @@ namespace MyStore_MAUI.ViewModel
             await _dbContext.SaveChangesAsync();
             ResetField();
 
-
-            #if ANDROID || IOS
-                await Navigation.PushAsync(new Mobile_Product());
-            #else
-                await Navigation.PushAsync(new Desktop_Product());
-            #endif
+#if ANDROID || IOS
+            await Navigation.PushAsync(new Mobile_Product());
+#else
+            await Navigation.PushAsync(new Desktop_Product());
+#endif
 
             return _product;
         }
@@ -256,13 +265,15 @@ namespace MyStore_MAUI.ViewModel
             ImageProduct = ImageSource.FromFile("image.png");
             RefImagen = "";
             ImagenByte = "";
-
         }
-        #endregion
+
+        #endregion METHODS
 
         #region COMMAND
+
         public ICommand btnCreateProduct => new Command<MProduct>(async (prod) => await createOrEditProductAsync());
         public ICommand btnOpenGalery => new Command(async () => await openGalery());
-        #endregion
+
+        #endregion COMMAND
     }
 }
