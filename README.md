@@ -1,4 +1,3 @@
-# MyStore_MAUI
 <H1>MyStore</H1>
 <p>Database Sqlite</p>
 <p>Database Web Api</p>
